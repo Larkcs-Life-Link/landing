@@ -277,9 +277,7 @@ const Home = () => {
         />
                     <img style={style.image} src={Logo} alt=" "/>
                     <div className={classes.margin}>
-                    <FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{window.open('https://www.facebook.com/LARKCSLifeLink/','_blank');}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{window.open('https://instagram.com/larkcslifelink?igshid=pxivuzwpuuws','_blank');}} style={{marginLeft:32}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{window.open('https://wa.me/918111888892','_blank');}} style={{marginLeft:32,marginRight:32}}></FontAwesomeIcon>
+                   
                     <Button color="success" onClick={handleClickOpen}>Download App</Button>
 
                     <IconButton aria-describedby={id} variant="contained" onMouseEnter={handleClick} onClick={handleClick}>
