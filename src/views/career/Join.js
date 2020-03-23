@@ -47,7 +47,7 @@ const Join = (props) => {
          <p> {props.description[0].content}</p>
         </Typography><hr className={classes.hide}/>
         <Typography variant="h6" style={{padding:12,marginLeft: 28}}>
-         <p><FormatQuote/> {props.description[1].content} </p>
+         <div style={{display:"flex"}}><div><FormatQuote/></div> <div>{props.description[1].content}</div> </div><br/>
          <Button color="success" onClick={props.callback}>See All Openings</Button>
         </Typography><br/>
         </GridItem>
