@@ -4,22 +4,24 @@ const sgMail = require('@sendgrid/mail');
 // const homeAPI = process.env.homeAPI;
 // const careerAPI = process.env.careerAPI;
 // const homeBase = process.env.homeBase;
-// const careerBase = process.env.careerBase;
+// const openingBase = process.env.openingBase;
 // const applicationBase = process.env.applicationBase;
 //sgMail.setApiKey(process.env.sgMailApi);
 
 const homeAPI = 'keyX8tJDj5uJ8jnE2';
 const careerAPI = 'keyCwv4IauNCHeKor';
 const homeBase = 'appvz852AbwfjfnLt';
-const careerBase = 'app8M0GZ2nBY5HUs9';
+const openingBase = 'app8M0GZ2nBY5HUs9';
 const galleryBase = 'app7wMsarA1tUHbfF';
 const applicationBase = 'appCAjLMcjxpSwPgu';
+const careerBase = 'app27ibjc251l39Tr';
 sgMail.setApiKey('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');
 var base = new Airtable({apiKey: homeAPI}).base(homeBase);
-var careerList = new Airtable({apiKey: careerAPI}).base(careerBase);
+var openingsList = new Airtable({apiKey: careerAPI}).base(openingBase);
 var galleryList = new Airtable({apiKey: homeAPI}).base(galleryBase);
+var careerList = new Airtable({apiKey: homeAPI}).base(careerBase);
 var applications = new Airtable({apiKey: careerAPI}).base(applicationBase);
-let AboutData=[],offlineServices=[],onlineServices=[],privilegeCard=[],careerData=[],FieldData=[],UrlData=[],galleryData=[];
+let AboutData=[],offlineServices=[],onlineServices=[],privilegeCard=[],openingsData=[],FieldData=[],UrlData=[],galleryData=[],storyData=[],descriptionData=[];
 
 router.get('/loadBase',(req,res)=>{
 
@@ -77,24 +79,52 @@ router.get('/loadBase',(req,res)=>{
   galleryData = [];
   })
 
+  router.get('/loadStories',(req,res)=>{
+    careerList('Stories').select({
+      view: "Grid view"
+  }).eachPage(function page(records, fetchNextPage) {
+      records.forEach(function(record) {
+        storyData = storyData.concat(record.fields)
+      });
+      res.json(storyData)
+  }, function done(err) {
+      if (err) { console.error(err); return; }
+  });
+  storyData = [];
+  })
+
+  router.get('/loadDescription',(req,res)=>{
+    careerList('JoinUs').select({
+      view: "Grid view"
+  }).eachPage(function page(records, fetchNextPage) {
+      records.forEach(function(record) {
+        descriptionData = descriptionData.concat(record.fields)
+      });
+      res.json(descriptionData)
+  }, function done(err) {
+      if (err) { console.error(err); return; }
+  });
+  descriptionData = [];
+  })
+
 
 router.get('/loadCareer',(req,res)=>{
-  careerList('Openings').select({
+  openingsList('Openings').select({
     view: "Grid view",
-    fields: ["opening","jobType", "location","description","responsibilities","link","NB"]
+    fields: ["opening","jobType", "location","description","responsibilities","link","NB","VideoLink"]
 }).eachPage(function page(records, fetchNextPage) {
     records.forEach(function(record) {
-        careerData = careerData.concat(record.fields)
+        openingsData = openingsData.concat(record.fields)
     });
-    res.json(careerData)
+    res.json(openingsData)
 }, function done(err) {
     if (err) { console.error(err); return; }
 });
-careerData = [];
+openingsData = [];
 })
 
 router.post('/loadApplicationDetails',(req,res)=>{
-  careerList('Openings').select({
+  openingsList('Openings').select({
     view: "Grid view",
     filterByFormula: `{link} = '${req.body.url}'`,
     fields: ["opening","Fields","mailContent"]
@@ -109,7 +139,7 @@ FieldData = [];
 
 router.post('/loadFieldDetails',(req,res)=>{
   req.body.values.map((id,index)=>{
-    careerList('FieldType').select({
+    openingsList('FieldType').select({
       filterByFormula : `RECORD_ID() = '${id}'`,
       fields: ["Order","Name","label","MultiLine","Required"]
 }).eachPage(function page(records, fetchNextPage) {

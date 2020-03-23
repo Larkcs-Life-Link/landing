@@ -1,0 +1,10 @@
+.slick-prev {
+    left: 1% !important;
+    z-index: 1;
+    color: blue !important;
+  }
+  .slick-next {
+    right: 1% !important;
+    z-index: 1;
+    color: blue !important;
+  }

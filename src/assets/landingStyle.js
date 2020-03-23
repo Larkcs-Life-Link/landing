@@ -1,6 +1,6 @@
 const logoStyle = {
   maxHeight: 35,
-  marginLeft: 12,
+  marginLeft: 24,
   cursor: "pointer",
   marginTop:12
 }
@@ -8,7 +8,7 @@ const titleStyle = {
   fontFamily: "Georgia",
   fontWeight: "bold",
   fontSize: 18,
-  marginLeft: 52,
+  marginLeft: 60,
   marginTop: -38,
   cursor: "pointer"
 }
