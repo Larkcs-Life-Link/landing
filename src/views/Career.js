@@ -18,7 +18,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Join from './career/Join';
 import GridContainer from '../components/Grid/GridContainer';
 import GridItem from '../components/Grid/GridItem';
-
+import FlatButton from '@material-ui/core/Button';
 
 const scrollToRef = (ref) => window.scrollTo({
   top: ref.current.offsetTop,
@@ -113,10 +113,13 @@ const Career = () => {
                       id="panel1a-header"
                     >
                       <CardHeader
-                        title={<Typography style={{ fontSize: 17 }} variant="h6">{post.opening}</Typography>}
+                        title={<Typography
+                          onClick={event => event.stopPropagation()}
+                          onFocus={event => event.stopPropagation()} style={{ fontSize: 17 }} variant="h6">{post.opening}</Typography>}
                         subheader={<Typography style={{ fontSize: 14}}><span>{post.jobType},<span><LocationOn style={{ marginLeft: 12, marginBottom: -6 }} />{post.location}</span></span>
                           <br/><br/><Link to={{ pathname: `/apply/${post.link}/` }} className={classes.button}>
                             <Button color="success">Apply Now</Button></Link>
+                            <FlatButton color="#00000" style={{margin:12,backgroundColor:"#F5F5F5"}}>Learn More</FlatButton>
                         </Typography>}
                       />
                     </ExpansionPanelSummary>
