@@ -154,7 +154,7 @@ const Career = () => {
         }
         <Typography style={{  textAlign: "center", fontSize: 24 }} variant="h6">
          <p>Hear from our Employees!</p>
-       </Typography><br /><br />
+       </Typography>
         <CareerStories stories={stories} />
       </div>)
   }
