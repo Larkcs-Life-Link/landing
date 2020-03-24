@@ -28,13 +28,21 @@ const useStyles = makeStyles(theme => ({
     "@media only screen and (min-width: 600px)": {
       display: "none"
     }
+},
+typography: {
+  maxWidth:500,
+  margin:32,
+  marginLeft: 75,
+  "@media only screen and (max-width: 600px)": {
+   marginLeft: 24
+  }
 }
 }))
 const Join = (props) => {
   const classes = useStyles();
   if(props.description.length>0){
-        return (<React.Fragment><Typography variant="h6" style={{maxWidth:500,margin:32,marginLeft: 75}}>
-        <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>Join With US 😃</p>
+        return (<React.Fragment><Typography variant="h6" className={classes.typography}>
+        <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>Join US 😃</p>
         </Typography>
         <GridContainer>
         <GridItem xs={12} sm={12} md={6}>

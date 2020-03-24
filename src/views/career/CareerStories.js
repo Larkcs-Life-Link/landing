@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
     whiteSpace:"pre-wrap",
     "@media only screen and (max-width: 600px)": {
-      width: "95%",
+      width: "90%",
     }
   }
 }))

@@ -71,7 +71,7 @@ const helmet = Helmet.renderStatic();
         <!DOCTYPE html>
         <html lang="en">
           <head>
-          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
           <meta http-equiv="cache-control" content="max-age=24" />
           <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
             ${helmet.title.toString()}
