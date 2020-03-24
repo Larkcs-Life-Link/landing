@@ -2,12 +2,12 @@
     left: 15% !important;
     z-index: 1;
     color: green !important;
-    opacity: 25%;
+    opacity: 25% !important;
   }
   .slick-next {
     right:15% !important;
     z-index: 1;
     color: green !important;
-    opacity: 25%;
+    opacity: 25% !important;
   }
   .slick-slide, .slick-slide *{ outline: none !important; }
