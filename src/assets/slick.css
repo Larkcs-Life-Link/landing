@@ -1,13 +1,13 @@
 .slick-prev {
-    left: 15% !important;
-    z-index: 1;
-    color: green !important;
     opacity: 25% !important;
+    left: 15% !important;
+    z-index: 1 !important;
+    color: green !important;
   }
   .slick-next {
-    right:15% !important;
-    z-index: 1;
-    color: green !important;
     opacity: 25% !important;
+    right:15% !important;
+    z-index: 1 !important;
+    color: green !important;
   }
   .slick-slide, .slick-slide *{ outline: none !important; }

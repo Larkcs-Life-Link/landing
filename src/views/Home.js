@@ -236,9 +236,11 @@ const Home = () => {
   const myRef1 = useRef(null)
   const myRef2 = useRef(null)
   const myRef3 = useRef(null)
+  const myRef4 = useRef(null)
   const executeScroll = () => {handleClose();scrollToRef(myRef)}
   const executeScroll1 = () => {handleClose();scrollToRef(myRef1)}
   const executeScroll3 = () => {handleClose();scrollToRef(myRef3)}
+  const executeScroll4 = () => {handleClose();scrollToRef(myRef4)}
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
   if (loading===true){
@@ -333,12 +335,11 @@ const Home = () => {
         <ListItemIcon>
           <Contacts style={{color:"#39802D"}} />
         </ListItemIcon>
-        <ListItemText primary="Contact" /></ListItem>
-        <Link to='/career' style={{textDecoration:"none",color:"#1C1C1C"}}><ListItem button>
+        <ListItemText primary="Contact" /></ListItem><ListItem button onClick={executeScroll4}>
         <ListItemIcon>
           <Work style={{color:"#39802D"}} />
         </ListItemIcon>
-        <ListItemText primary="Career" /></ListItem></Link></List>
+        <ListItemText primary="Career" /></ListItem></List>
       </Popover><br/><br/><br/>
       <div className={classes.container}>
     <br/><Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef}>
@@ -441,7 +442,7 @@ const Home = () => {
           </Button></div>
         <br/><br/>
       <div style={{height:150,backgroundColor:"#F3F3FE",padding:32}}>
-        <Typography style={{margin:"0 auto",textAlign:"center"}}>
+        <Typography style={{margin:"0 auto",textAlign:"center"}} ref={myRef4}>
          <span style={headerStyle}>We are Hiring!!</span><br/>
          <Link to='/career' style={{textDecoration:"none"}}>
            <Button color="success">Go to Career Page</Button></Link>
