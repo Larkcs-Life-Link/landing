@@ -21,7 +21,7 @@ var openingsList = new Airtable({apiKey: careerAPI}).base(openingBase);
 var galleryList = new Airtable({apiKey: homeAPI}).base(galleryBase);
 var careerList = new Airtable({apiKey: homeAPI}).base(careerBase);
 var applications = new Airtable({apiKey: careerAPI}).base(applicationBase);
-let HeadersData=[],openingsData=[],FieldData=[],UrlData=[],galleryData=[],storyData=[],descriptionData=[],AboutData=[],ServicesData=[],StatisticsData=[],TestimonialsData=[];
+let HeadersData=[],openingsData=[],FieldData=[],UrlData=[],galleryData=[],storyData=[],descriptionData=[],AboutData=[],ServicesData=[],StatisticsData=[],TestimonialsData=[],MediaData=[],ContactData=[];
 
 router.get('/loadHeaders',(req,res)=>{
   homeList('Headers').select({
@@ -93,6 +93,33 @@ router.get('/loadTestimonials',(req,res)=>{
 TestimonialsData = [];
 })
 
+router.get('/loadMediaLinks',(req,res)=>{
+  homeList('MediaLinks').select({
+    view: "Grid view"
+}).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function(record) {
+      MediaData = MediaData.concat(record.fields)
+    });
+    res.json(MediaData)
+}, function done(err) {
+    if (err) { console.error(err); return; }
+});
+MediaData = [];
+})
+
+router.get('/loadForm',(req,res)=>{
+  homeList('Contact').select({
+    view: "Grid view"
+}).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function(record) {
+      ContactData = ContactData.concat(record.fields)
+    });
+    res.json(ContactData)
+}, function done(err) {
+    if (err) { console.error(err); return; }
+});
+ContactData = [];
+})
 
   router.get('/loadGallery',(req,res)=>{
     galleryList('Gallery').select({

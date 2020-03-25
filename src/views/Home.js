@@ -193,7 +193,17 @@ const Home = () => {
         .then( (response)=> {
           console.log(response.data)
           setStatistics(response.data);
-          setLoading(false)
+          axios.get('/api/sync/loadMediaLinks')
+          .then( (response)=> {
+            console.log(response.data)
+            setMedia(response.data);
+            axios.get('/api/sync/loadForm')
+            .then( (response)=> {
+              console.log(response.data)
+              setContact(response.data);
+              setLoading(false)
+            })
+          })
         })
       })
     })
@@ -209,6 +219,8 @@ const Home = () => {
   const [services, setServices] = React.useState([]);
   const [statistics, setStatistics] = React.useState([]);
   const [testimonials, setTestimonials] = React.useState([]);
+  const [media, setMedia] = React.useState([]);
+  const [contact, setContact] = React.useState([]);
   const [values, setValues] = React.useState({
     name: '',
     email: "",
@@ -374,11 +386,13 @@ const Home = () => {
     <GridItem xs={12} sm={12} md={6}>
     <Typography variant="subtitle1" style={{maxWidth:500,margin:32}}>
       <p>{about[0].content}</p>
-    </Typography><hr className={classes.hide}/>
+    </Typography>
+    <Button color="success" style={{margin:32,marginTop: -16}}>Learn More</Button>
+    <hr className={classes.hide}/>
     <Typography variant="h6" style={{padding:12}}>
           <img src={playstore} alt=" " style={{height:60,float:"left",marginRight:12,marginTop:10}}/>
           <p>Download our Android app from Playstore</p><br/>
-          <Button color="success" onClick={handleClickOpen}>Download App</Button>
+          <Button style={{margin:16}} color="success" onClick={handleClickOpen}>Download App</Button>
     </Typography>
     </GridItem>
      <GridItem xs={12} sm={12} md={6}>
@@ -416,12 +430,12 @@ const Home = () => {
         
       })}
     </div><br/><br/>
-    <Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef3}>
+    <Typography variant="h6" style={{maxWidth:500,margin:18}} ref={myRef3}>
          <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>
          <FlightTakeoff style={{color:"#39802D",marginRight:12}} />
            We are Growing!</p>
     </Typography><br/>
-    <div className={classes.container} style={{textAlign:"center",padding:24}}><Statistics data={statistics}/><br/></div><br/>
+    <div className={classes.container}><Statistics data={statistics}/><br/></div><br/>
     <Typography variant="h6" style={{maxWidth:500,margin:32}} >
          <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>
          <SentimentVerySatisfiedIcon style={{color:"#39802D",marginRight:12}} />
@@ -434,18 +448,18 @@ const Home = () => {
            We are Social!</p>
     </Typography><br/>
     <div className={classes.container} style={{textAlign:"center"}}>
-    <FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{window.open('https://www.facebook.com/LARKCSLifeLink/','_blank');}} style={{margin:30,marginBottom:0,height:82,cursor:"pointer"}}></FontAwesomeIcon>
-      <FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{window.open('https://instagram.com/larkcslifelink?igshid=pxivuzwpuuws','_blank');}} style={{margin:30,marginBottom:0,height:82,cursor:"pointer"}}></FontAwesomeIcon>
-      <FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{window.open('https://wa.me/918111888892','_blank');}} style={{margin:30,marginBottom:0,height:82,cursor:"pointer"}}></FontAwesomeIcon>
-      <FontAwesomeIcon icon={faYoutube} size="2x"onClick={()=>{window.open('https://www.youtube.com/channel/UCNlA-ZkvtqSw1IXbQwIwZYQ','_blank');}} style={{margin:30,marginBottom:0,height:82,cursor:"pointer"}}></FontAwesomeIcon>
-      <FontAwesomeIcon icon={faLinkedinIn} size="2x" onClick={()=>{window.open('https://www.linkedin.com/company/larkcs/about/','_blank');}} style={{margin:30,marginBottom:0,height:82,cursor:"pointer"}}></FontAwesomeIcon>
-      <FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{window.open('https://twitter.com/larkcslife','_blank');}} style={{margin:30,marginBottom:0,height:82,cursor:"pointer"}}></FontAwesomeIcon>
+    <FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{window.open(media[0].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{window.open(media[1].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{window.open(`https://wa.me/${media[2].Link}`,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faYoutube} size="2x" onClick={()=>{window.open(media[3].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faLinkedinIn} size="2x" onClick={()=>{window.open(media[4].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{window.open(media[5].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
       <br/><br/><Typography variant="subtitle1" style={{fontWeight:"initial"}}>
          <GridContainer style={{maxWidth:500,margin:"0 auto"}}>
-          <GridItem xs={12} sm={12} md={6} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open('mailto:support@larkcs.com','_blank');}}>
+          <GridItem xs={12} sm={12} md={6} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`mailto:${media[5].Link}`,'_blank');}}>
           <FontAwesomeIcon icon={faEnvelope} style={{marginRight:6}}></FontAwesomeIcon>
           support@larkcs.com </GridItem>
-          <GridItem xs={12} sm={12} md={6} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open('tel:+918111888892','_blank');}}>
+          <GridItem xs={12} sm={12} md={6} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`tel:${media[6].Link}`,'_blank');}}>
           <FontAwesomeIcon icon={faPhoneAlt} style={{marginRight:6}}></FontAwesomeIcon>
           +918111888892 </GridItem></GridContainer></Typography><br/>
       </div><br/><Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef3}>
@@ -463,36 +477,25 @@ const Home = () => {
         WebkitBoxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
          boxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
         }}>
-    <TextField
+          {contact.map((field,index)=>{
+            console.log(field)
+            return (
+              <React.Fragment key={index}>
+                 <TextField
           id="standard-name"
-          name="Name"
-          label="Name"
+          name={field.Title}
+          label={field.Title}
+          fullWidth={field.MultiLine?true:false}
+          multiline={field.MultiLine?true:false}
+          rows={field.MultiLine?4:1}
           className={classes.textField}
-          value={values.name}
-          onChange={handleChange('name')}
-          margin="normal"
-        /><br/><TextField
-          id="standard-name"
-          name="Email"
-          label="Email"
-          type="email"
-          className={classes.textField}
-          value={values.email}
-          onChange={handleChange('email')}
+          value={values[field.Title]}
+          onChange={handleChange([field.Title])}
           margin="normal"
         /><br/>
-        <TextField
-        fullWidth
-          id="standard-name"
-          name="Feedback"
-          label="Your Feedback"
-          multiline
-          rows="4"
-          className={classes.textField}
-          value={values.feedback}
-          onChange={handleChange('feedback')}
-          margin="normal"
-        /><br/><br/>
+              </React.Fragment>
+            )
+          })}<br/>
         <Button style={{float:"right"}} color="success" type="submit" onClick={handleSnack}>
             Submit
           </Button></div>
@@ -525,12 +528,12 @@ const Home = () => {
             Subscribe
           </Button>
         </DialogActions><DialogContent><div className={classes.follow}><DialogContentText>Follow our channels for more updates:</DialogContentText><div style={{textAlign:"center"}}>
-        <FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{window.open('https://www.facebook.com/LARKCSLifeLink/','_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{window.open('https://instagram.com/larkcslifelink?igshid=pxivuzwpuuws','_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{window.open('https://wa.me/918111888892','_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faYoutube} size="2x" onClick={()=>{window.open('https://www.youtube.com/channel/UCNlA-ZkvtqSw1IXbQwIwZYQ','_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faLinkedinIn} size="2x" onClick={()=>{window.open('https://www.linkedin.com/company/larkcs/about/','_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{window.open('https://twitter.com/larkcslife','_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{window.open(media[0].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{window.open(media[1].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{window.open(`https://wa.me/${media[2].Link}`,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faYoutube} size="2x" onClick={()=>{window.open(media[3].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faLinkedinIn} size="2x" onClick={()=>{window.open(media[4].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{window.open(media[5].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
       <Typography variant="subtitle1" style={{fontWeight:"initial"}}>
       </Typography><br/>
       </div></div></DialogContent>
