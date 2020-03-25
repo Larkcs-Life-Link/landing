@@ -2,14 +2,7 @@ import React, {useEffect,useRef} from 'react';
 import {Link} from 'react-router-dom';
 import Logo from '../assets/images/logo.png';
 import playstore from '../assets/images/playstore.jpg';
-import byst from '../assets/images/byst.gif';
-import run from '../assets/images/run.gif';
-import store from '../assets/images/store.gif';
-import NAF from '../assets/images/NAF.gif';
-import Eatwel from '../assets/images/Eatwel.gif';
-import Don from '../assets/images/Don.gif';
-import banner from '../assets/images/Banner.jpg';
-import mobbanner from '../assets/images/mob_banner.jpg';
+import axios from 'axios';
 import GridContainer from '../components/Grid/GridContainer';
 import GridItem from '../components/Grid/GridItem';
 import Button from '../components/Button';
@@ -24,6 +17,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import LocalPharmacy from '@material-ui/icons/LocalPharmacy';
 import VerifiedUser from '@material-ui/icons/VerifiedUser';
+import FlightTakeoff from '@material-ui/icons/FlightTakeoff';
+import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
 import Contacts from '@material-ui/icons/Contacts';
 import PermMedia from '@material-ui/icons/PermMedia';
 import Work from '@material-ui/icons/Work';
@@ -44,7 +39,11 @@ import Fade from '@material-ui/core/Fade';
 import CloseIcon from '@material-ui/icons/Close';
 import { faFacebookF,faInstagram,faTwitter,faWhatsapp,faYoutube, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 import { Helmet } from 'react-helmet';
- 
+import Slider from './home/Slider';
+import Statistics from './home/Statistics';
+import CareerStories from "./career/CareerStories";
+import FlatButton from '@material-ui/core/Button';
+
 const scrollToRef = (ref) => window.scrollTo({
   top: ref.current.offsetTop,
   bottom: 0,
@@ -70,7 +69,14 @@ const useStyles = makeStyles(theme => ({
         border: "1px solid #ffffff",
         WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
       boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
-      borderRadius: 12,
+      borderRadius: 12
+      }
+    },
+    image: {
+      margin:32,
+      "@media only screen and (max-width: 600px)": {
+        maxWidth: "100%",
+        margin:"0 auto"
       }
     },
       paper: {
@@ -167,21 +173,42 @@ const style={
 
 const Home = () => {
   useEffect(() => {
-    // axios.get('/api/sync/loadBase')
-    // .then( (response)=> {
-    //   console.log(response.data)
-    //   setAbout(response.data.AboutData[0].Name);
-    //   setDescription(response.data.AboutData[0].Notes)
-      
-    // })
-    setLoading(false)
+    axios.get('/api/sync/loadHeaders')
+    .then( (response)=> {
+      console.log(response.data)
+      setHeaders(response.data);
+      axios.get('/api/sync/loadAbout')
+    .then( (response)=> {
+      console.log(response.data)
+      setAbout(response.data);
+      axios.get('/api/sync/loadServices')
+    .then( (response)=> {
+      console.log(response.data)
+      setServices(response.data);
+      axios.get('/api/sync/loadTestimonials')
+      .then( (response)=> {
+        console.log(response.data)
+        setTestimonials(response.data);
+        axios.get('/api/sync/loadStatistics')
+        .then( (response)=> {
+          console.log(response.data)
+          setStatistics(response.data);
+          setLoading(false)
+        })
+      })
+    })
+    })
+    })
   }, []);
  
   const [modal, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
   const [snack, setSnack] = React.useState(false);
-  const [about, setAbout] = React.useState("");
-  const [description, setDescription] = React.useState("");
+  const [headers, setHeaders] = React.useState([]);
+  const [about, setAbout] = React.useState([]);
+  const [services, setServices] = React.useState([]);
+  const [statistics, setStatistics] = React.useState([]);
+  const [testimonials, setTestimonials] = React.useState([]);
   const [values, setValues] = React.useState({
     name: '',
     email: "",
@@ -290,11 +317,9 @@ const Home = () => {
             <Typography style={{margin:"0 auto",textAlign:"center",marginTop:32}}>
                 <span style={headerStyle}>Larkcs Life Link</span><br/>
                 <span style={subtitleStyle}>Always be with you.</span><br/><br/>
-               <Button color="danger" onClick={handleClickOpen}>Login</Button>
              </Typography>
             </GridContainer>
-            <img className={classes.banner} src={banner} alt=" "/>
-            <img className={classes.mobbanner} src={mobbanner} alt=" "/>
+            <Slider headers={headers}/>
             <Popover
             classes={{
               paper: classes.paper,
@@ -343,12 +368,12 @@ const Home = () => {
       </Popover><br/><br/><br/>
       <div className={classes.container}>
     <br/><Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef}>
-         <p style={{fontFamily: "Georgia",fontWeight: "bold"}}><VerifiedUser style={{color:"#39802D",marginRight:12}} />About Us</p>
+      <p style={{fontFamily: "Georgia",fontWeight: "bold"}}><VerifiedUser style={{color:"#39802D",marginRight:12}} />{about[0].Title}</p>
     </Typography>
     <GridContainer>
     <GridItem xs={12} sm={12} md={6}>
     <Typography variant="subtitle1" style={{maxWidth:500,margin:32}}>
-          <p>Larkcs Life Link host an online peer to peer social platform that provides the user with valuable and trustworthy healthcare content. We also provide a marketplace for organic/herbal products and healthcare services including hospital assistance and direct patient consultation.</p>
+      <p>{about[0].content}</p>
     </Typography><hr className={classes.hide}/>
     <Typography variant="h6" style={{padding:12}}>
           <img src={playstore} alt=" " style={{height:60,float:"left",marginRight:12,marginTop:10}}/>
@@ -358,20 +383,51 @@ const Home = () => {
     </GridItem>
      <GridItem xs={12} sm={12} md={6}>
        <div className={classes.box}>
-       <iframe src="https://player.vimeo.com/video/351551508" title="Larkcs" style={{margin:10,borderRadius:12}} width="95%" height="250" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe></div>
+       <iframe src={about[0].VideoLink} title="Larkcs" style={{margin:10,borderRadius:12}} width="95%" height="250" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe></div>
       </GridItem>
     </GridContainer>
     <br/><Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef1}>
          <p style={{fontFamily: "Georgia",fontWeight: "bold"}}><LocalPharmacy style={{color:"#39802D",marginRight:12}} />Our Services</p>
+    </Typography><br/>
+    <div style={{margin:"0 auto",maxWidth: "90%"}} ref={myRef1}>
+      {services.map((service,index)=>{
+        console.log(service)
+        return(
+<React.Fragment key={index}>
+         <Typography variant="h6" style={{maxWidth:500,marginTop:32,marginLeft:32}}>
+         <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>{service.Title}</p>
     </Typography>
-    <div style={{margin:"0 auto",maxWidth: "90%"}}>
-    <img src={byst} alt=" " className={classes.services}/>
-    <img src={run} alt=" " className={classes.services}/>
-    <img src={store} alt=" " className={classes.services}/>
-    <img src={NAF} alt=" " className={classes.services}/>
-    <img src={Eatwel} alt=" " className={classes.services}/>
-    <img src={Don} alt=" " className={classes.services}/>
+    <GridContainer>
+    <GridItem xs={12} sm={12} md={6}>
+    <Typography variant="subtitle1" style={{maxWidth:500,margin:32}}>
+      <p>{service.Description}</p>
+    </Typography>
+    <Button color="success" style={{margin:32,marginTop: -16}}>Learn More</Button>
+    <hr className={classes.hide}/><br/>
+    <img className={classes.image} src={service.Posters[0].url} alt=""/>
+    </GridItem>
+     <GridItem xs={12} sm={12} md={6}>
+       <div className={classes.box}>
+       <iframe src={service.VideoLink} title="Larkcs" style={{margin:10,borderRadius:12}} width="95%" height="250" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe></div>
+      </GridItem>
+    </GridContainer>
+    </React.Fragment>
+        )
+        
+      })}
     </div><br/><br/>
+    <Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef3}>
+         <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>
+         <FlightTakeoff style={{color:"#39802D",marginRight:12}} />
+           We are Growing!</p>
+    </Typography><br/>
+    <div className={classes.container} style={{textAlign:"center",padding:24}}><Statistics data={statistics}/><br/></div><br/>
+    <Typography variant="h6" style={{maxWidth:500,margin:32}} >
+         <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>
+         <SentimentVerySatisfiedIcon style={{color:"#39802D",marginRight:12}} />
+           Our Happy Customers!</p>
+    </Typography>
+    <CareerStories data={testimonials}/>
     <Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef3}>
          <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>
          <ThumbUp style={{color:"#39802D",marginRight:12}} />

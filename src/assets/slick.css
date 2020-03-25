@@ -1,13 +1,24 @@
 .slick-prev {
-    opacity: 0.25 !important;
+    opacity: 0.4 !important;
     left: 15% !important;
     z-index: 1 !important;
     color: green !important;
+    @media only screen and (max-width: 600px){
+      display:none;
+    }
   }
   .slick-next {
-    opacity: 0.25 !important;
+    opacity: 0.4 !important;
     right:15% !important;
     z-index: 1 !important;
     color: green !important;
+  }
+  @media only screen and (max-width: 600px){
+    .slick-next{
+      display:none !important;
+    }
+    .slick-prev{
+      display:none !important;
+    }
   }
   .slick-slide, .slick-slide *{ outline: none !important; }

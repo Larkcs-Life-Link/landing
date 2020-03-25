@@ -10,60 +10,89 @@ const sgMail = require('@sendgrid/mail');
 
 const homeAPI = 'keyX8tJDj5uJ8jnE2';
 const careerAPI = 'keyCwv4IauNCHeKor';
-const homeBase = 'appvz852AbwfjfnLt';
+const homeBase = 'appSxnWsj5GUElptt';
 const openingBase = 'app8M0GZ2nBY5HUs9';
 const galleryBase = 'app7wMsarA1tUHbfF';
 const applicationBase = 'appCAjLMcjxpSwPgu';
 const careerBase = 'app27ibjc251l39Tr';
 sgMail.setApiKey('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');
-var base = new Airtable({apiKey: homeAPI}).base(homeBase);
+var homeList = new Airtable({apiKey: homeAPI}).base(homeBase)
 var openingsList = new Airtable({apiKey: careerAPI}).base(openingBase);
 var galleryList = new Airtable({apiKey: homeAPI}).base(galleryBase);
 var careerList = new Airtable({apiKey: homeAPI}).base(careerBase);
 var applications = new Airtable({apiKey: careerAPI}).base(applicationBase);
-let AboutData=[],offlineServices=[],onlineServices=[],privilegeCard=[],openingsData=[],FieldData=[],UrlData=[],galleryData=[],storyData=[],descriptionData=[];
+let HeadersData=[],openingsData=[],FieldData=[],UrlData=[],galleryData=[],storyData=[],descriptionData=[],AboutData=[],ServicesData=[],StatisticsData=[],TestimonialsData=[];
 
-router.get('/loadBase',(req,res)=>{
+router.get('/loadHeaders',(req,res)=>{
+  homeList('Headers').select({
+    view: "Grid view"
+}).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function(record) {
+      HeadersData = HeadersData.concat(record.fields)
+    });
+    res.json(HeadersData)
+}, function done(err) {
+    if (err) { console.error(err); return; }
+});
+HeadersData = [];
+})
 
-   base('About').select({
-     maxRecords: 1,
-  }).eachPage(function page(records, fetchNextPage) {
-      records.forEach(function(record) {
-        AboutData = AboutData.concat(record.fields)
-      });
-      base('offlineServices').select({
-      }).eachPage(function page(records, fetchNextPage) {
-          records.forEach(function(record) {
-            offlineServices = offlineServices.concat(record.fields)
-          });
-          base('onlineServices').select({
-          }).eachPage(function page(records, fetchNextPage) {
-            records.forEach(function(record) {
-              onlineServices = onlineServices.concat(record.fields)
-            });
-          }, function done(err) {
-            if (err) { console.error(err); return; }
-          });
-          base('privilegeCard').select({
-          }).eachPage(function page(records, fetchNextPage) {
-            records.forEach(function(record) {
-              privilegeCard = privilegeCard.concat(record.fields)
-            });
-            res.json({"AboutData":AboutData ,"offlineServices": offlineServices,"onlineServices": onlineServices,"privilegeCard":privilegeCard })
-          }, function done(err) {
-            if (err) { console.error(err); return; }
-          });
-      }, function done(err) {
-          if (err) { console.error(err); return; }
-      });
-  }, function done(err) {
-      if (err) { console.error(err); return; }
-  });
-    AboutData=[];
-    offlineServices=[];
-    onlineServices=[];
-    privilegeCard=[];
-  })
+router.get('/loadAbout',(req,res)=>{
+  homeList('About').select({
+    view: "Grid view"
+}).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function(record) {
+      AboutData = AboutData.concat(record.fields)
+    });
+    res.json(AboutData)
+}, function done(err) {
+    if (err) { console.error(err); return; }
+});
+AboutData = [];
+})
+
+router.get('/loadServices',(req,res)=>{
+  homeList('Services').select({
+    view: "Grid view"
+}).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function(record) {
+      ServicesData = ServicesData.concat(record.fields)
+    });
+    res.json(ServicesData)
+}, function done(err) {
+    if (err) { console.error(err); return; }
+});
+ServicesData = [];
+})
+
+router.get('/loadStatistics',(req,res)=>{
+  homeList('Statistics').select({
+    view: "Grid view"
+}).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function(record) {
+      StatisticsData = StatisticsData.concat(record.fields)
+    });
+    res.json(StatisticsData)
+}, function done(err) {
+    if (err) { console.error(err); return; }
+});
+StatisticsData = [];
+})
+
+router.get('/loadTestimonials',(req,res)=>{
+  homeList('Testimonials').select({
+    view: "Grid view"
+}).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function(record) {
+      TestimonialsData = TestimonialsData.concat(record.fields)
+    });
+    res.json(TestimonialsData)
+}, function done(err) {
+    if (err) { console.error(err); return; }
+});
+TestimonialsData = [];
+})
+
 
   router.get('/loadGallery',(req,res)=>{
     galleryList('Gallery').select({

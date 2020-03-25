@@ -1,9 +1,6 @@
 import React, {useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar'; 
-import Typography from '@material-ui/core/Typography';
 import Slider from "react-slick";
-import FormatQuote from '@material-ui/icons/FormatQuote';
 import ChevronLeft from '@material-ui/icons/ArrowBack';
 import ChevronRight from '@material-ui/icons/ArrowForward';
 import "slick-carousel/slick/slick.css";
@@ -13,9 +10,11 @@ import "../../assets/slick.css";
 const useStyles = makeStyles(theme => ({
   box : {
     width: "60%",
+    maxHeight: 500,
+    overflow: "hidden",
     marginTop: 42,
     textDecoration:"none",
-    padding:35,
+    padding:"8px !important",
     backgroundColor: "#FFFFFF",
     margin: "0 auto",
     marginBottom:82,
@@ -25,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
     whiteSpace:"pre-wrap",
     "@media only screen and (max-width: 600px)": {
-      maxWidth:"90%"
+      width:"90% !important"
     }
   },
   slider:{
@@ -42,7 +41,7 @@ const useStyles = makeStyles(theme => ({
     margin:"0 auto"
   }
 }))
-const Career = (props) => {
+const HeaderSlider = (props) => {
   var settings = {
     dots: true,
     infinite: true,
@@ -56,26 +55,17 @@ const Career = (props) => {
     prevArrow: <ChevronLeft />
   };
   const classes = useStyles();
-  if(props.data.length>0){
+  if(props.headers.length>0){
         return (<div className={classes.slider}>
            
                       <Slider {...settings}>
                       {
-                props.data.map((instance,index)=>{
+                props.headers.map((headers,index)=>{
                     return(
                       <div key={index}>
                     <div className={classes.box}>
-                    {instance.Avatar? <Avatar src={instance.Avatar[0].url} aria-label="recipe" className={classes.avatar}/>:<Avatar aria-label="recipe" className={classes.avatar}>
-      {instance.Name.charAt(0)}
-          </Avatar>}
-          <Typography variant="h6" className={classes.typography}>
-          {instance.Name}
-          </Typography>
-          {instance.Subtitle?<div className={classes.typography}>
-          {instance.Subtitle}
-          </div>:null}<br/><br/>
-          <div style={{margin:"0 auto !important",textAlign:"center"}}><div><FormatQuote/></div> <div>{instance.Message}</div> </div><br/><br/>
-                    </div>
+                        <img style={{width:"100%",maxHeight: 500,}} src={headers.Attachments[0].url} alt=""/>
+                   </div>
                     </div>
                      )
                     })
@@ -87,7 +77,7 @@ const Career = (props) => {
     return (<div></div>)
   }}
 
-export default Career;
+export default HeaderSlider;
 
 
 
