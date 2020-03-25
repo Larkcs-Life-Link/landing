@@ -1,11 +1,11 @@
 .slick-prev {
-    opacity: 25% !important;
+    opacity: 0.25 !important;
     left: 15% !important;
     z-index: 1 !important;
     color: green !important;
   }
   .slick-next {
-    opacity: 25% !important;
+    opacity: 0.25 !important;
     right:15% !important;
     z-index: 1 !important;
     color: green !important;

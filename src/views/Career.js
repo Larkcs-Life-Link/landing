@@ -1,8 +1,6 @@
 import React, { useEffect,useRef } from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../assets/images/logo.png';
 import Typography from '@material-ui/core/Typography';
-import { logoStyle, titleStyle } from "../assets/landingStyle";
 import LinearProgress from '@material-ui/core/LinearProgress';
 import LocationOn from '@material-ui/icons/LocationOn';
 import Button from '../components/Button';
@@ -19,7 +17,7 @@ import Join from './career/Join';
 import GridContainer from '../components/Grid/GridContainer';
 import GridItem from '../components/Grid/GridItem';
 import FlatButton from '@material-ui/core/Button';
-
+import Header from '../components/Header';
 const scrollToRef = (ref) => window.scrollTo({
   top: ref.current.offsetTop,
   bottom: 0,
@@ -93,10 +91,7 @@ const Career = () => {
           <title>Career | Larkcs Life Link</title>
           <meta name="description" content="Larkcs Life Link Career page" />
         </Helmet>
-        <Typography variant="h6" color="inherit">
-          <img src={logo} alt="" style={logoStyle} />
-          <p style={titleStyle}>LARKCS</p>
-        </Typography><br />
+        <Header/>
         <Join description={description} callback={executeScroll}/>
         <Typography style={{  textAlign: "center", fontSize: 24 }} variant="h6" ref={myRef}>
           <p>Job Openings</p>
