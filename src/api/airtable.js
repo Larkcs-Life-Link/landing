@@ -11,17 +11,20 @@ const sgMail = require('@sendgrid/mail');
 const homeAPI = 'keyX8tJDj5uJ8jnE2';
 const careerAPI = 'keyCwv4IauNCHeKor';
 const homeBase = 'appSxnWsj5GUElptt';
+const aboutBase = 'appr90qZW6oMB3bm1';
+const servicesBase = 'apppQaYmRYbFPvCB7';
 const openingBase = 'app8M0GZ2nBY5HUs9';
 const galleryBase = 'app7wMsarA1tUHbfF';
 const applicationBase = 'appCAjLMcjxpSwPgu';
 const careerBase = 'app27ibjc251l39Tr';
 sgMail.setApiKey('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');
 var homeList = new Airtable({apiKey: homeAPI}).base(homeBase)
+var aboutList = new Airtable({apiKey: homeAPI}).base(aboutBase)
+var servicesList = new Airtable({apiKey: homeAPI}).base(servicesBase)
 var openingsList = new Airtable({apiKey: careerAPI}).base(openingBase);
 var galleryList = new Airtable({apiKey: homeAPI}).base(galleryBase);
 var careerList = new Airtable({apiKey: homeAPI}).base(careerBase);
 var applications = new Airtable({apiKey: careerAPI}).base(applicationBase);
-let HeadersData=[],openingsData=[],FieldData=[],UrlData=[],galleryData=[],storyData=[],descriptionData=[],AboutData=[],ServicesData=[],StatisticsData=[],TestimonialsData=[],MediaData=[],ContactData=[];
 
 router.get('/loadHeaders',(req,res)=>{
   homeList('Headers').select({
@@ -64,7 +67,19 @@ router.get('/loadServices',(req,res)=>{
 });
 ServicesData = [];
 })
-
+router.get('/loadServicesDetail',(req,res)=>{
+  servicesList('Services').select({
+    view: "Grid view"
+}).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function(record) {
+      ServicesDetail = ServicesDetail.concat(record.fields)
+    });
+    res.json(ServicesDetail)
+}, function done(err) {
+    if (err) { console.error(err); return; }
+});
+ServicesDetail = [];
+})
 router.get('/loadStatistics',(req,res)=>{
   homeList('Statistics').select({
     view: "Grid view"
@@ -163,6 +178,34 @@ ContactData = [];
   descriptionData = [];
   })
 
+  router.get('/loadAboutDetail',(req,res)=>{
+    aboutList('About').select({
+      view: "Grid view",
+  }).eachPage(function page(records, fetchNextPage) {
+      records.forEach(function(record) {
+          AboutDetail = AboutDetail.concat(record.fields)
+      });
+      res.json(AboutDetail)
+  }, function done(err) {
+      if (err) { console.error(err); return; }
+  });
+  AboutDetail = [];
+  })
+
+  router.get('/loadTeam',(req,res)=>{
+    aboutList('Team').select({
+      view: "Grid view",
+  }).eachPage(function page(records, fetchNextPage) {
+      records.forEach(function(record) {
+          TeamData = TeamData.concat(record.fields)
+      });
+      res.json(TeamData)
+  }, function done(err) {
+      if (err) { console.error(err); return; }
+  });
+  TeamData = [];
+  })
+  
 
 router.get('/loadCareer',(req,res)=>{
   openingsList('Openings').select({

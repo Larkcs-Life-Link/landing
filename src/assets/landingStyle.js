@@ -1,6 +1,6 @@
 const logoStyle = {
   maxHeight: 35,
-  marginLeft: 24,
+  marginLeft: 12,
   cursor: "pointer",
   marginTop:12
 }
@@ -8,9 +8,18 @@ const titleStyle = {
   fontFamily: "Georgia",
   fontWeight: "bold",
   fontSize: 18,
-  marginLeft: 60,
+  marginLeft: 45,
   marginTop: -38,
   cursor: "pointer"
+}
+
+const container = {
+  width:"90%",
+  margin:"0 auto",
+  borderRadius:12,
+  WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.24)",
+  boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.24)",
+  marginBottom: 42
 }
 const box = {
   maxWidth: "70%",
@@ -83,4 +92,4 @@ const googleButton = {
   boxShadow: "0 14px 26px -12px rgba(136,136,136,0.24), 0 4px 23px 0px rgba(136,136,136,0.24), 0 8px 10px -5px rgba(136,136,136,0.24)"
 }
 
-export { logoStyle, titleStyle, headerStyle,box, subtitleStyle, enterpriseStyle, embed, description, googleButton, footerStyle, socialStyle,linkStyle };
+export { logoStyle, titleStyle,container, headerStyle,box, subtitleStyle, enterpriseStyle, embed, description, googleButton, footerStyle, socialStyle,linkStyle };

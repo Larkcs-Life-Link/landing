@@ -55,22 +55,23 @@ const Career = () => {
   const executeScroll = () => {scrollToRef(myRef)}
 
   useEffect(() => {
-    axios.get('/api/sync/loadCareer')
+    axios.all([
+      axios.get('/api/sync/loadCareer')
       .then((response) => {
-        axios.get('/api/sync/loadStories')
-        .then((response) => {
-          axios.get('/api/sync/loadDescription')
+        setPostings(response.data)
+      }),
+      axios.get('/api/sync/loadStories')
+      .then((response) => {
+        setStories(response.data)
+      }),
+      axios.get('/api/sync/loadDescription')
            .then((response) => {
             setDescription(response.data)
-            setLoading(false)
-             console.log(response.data)
-              })
-          setStories(response.data)
-          console.log(response.data)
-        })
-        setPostings(response.data)
-        console.log(response.data)
-      })
+           })
+    ])
+    .then(axios.spread(function () {
+      setLoading(false)
+     }))
   }, []);
   const [postings, setPostings] = React.useState([]);
   const [stories, setStories] = React.useState([]);
@@ -91,7 +92,7 @@ const Career = () => {
           <title>Career | Larkcs Life Link</title>
           <meta name="description" content="Larkcs Life Link Career page" />
         </Helmet>
-        <Header/>
+        <Header menu={false}/><br/><br/><br/><br/><br/>
         <Join description={description} callback={executeScroll}/>
         <Typography style={{  textAlign: "center", fontSize: 24 }} variant="h6" ref={myRef}>
           <p>Job Openings</p>

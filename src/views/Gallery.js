@@ -10,6 +10,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { makeStyles } from '@material-ui/core/styles';
+import Header from '../components/Header';
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,12 +21,12 @@ const useStyles = makeStyles(theme => ({
     },
     mainImage: {
         maxHeight: 280,
-        maxWidth: 280,
+        maxWidth: "80%",
         margin: "2em",
     },
     containedImages: {
         maxHeight: 280,
-        maxWidth: 280,
+        maxWidth: "90%",
         margin: 12,
         "@media only screen and (max-width: 600px)": {
             textAlign: "center"
@@ -69,10 +70,8 @@ const Career = () => {
       }else{
           return(
               <div>
-                    <Typography variant="h6" color="inherit">
-         <img src={logo} alt="" style={logoStyle}/>
-         <p style={titleStyle}>LARKCS</p>
-       </Typography><br/>
+                    <Header menu={false}/>
+                    <br/><br/><br/><br/><br/>
 {
      Object.entries(data).map(function(key, values) {
          if(key[0]=="Main"){

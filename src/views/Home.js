@@ -9,7 +9,6 @@ import Button from '../components/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import IconButton from '@material-ui/core/IconButton';
-import MenuRounded from '@material-ui/icons/MenuRounded';
 import ThumbUp from '@material-ui/icons/ThumbUp';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -42,7 +41,8 @@ import { Helmet } from 'react-helmet';
 import Slider from './home/Slider';
 import Statistics from './home/Statistics';
 import CareerStories from "./career/CareerStories";
-import FlatButton from '@material-ui/core/Button';
+import Cards from './Cards';
+import Header from '../components/Header';
 
 const scrollToRef = (ref) => window.scrollTo({
   top: ref.current.offsetTop,
@@ -70,13 +70,6 @@ const useStyles = makeStyles(theme => ({
         WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
       boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
       borderRadius: 12
-      }
-    },
-    image: {
-      margin:32,
-      "@media only screen and (max-width: 600px)": {
-        maxWidth: "100%",
-        margin:"0 auto"
       }
     },
       paper: {
@@ -173,42 +166,48 @@ const style={
 
 const Home = () => {
   useEffect(() => {
-    axios.get('/api/sync/loadHeaders')
+    axios.all([
+      axios.get('/api/sync/loadHeaders')
     .then( (response)=> {
       console.log(response.data)
       setHeaders(response.data);
-      axios.get('/api/sync/loadAbout')
+    }),
+    axios.get('/api/sync/loadAbout')
     .then( (response)=> {
       console.log(response.data)
       setAbout(response.data);
-      axios.get('/api/sync/loadServices')
+    }),
+    axios.get('/api/sync/loadServices')
     .then( (response)=> {
       console.log(response.data)
       setServices(response.data);
-      axios.get('/api/sync/loadTestimonials')
-      .then( (response)=> {
-        console.log(response.data)
-        setTestimonials(response.data);
-        axios.get('/api/sync/loadStatistics')
-        .then( (response)=> {
-          console.log(response.data)
-          setStatistics(response.data);
-          axios.get('/api/sync/loadMediaLinks')
-          .then( (response)=> {
-            console.log(response.data)
-            setMedia(response.data);
-            axios.get('/api/sync/loadForm')
-            .then( (response)=> {
-              console.log(response.data)
-              setContact(response.data);
-              setLoading(false)
-            })
-          })
-        })
-      })
+    }),
+    axios.get('/api/sync/loadTestimonials')
+    .then( (response)=> {
+      console.log(response.data)
+      setTestimonials(response.data);
+    }),
+    axios.get('/api/sync/loadStatistics')
+    .then( (response)=> {
+      console.log(response.data)
+      setStatistics(response.data);
+    }),
+    axios.get('/api/sync/loadMediaLinks')
+    .then( (response)=> {
+      console.log(response.data)
+      setMedia(response.data);
+    }),
+    axios.get('/api/sync/loadForm')
+    .then( (response)=> {
+      console.log(response.data)
+      setContact(response.data);
     })
-    })
-    })
+
+    ])
+    .then(axios.spread(function () {
+     setLoading(false)
+    }))
+  
   }, []);
  
   const [modal, setOpen] = React.useState(false);
@@ -316,15 +315,9 @@ const Home = () => {
             </IconButton>,
           ]}
         />
-                    <img style={style.image} src={Logo} alt=" "/>
-                    <div className={classes.margin}>
-                   
-                    <Button color="success" onClick={handleClickOpen}>Download App</Button>
-
-                    <IconButton aria-describedby={id} variant="contained" onMouseEnter={handleClick} onClick={handleClick}>
-                      
-                    <MenuRounded/></IconButton>
-                    </div><GridContainer style={{margin:"0 auto",maxWidth:600}}>
+                    <Header id={id} menu={true} handleClick={handleClick} handleClickOpen={handleClickOpen}/>
+                    <br/><br/><br/><br/><br/>
+                    <GridContainer style={{margin:"0 auto",maxWidth:600}}>
             <img className={classes.logo} src={Logo} alt=" "/>
             <Typography style={{margin:"0 auto",textAlign:"center",marginTop:32}}>
                 <span style={headerStyle}>Larkcs Life Link</span><br/>
@@ -387,7 +380,8 @@ const Home = () => {
     <Typography variant="subtitle1" style={{maxWidth:500,margin:32}}>
       <p>{about[0].content}</p>
     </Typography>
-    <Button color="success" style={{margin:32,marginTop: -16}}>Learn More</Button>
+    <Link to='/about' style={{textDecoration:"none"}}>
+    <Button color="success" style={{margin:32,marginTop: -16}}>Learn More</Button></Link>
     <hr className={classes.hide}/>
     <Typography variant="h6" style={{padding:12}}>
           <img src={playstore} alt=" " style={{height:60,float:"left",marginRight:12,marginTop:10}}/>
@@ -403,33 +397,8 @@ const Home = () => {
     <br/><Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef1}>
          <p style={{fontFamily: "Georgia",fontWeight: "bold"}}><LocalPharmacy style={{color:"#39802D",marginRight:12}} />Our Services</p>
     </Typography><br/>
-    <div style={{margin:"0 auto",maxWidth: "90%"}} ref={myRef1}>
-      {services.map((service,index)=>{
-        console.log(service)
-        return(
-<React.Fragment key={index}>
-         <Typography variant="h6" style={{maxWidth:500,marginTop:32,marginLeft:32}}>
-         <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>{service.Title}</p>
-    </Typography>
-    <GridContainer>
-    <GridItem xs={12} sm={12} md={6}>
-    <Typography variant="subtitle1" style={{maxWidth:500,margin:32}}>
-      <p>{service.Description}</p>
-    </Typography>
-    <Button color="success" style={{margin:32,marginTop: -16}}>Learn More</Button>
-    <hr className={classes.hide}/><br/>
-    <img className={classes.image} src={service.Posters[0].url} alt=""/>
-    </GridItem>
-     <GridItem xs={12} sm={12} md={6}>
-       <div className={classes.box}>
-       <iframe src={service.VideoLink} title="Larkcs" style={{margin:10,borderRadius:12}} width="95%" height="250" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe></div>
-      </GridItem>
-    </GridContainer>
-    </React.Fragment>
-        )
-        
-      })}
-    </div><br/><br/>
+    <Cards data={services}/>
+    <br/><br/>
     <Typography variant="h6" style={{maxWidth:500,margin:18}} ref={myRef3}>
          <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>
          <FlightTakeoff style={{color:"#39802D",marginRight:12}} />
