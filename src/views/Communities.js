@@ -9,7 +9,7 @@ import Button from '../components/Button';
 const useStyles = makeStyles(theme => ({
       box: {
           padding: 24,
-        maxWidth:"320px",
+        maxWidth:"500px",
         marginBottom: "52px !important",
         border: "1px solid #ffffff",
         WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.14)",
@@ -25,21 +25,32 @@ const Cards = (props) => {
     return (
         <div>
     <GridContainer style={{justifyContent: "center"}}>
-            {props.data.map((instance,index)=>{
-                return(
-                    <div className={classes.box} key={index} style={{margin:"24px"}}>
+                    <div className={classes.box} style={{margin:"24px",textAlign:"center"}}>
       <GridItem>
           <Typography variant="h6" style={{fontSize:20,margin:"0 auto",fontWeight: "bold"}}>
-           {instance.Title}
+           {props.data[0].Name}
         </Typography><br/>
         <Typography variant="h6" style={{fontSize:16,width:"fit-content",
-        minHeight:"200px",}}>
-           {instance.Content}
+        minHeight:"175px",}}>
+            {props.data[0].Content}
         </Typography><br/>
-        <Link to='/services' style={{textDecoration:"none"}}><Button color="success">Learn More</Button></Link>
+        <Button color="success" onClick={()=>{window.open(props.data[0].url,'_blank');}}>Read our Blog</Button>
         </GridItem></div>
-                )
+        <div className={classes.box} style={{margin:"24px",textAlign:"center"}}>
+      <GridItem>
+          <Typography variant="h6" style={{fontSize:20,fontWeight: "bold"}}>
+           Gallery
+        </Typography><br/>
+        <GridContainer style={{minHeight:"200px",justifyContent: "center"}}>
+            {props.images.map((image,index)=>{
+               return  <div key={index} style={{maxWidth:190,textAlign:"center"}}>
+                   <GridItem style={{padding:5}}><img width={150} src={image.Attachments[0].thumbnails.large.url} alt=""/></GridItem>
+                   </div>
             })}
+        </GridContainer>
+        <Link to="/gallery" style={{textDecoration:"none"}}>
+        <Button color="success">View Gallery</Button></Link>
+        </GridItem></div>
             </GridContainer>    
         </div>
     );

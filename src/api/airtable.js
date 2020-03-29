@@ -122,6 +122,34 @@ router.get('/loadMediaLinks',(req,res)=>{
 MediaData = [];
 })
 
+router.get('/loadBlog',(req,res)=>{
+  homeList('Blog').select({
+    view: "Grid view"
+}).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function(record) {
+      BlogData = BlogData.concat(record.fields)
+    });
+    res.json(BlogData)
+}, function done(err) {
+    if (err) { console.error(err); return; }
+});
+BlogData = [];
+})
+router.get('/loadImages',(req,res)=>{
+  galleryList('Gallery').select({
+    view: "Gallery",
+    filterByFormula: "({Name} = 'Main')",
+    maxRecords: 3
+}).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function(record) {
+      imageData = imageData.concat(record.fields)
+    });
+    res.json(imageData)
+}, function done(err) {
+    if (err) { console.error(err); return; }
+});
+imageData = [];
+})
 router.get('/loadForm',(req,res)=>{
   homeList('Contact').select({
     view: "Grid view"

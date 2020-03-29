@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import { logoStyle, titleStyle } from "../assets/landingStyle";
 import logo from '../assets/images/logo.png';
@@ -34,7 +35,7 @@ function Header(props) {
         <div className={classes.header}>
             <Typography variant="h6" color="inherit">
           <img src={logo} alt="" style={logoStyle} />
-          {!props.menu?<p style={titleStyle}>LARKCS</p>:null}
+          {!props.menu?<Link to='/home' style={{textDecoration:"none",color:"#000000"}}><p style={titleStyle}>LARKCS</p></Link>:null}
         </Typography><br />
         <div className={classes.margin}>
                    

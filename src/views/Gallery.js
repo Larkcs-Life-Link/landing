@@ -1,7 +1,5 @@
 import React, {useEffect } from 'react';
-import logo from '../assets/images/logo.png';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import {logoStyle,titleStyle} from "../assets/landingStyle";
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
@@ -21,8 +19,11 @@ const useStyles = makeStyles(theme => ({
     },
     mainImage: {
         maxHeight: 280,
-        maxWidth: "80%",
+        maxWidth: 400,
         margin: "2em",
+        "@media only screen and (max-width: 600px)": {
+          maxWidth: "80%",
+        }
     },
     containedImages: {
         maxHeight: 280,

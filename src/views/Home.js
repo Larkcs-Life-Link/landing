@@ -20,6 +20,7 @@ import FlightTakeoff from '@material-ui/icons/FlightTakeoff';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
 import Contacts from '@material-ui/icons/Contacts';
 import PermMedia from '@material-ui/icons/PermMedia';
+import HomeWork from '@material-ui/icons/HomeWork';
 import Work from '@material-ui/icons/Work';
 import {headerStyle, subtitleStyle} from "../assets/landingStyle";
 import Typography from '@material-ui/core/Typography';
@@ -43,7 +44,7 @@ import Statistics from './home/Statistics';
 import CareerStories from "./career/CareerStories";
 import Cards from './Cards';
 import Header from '../components/Header';
-
+import Communities from './Communities';
 const scrollToRef = (ref) => window.scrollTo({
   top: ref.current.offsetTop,
   bottom: 0,
@@ -201,6 +202,16 @@ const Home = () => {
     .then( (response)=> {
       console.log(response.data)
       setContact(response.data);
+    }),
+    axios.get('/api/sync/loadBlog')
+    .then( (response)=> {
+      console.log(response.data)
+      setBlog(response.data);
+    }),
+    axios.get('/api/sync/loadImages')
+    .then( (response)=> {
+      console.log(response.data)
+      setImages(response.data);
     })
 
     ])
@@ -219,6 +230,8 @@ const Home = () => {
   const [statistics, setStatistics] = React.useState([]);
   const [testimonials, setTestimonials] = React.useState([]);
   const [media, setMedia] = React.useState([]);
+  const [blog, setBlog] = React.useState([]);
+  const [images, setImages] = React.useState([]);
   const [contact, setContact] = React.useState([]);
   const [values, setValues] = React.useState({
     name: '',
@@ -384,7 +397,7 @@ const Home = () => {
     <Button color="success" style={{margin:32,marginTop: -16}}>Learn More</Button></Link>
     <hr className={classes.hide}/>
     <Typography variant="h6" style={{padding:12}}>
-          <img src={playstore} alt=" " style={{height:60,float:"left",marginRight:12,marginTop:10}}/>
+          <img src={playstore} alt=" " style={{height:60,float:"left",marginRight:12,marginBottom:20,marginTop:10}}/>
           <p>Download our Android app from Playstore</p><br/>
           <Button style={{margin:16}} color="success" onClick={handleClickOpen}>Download App</Button>
     </Typography>
@@ -399,7 +412,12 @@ const Home = () => {
     </Typography><br/>
     <Cards data={services}/>
     <br/><br/>
-    <Typography variant="h6" style={{maxWidth:500,margin:18}} ref={myRef3}>
+    <Typography variant="h6" style={{maxWidth:500,margin:32}}>
+         <p style={{fontFamily: "Georgia",fontWeight: "bold"}}><HomeWork style={{color:"#39802D",marginRight:12}} />Our Community</p>
+    </Typography><br/>
+    <Communities data={blog} images={images}/>
+    <br/><br/>
+    <Typography variant="h6" style={{maxWidth:500,margin:18}}>
          <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>
          <FlightTakeoff style={{color:"#39802D",marginRight:12}} />
            We are Growing!</p>

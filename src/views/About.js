@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import GridContainer from '../components/Grid/GridContainer';
+import { Helmet } from 'react-helmet';
 import GridItem from '../components/Grid/GridItem';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
@@ -68,10 +69,19 @@ const Services = () => {
       const [team, setTeam] = React.useState([]);
     const classes = useStyles();
     if (loading===true){
-      return(<LinearProgress />)
+      return(<React.Fragment><Helmet>
+        <title>About | Larkcs Life Link</title>
+        <meta name="description" content="Larkcs Life Link Career page" />
+      </Helmet>
+        <LinearProgress />
+      </React.Fragment>)
     }else{
       return (
         <React.Fragment>
+          <Helmet>
+          <title>About | Larkcs Life Link</title>
+          <meta name="description" content="Larkcs Life Link Career page" />
+        </Helmet>
           <Header/><br/><br/><br/><br/><br/>
           <Typography style={{textAlign:"center",fontFamily: "Georgia",
   fontWeight: "bold",
