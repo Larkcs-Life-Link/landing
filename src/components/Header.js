@@ -10,10 +10,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
     margin : {
-        marginLeft: "20%",
+        marginLeft: "30%",
         marginTop: -78,
         "@media only screen and (min-width: 800px)": {
-          marginLeft:"75%"
+          marginLeft:"80%"
         }
       },
       header: {
