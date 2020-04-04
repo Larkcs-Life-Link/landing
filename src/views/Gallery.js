@@ -14,12 +14,13 @@ import Header from '../components/Header';
 const useStyles = makeStyles(theme => ({
     container: {
         "@media only screen and (max-width: 600px)": {
-            textAlign: "center"
+            textAlign: "center",
+            margin: "0 auto"
           }
     },
     mainImage: {
         maxHeight: 280,
-        maxWidth: 400,
+        maxWidth: 380,
         margin: "2em",
         "@media only screen and (max-width: 600px)": {
           maxWidth: "80%",
@@ -79,8 +80,12 @@ const Career = () => {
             return(
                 <div className={classes.container}>
                  {key[1].map(img=>{
-                       return(<img  className={classes.mainImage} src={img.Attachments[0].url} alt=" "/>)
-                    })}
+              return(
+              <React.Fragment>
+              {img.VideoLink?  <iframe className={classes.mainImage}  src={img.VideoLink} width="300" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
+              :  <img className={classes.mainImage} src={img.Attachments[0].url} alt=" "/>
+              }
+              </React.Fragment>)    })}
               </div>)
          }else{
             return(
@@ -97,8 +102,12 @@ const Career = () => {
             </ExpansionPanelSummary>
             <ExpansionPanelDetails className={classes.events}>
             {key[1].map(img=>{
-                       return(<img className={classes.containedImages} src={img.Attachments[0].url} alt=" "/>)
-                    })}
+              return(
+              <React.Fragment>
+              {img.VideoLink?  <iframe className={classes.containedImages} src={img.VideoLink} width="300" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
+              :  <img className={classes.containedImages} src={img.Attachments[0].url} alt=" "/>
+              }
+              </React.Fragment>)    })}
             </ExpansionPanelDetails>
           </ExpansionPanel>
               </React.Fragment>)
