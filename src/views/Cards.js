@@ -10,6 +10,7 @@ const useStyles = makeStyles(theme => ({
       box: {
           padding: 24,
         maxWidth:"320px",
+        height: "fit-content",
         marginBottom: "52px !important",
         border: "1px solid #ffffff",
         WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.14)",
@@ -32,8 +33,7 @@ const Cards = (props) => {
           <Typography variant="h6" style={{fontSize:20,margin:"0 auto",fontWeight: "bold"}}>
            {instance.Title}
         </Typography><br/>
-        <Typography variant="h6" style={{fontSize:16,width:"fit-content",
-        minHeight:"200px",}}>
+        <Typography variant="h6" style={{fontSize:16,width:"fit-content"}}>
            {instance.Content}
         </Typography><br/>
         <Link to='/services' style={{textDecoration:"none"}}><Button color="success">Learn More</Button></Link>
