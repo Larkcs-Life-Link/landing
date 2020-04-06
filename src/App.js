@@ -7,6 +7,7 @@ import  Apply from './views/Apply';
 import  Gallery from './views/Gallery';
 import  Services from './views/Services';
 import  About from './views/About';
+import  Founders from './views/Founders';
 import './App.css';
 
 const App = () => (
@@ -17,6 +18,7 @@ const App = () => (
     <Route path="/gallery" component={Gallery}/>
     <Route path="/services" component={Services}/>
     <Route path="/about" component={About}/>
+    <Route path="/team" component={Founders}/>
   </Switch>
 );
 

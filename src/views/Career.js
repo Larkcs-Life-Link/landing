@@ -27,7 +27,7 @@ import LocalPharmacy from '@material-ui/icons/LocalPharmacy';
 import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import PermMedia from '@material-ui/icons/PermMedia';
 import Home from '@material-ui/icons/Home';
-import Work from '@material-ui/icons/Work';
+import Group from '@material-ui/icons/Group';
 
 const scrollToRef = (ref) => window.scrollTo({
   top: ref.current.offsetTop,
@@ -50,6 +50,12 @@ const useStyles = makeStyles(theme => ({
   },
   ExpansionPanelDetails: {
     display: "block"
+  },
+  paper: {
+    padding: theme.spacing(2),
+    width: 200,
+    WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
+     boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
   },
   button: {
     textDecoration: "none"
@@ -220,6 +226,13 @@ const Career = () => {
           <PermMedia style={{color:"#39802D"}} />
         </ListItemIcon>
         <ListItemText primary="Gallery" />
+      </ListItem></Link>
+      <Link to="/team" style={{textDecoration:"none",color:"#1C1C1C"}}>
+      <ListItem button>
+        <ListItemIcon>
+          <Group style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Our Team" />
       </ListItem></Link></List>
       </Popover>
       </div>)

@@ -27,7 +27,7 @@ const useStyles = makeStyles(theme => ({
           position: "fixed",
           width:"100%",
           minHeight: 50,
-          zIndex: 1,
+          zIndex: 2,
           top: "0px !important",
           minHeight: "50px",
           backgroundColor: "#fff",
@@ -40,7 +40,7 @@ function Header(props) {
     return (
         <div className={classes.header}>
             <Typography variant="h6" color="inherit">
-          <img src={logo} alt="" style={logoStyle} />
+            <Link to='/home' style={{textDecoration:"none",color:"#000000"}}><img src={logo} alt="" style={logoStyle} /></Link>
           <Link to='/home' className={classes.display} style={{textDecoration:"none",color:"#000000"}}><p style={titleStyle}>Larkcs Life Link</p></Link>
         </Typography><br />
         <div className={classes.margin}>

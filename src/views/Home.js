@@ -22,6 +22,7 @@ import Contacts from '@material-ui/icons/Contacts';
 import PermMedia from '@material-ui/icons/PermMedia';
 import HomeWork from '@material-ui/icons/HomeWork';
 import Work from '@material-ui/icons/Work';
+import Group from '@material-ui/icons/Group';
 import {headerStyle, subtitleStyle} from "../assets/landingStyle";
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -75,7 +76,8 @@ const useStyles = makeStyles(theme => ({
       }
     },
       paper: {
-        padding: theme.spacing(1),
+        padding: theme.spacing(2),
+        width: 200,
         WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
          boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
       },
@@ -379,6 +381,13 @@ const Home = () => {
           <PermMedia style={{color:"#39802D"}} />
         </ListItemIcon>
         <ListItemText primary="Gallery" />
+      </ListItem></Link>
+      <Link to="/team" style={{textDecoration:"none",color:"#1C1C1C"}}>
+      <ListItem button>
+        <ListItemIcon>
+          <Group style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Our Team" />
       </ListItem></Link>
         <ListItem button onClick={executeScroll3}>
         <ListItemIcon>

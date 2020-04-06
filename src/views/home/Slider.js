@@ -5,7 +5,7 @@ import ChevronLeft from '@material-ui/icons/ArrowBack';
 import ChevronRight from '@material-ui/icons/ArrowForward';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../../assets/slick.css";
+import "../../assets/headslick.css";
 
 const useStyles = makeStyles(theme => ({
   box : {

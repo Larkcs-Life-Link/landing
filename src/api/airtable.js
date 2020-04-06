@@ -12,6 +12,7 @@ const homeAPI = 'keyX8tJDj5uJ8jnE2';
 const careerAPI = 'keyCwv4IauNCHeKor';
 const homeBase = 'appSxnWsj5GUElptt';
 const aboutBase = 'appr90qZW6oMB3bm1';
+const teamBase = 'appSu2zFtt89LQ9G3';
 const servicesBase = 'apppQaYmRYbFPvCB7';
 const openingBase = 'app8M0GZ2nBY5HUs9';
 const galleryBase = 'app7wMsarA1tUHbfF';
@@ -20,6 +21,7 @@ const careerBase = 'app27ibjc251l39Tr';
 sgMail.setApiKey('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');
 var homeList = new Airtable({apiKey: homeAPI}).base(homeBase)
 var aboutList = new Airtable({apiKey: homeAPI}).base(aboutBase)
+var teamList = new Airtable({apiKey: homeAPI}).base(teamBase)
 var servicesList = new Airtable({apiKey: homeAPI}).base(servicesBase)
 var openingsList = new Airtable({apiKey: careerAPI}).base(openingBase);
 var galleryList = new Airtable({apiKey: homeAPI}).base(galleryBase);
@@ -237,7 +239,7 @@ ContactData = [];
   })
 
   router.get('/loadTeam',(req,res)=>{
-    aboutList('Team').select({
+    teamList('Team').select({
       view: "Grid view",
   }).eachPage(function page(records, fetchNextPage) {
       records.forEach(function(record) {

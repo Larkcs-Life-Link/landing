@@ -17,7 +17,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Header from '../components/Header';
 import LocalPharmacy from '@material-ui/icons/LocalPharmacy';
 import VerifiedUser from '@material-ui/icons/VerifiedUser';
-import PermMedia from '@material-ui/icons/PermMedia';
+import Group from '@material-ui/icons/Group';
 import Home from '@material-ui/icons/Home';
 import Work from '@material-ui/icons/Work';
 
@@ -35,6 +35,12 @@ const useStyles = makeStyles(theme => ({
         "@media only screen and (max-width: 600px)": {
           maxWidth: "80%",
         }
+    },
+    paper: {
+      padding: theme.spacing(2),
+      width: 200,
+      WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
+       boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
     },
     containedImages: {
         maxHeight: 280,
@@ -171,6 +177,13 @@ const Gallery = () => {
           <LocalPharmacy style={{color:"#39802D"}} />
         </ListItemIcon>
         <ListItemText primary="Services" />
+      </ListItem></Link>
+      <Link to="/team" style={{textDecoration:"none",color:"#1C1C1C"}}>
+      <ListItem button>
+        <ListItemIcon>
+          <Group style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Our Team" />
       </ListItem></Link>
       <Link to="/career" style={{textDecoration:"none",color:"#1C1C1C"}}>
       <ListItem button>

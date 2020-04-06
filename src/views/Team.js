@@ -3,7 +3,7 @@ import Group from '@material-ui/icons/Group';
 import Typography from '@material-ui/core/Typography';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
-import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
+import { faLinkedinIn, faFacebook } from "@fortawesome/free-brands-svg-icons"
 import GridContainer from '../components/Grid/GridContainer';
 import GridItem from '../components/Grid/GridItem';
 import { makeStyles } from '@material-ui/core/styles';
@@ -24,12 +24,7 @@ const useStyles = makeStyles(theme => ({
 const Team = (props) => {
     const classes = useStyles();
     return (
-        <div>
-             <Typography variant="h6" style={{maxWidth:500,margin:32}}>
-         <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>
-         <Group style={{color:"#39802D",marginRight:12}} />
-           Our Team</p>
-    </Typography><br/>
+        <div><br/>
     <GridContainer className={classes.container}>
             {props.data.map((instance,index)=>{
                 return(
@@ -40,8 +35,10 @@ const Team = (props) => {
             <p>{instance.Name}</p>
             <p>{instance.Position}</p>
     </Typography>
-    <div style={{display:"flex",marginLeft:50}}><FontAwesomeIcon icon={faEnvelope} onClick={()=>{window.open(`mailto:${instance.MailId}`,'_blank');}} style={{cursor:"pointer"}}></FontAwesomeIcon>
-    <FontAwesomeIcon icon={faLinkedinIn} onClick={()=>{window.open(instance.LinkedIn,'_blank');}} style={{cursor:"pointer",marginLeft:32}}></FontAwesomeIcon></div>
+    <div style={{display:"flex",marginLeft:22}}><FontAwesomeIcon icon={faEnvelope} onClick={()=>{window.open(`mailto:${instance.MailId}`,'_blank');}} style={{cursor:"pointer"}}></FontAwesomeIcon>
+    <FontAwesomeIcon icon={faFacebook} onClick={()=>{window.open(instance.Facebook,'_blank');}} style={{cursor:"pointer",marginLeft:32}}></FontAwesomeIcon>
+    <FontAwesomeIcon icon={faLinkedinIn} onClick={()=>{window.open(instance.LinkedIn,'_blank');}} style={{cursor:"pointer",marginLeft:32}}></FontAwesomeIcon>
+    </div>
     <br/><br/><br/></GridItem></div>
                 )
             })}
