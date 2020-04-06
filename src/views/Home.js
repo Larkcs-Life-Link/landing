@@ -449,26 +449,9 @@ const Home = () => {
          <ThumbUp style={{color:"#39802D",marginRight:12}} />
            We are Social!</p>
     </Typography><br/>
-    <div className={classes.container} style={{textAlign:"center"}}>
-    <FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{window.open(media[0].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{window.open(media[1].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{window.open(`https://wa.me/${media[2].Link}`,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faYoutube} size="2x" onClick={()=>{window.open(media[3].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faLinkedinIn} size="2x" onClick={()=>{window.open(media[4].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{window.open(media[5].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-      <br/><br/><Typography variant="subtitle1" style={{fontWeight:"initial"}}>
-         <GridContainer style={{maxWidth:500,margin:"0 auto"}}>
-          <GridItem xs={12} sm={12} md={6} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`mailto:${media[5].Link}`,'_blank');}}>
-          <FontAwesomeIcon icon={faEnvelope} style={{marginRight:6}}></FontAwesomeIcon>
-          support@larkcs.com </GridItem>
-          <GridItem xs={12} sm={12} md={6} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`tel:${media[6].Link}`,'_blank');}}>
-          <FontAwesomeIcon icon={faPhoneAlt} style={{marginRight:6}}></FontAwesomeIcon>
-          +918111888892 </GridItem></GridContainer></Typography><br/>
-      </div><br/><Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef3}>
-         <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>
-         <Contacts style={{color:"#39802D",marginRight:12}} />
-           Contact Us!</p>
-    </Typography><br/>
+    <br/>
+    <GridContainer>
+      <GridItem xs={12} sm={12} md={6}>
     <div style={{
       minHeight:360,
         maxWidth: 700,
@@ -500,7 +483,26 @@ const Home = () => {
           })}<br/>
         <Button style={{float:"right"}} color="success" type="submit" onClick={handleSnack}>
             Submit
-          </Button></div>
+          </Button></div></GridItem>
+          <GridItem xs={12} sm={12} md={6}>
+          <div className={classes.container} style={{textAlign:"center",marginTop:52}}>
+    <FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{window.open(media[0].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{window.open(media[1].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{window.open(`https://wa.me/${media[2].Link}`,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faYoutube} size="2x" onClick={()=>{window.open(media[3].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faLinkedinIn} size="2x" onClick={()=>{window.open(media[4].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{window.open(media[5].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+      <br/><br/><Typography variant="subtitle1" style={{fontWeight:"initial"}}>
+         <GridContainer style={{maxWidth:500,margin:"0 auto"}}>
+          <GridItem xs={12} sm={12} md={6} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`mailto:${media[5].Link}`,'_blank');}}>
+          <FontAwesomeIcon icon={faEnvelope} style={{marginRight:6}}></FontAwesomeIcon>
+          support@larkcs.com </GridItem>
+          <GridItem xs={12} sm={12} md={6} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`tel:${media[6].Link}`,'_blank');}}>
+          <FontAwesomeIcon icon={faPhoneAlt} style={{marginRight:6}}></FontAwesomeIcon>
+          +918111888892 </GridItem></GridContainer></Typography><br/>
+      </div>
+          </GridItem>
+          </GridContainer>
         <br/><br/>
       <div style={{height:150,backgroundColor:"#F3F3FE",padding:32}}>
         <Typography style={{margin:"0 auto",textAlign:"center"}} ref={myRef4}>
