@@ -12,10 +12,10 @@ import "../../assets/slick.css";
 
 const useStyles = makeStyles(theme => ({
   box : {
-    width: "60%",
+    width: "30%",
     marginTop: 42,
     textDecoration:"none",
-    padding:35,
+    paddingTop:35,
     backgroundColor: "#FFFFFF",
     margin: "0 auto",
     marginBottom:82,
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
     whiteSpace:"pre-wrap",
     "@media only screen and (max-width: 600px)": {
-      maxWidth:"90%"
+      width: "90%",
     }
   },
   slider:{
@@ -74,7 +74,7 @@ const Career = (props) => {
           {instance.Subtitle?<div className={classes.typography}>
           {instance.Subtitle}
           </div>:null}<br/><br/>
-          <div style={{margin:"0 auto !important",textAlign:"center"}}><div><FormatQuote/></div> <div>{instance.Message}</div> </div><br/><br/>
+          <div style={{textAlign:"center"}}><div><FormatQuote/></div> <div style={{margin:"0 auto",maxWidth:"90%"}}>{instance.Message}</div> </div><br/><br/>
                     </div>
                     </div>
                      )

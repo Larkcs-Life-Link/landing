@@ -17,7 +17,8 @@ const useStyles = makeStyles(theme => ({
         boxShadow: "10px 10px 11px 8px rgba(136,136,136,0.24)",
       },
       container: {
-          margin:32
+          margin:32,
+          justifyContent: "center"
       }
 }))
 const Team = (props) => {

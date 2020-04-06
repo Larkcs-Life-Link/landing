@@ -45,6 +45,7 @@ import CareerStories from "./career/CareerStories";
 import Cards from './Cards';
 import Header from '../components/Header';
 import Communities from './Communities';
+import Footer from './home/Footer';
 const scrollToRef = (ref) => window.scrollTo({
   top: ref.current.offsetTop,
   bottom: 0,
@@ -212,8 +213,12 @@ const Home = () => {
     .then( (response)=> {
       console.log(response.data)
       setImages(response.data);
+    }),
+    axios.get('/api/sync/loadFooter')
+    .then( (response)=> {
+      console.log(response.data)
+      setFooter(response.data);
     })
-
     ])
     .then(axios.spread(function () {
      setLoading(false)
@@ -233,6 +238,7 @@ const Home = () => {
   const [blog, setBlog] = React.useState([]);
   const [images, setImages] = React.useState([]);
   const [contact, setContact] = React.useState([]);
+  const [footer, setFooter] = React.useState([]);
   const [values, setValues] = React.useState({
     name: '',
     email: "",
@@ -334,7 +340,7 @@ const Home = () => {
             <img className={classes.logo} src={Logo} alt=" "/>
             <Typography style={{margin:"0 auto",textAlign:"center",marginTop:32}}>
                 <span style={headerStyle}>Larkcs Life Link</span><br/>
-                <span style={subtitleStyle}>Always be with you.</span><br/><br/>
+                <span style={subtitleStyle}>Always with you.</span><br/><br/>
              </Typography>
             </GridContainer>
             <Slider headers={headers}/>
@@ -423,10 +429,10 @@ const Home = () => {
            We are Growing!</p>
     </Typography><br/>
     <div className={classes.container}><Statistics data={statistics}/><br/></div><br/>
-    <Typography variant="h6" style={{maxWidth:500,margin:32}} >
-         <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>
-         <SentimentVerySatisfiedIcon style={{color:"#39802D",marginRight:12}} />
-           Our Happy Customers!</p>
+    <Typography variant="h6" style={{maxWidth:500,marginLeft:32,display:"flex"}} >
+    <div><SentimentVerySatisfiedIcon style={{color:"#39802D",marginRight:12}} /></div>
+         <div style={{fontFamily: "Georgia",fontWeight: "bold"}}>
+           Our Happy Customers!</div>
     </Typography>
     <CareerStories data={testimonials}/>
     <Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef3}>
@@ -528,6 +534,7 @@ const Home = () => {
         <input type="hidden" name="_captcha" value="false"></input>
       </form>
       </Dialog>
+      {/* <Footer data={footer} media={media}/> */}
         </React.Fragment>
     );
       }

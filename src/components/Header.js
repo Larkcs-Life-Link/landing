@@ -12,8 +12,14 @@ const useStyles = makeStyles(theme => ({
     margin : {
         marginLeft: "30%",
         marginTop: -78,
-        "@media only screen and (min-width: 800px)": {
-          marginLeft:"80%"
+      },
+      float: {
+        float: "right",
+        marginRight: 24
+      },
+      display: {
+        "@media only screen and (max-width: 600px)": {
+          display: "none"
         }
       },
       header: {
@@ -35,20 +41,22 @@ function Header(props) {
         <div className={classes.header}>
             <Typography variant="h6" color="inherit">
           <img src={logo} alt="" style={logoStyle} />
-          {!props.menu?<Link to='/home' style={{textDecoration:"none",color:"#000000"}}><p style={titleStyle}>LARKCS</p></Link>:null}
+          <Link to='/home' className={classes.display} style={{textDecoration:"none",color:"#000000"}}><p style={titleStyle}>Larkcs Life Link</p></Link>
         </Typography><br />
         <div className={classes.margin}>
                    
-        {props.menu?<div><Button color="success" onClick={props.handleClickOpen}>Download App</Button>
+        {props.menu?
+        <div className={classes.float}><Button color="success" onClick={props.handleClickOpen}>Download App</Button>
 
-                   
                    <IconButton aria-describedby={props.id} variant="contained" onMouseEnter={props.handleClick} onClick={props.handleClick}>
                      
                    <MenuRounded/></IconButton></div>
                 :
                 null
                 }
+                   
                    </div>
+                   
         </div>
     );
 }

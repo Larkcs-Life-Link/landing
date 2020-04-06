@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import GridContainer from '../components/Grid/GridContainer';
 import GridItem from '../components/Grid/GridItem';
 import Typography from '@material-ui/core/Typography';
@@ -8,6 +9,16 @@ import axios from 'axios';
 import Button from '../components/Button';
 import {container,headerStyle} from '../assets/landingStyle';
 import Header from '../components/Header';
+import Popover from '@material-ui/core/Popover';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import LocalPharmacy from '@material-ui/icons/LocalPharmacy';
+import VerifiedUser from '@material-ui/icons/VerifiedUser';
+import PermMedia from '@material-ui/icons/PermMedia';
+import Home from '@material-ui/icons/Home';
+import Work from '@material-ui/icons/Work';
 
 const useStyles = makeStyles(theme => ({
     image: {
@@ -54,7 +65,16 @@ const Services = () => {
           setLoading(false)
         })
       }, []);
-     
+      function handleClick(event) {
+        setAnchorEl(event.currentTarget);
+      }
+    
+      function handleClose() {
+        setAnchorEl(null);
+      }
+      const [anchorEl, setAnchorEl] = React.useState(null);
+      const open = Boolean(anchorEl);
+      const id = open ? 'simple-popover' : undefined;
       const [loading, setLoading] = React.useState(true);
       const [services, setServices] = React.useState([]);
     const classes = useStyles();
@@ -63,7 +83,7 @@ const Services = () => {
     }else{
       return (
         <React.Fragment>
-          <Header/> <br/><br/><br/><br/><br/>
+          <Header menu={true} handleClick={handleClick}/> <br/><br/><br/><br/><br/>
                      <Typography style={{textAlign:"center",fontFamily: "Georgia",
   fontWeight: "bold",
   fontSize: 24}} variant="h6">Our Services</Typography><br/>
@@ -92,6 +112,52 @@ const Services = () => {
         )
         
       })}</div>
+      <Popover
+            classes={{
+              paper: classes.paper,
+            }}
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <List>
+        <Link to="/home" style={{textDecoration:"none",color:"#1C1C1C"}}>
+          <ListItem button>
+        <ListItemIcon>
+          <Home style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Home" /></ListItem></Link>
+        <Link to="/about" style={{textDecoration:"none",color:"#1C1C1C"}}>
+        <ListItem button>
+        <ListItemIcon>
+          <VerifiedUser style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="About" />
+      </ListItem></Link>
+      <Link to="/gallery" style={{textDecoration:"none",color:"#1C1C1C"}}>
+      <ListItem button>
+        <ListItemIcon>
+          <PermMedia style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Gallery" />
+      </ListItem></Link>
+      <Link to="/career" style={{textDecoration:"none",color:"#1C1C1C"}}>
+      <ListItem button>
+        <ListItemIcon>
+          <Work style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Career" />
+      </ListItem></Link></List>
+      </Popover>
         </React.Fragment>
     );
     }

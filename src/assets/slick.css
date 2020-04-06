@@ -1,6 +1,6 @@
 .slick-prev {
     opacity: 0.4 !important;
-    left: 15% !important;
+    left: 30% !important;
     z-index: 1 !important;
     color: green !important;
     @media only screen and (max-width: 600px){
@@ -9,7 +9,7 @@
   }
   .slick-next {
     opacity: 0.4 !important;
-    right:15% !important;
+    right:30% !important;
     z-index: 1 !important;
     color: green !important;
   }

@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import GridContainer from '../components/Grid/GridContainer';
 import { Helmet } from 'react-helmet';
 import GridItem from '../components/Grid/GridItem';
@@ -10,6 +11,17 @@ import Header from '../components/Header';
 import Team from './Team'
 import DoubleArrow from '@material-ui/icons/DoubleArrow';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Popover from '@material-ui/core/Popover';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import LocalPharmacy from '@material-ui/icons/LocalPharmacy';
+import VerifiedUser from '@material-ui/icons/VerifiedUser';
+import PermMedia from '@material-ui/icons/PermMedia';
+import Home from '@material-ui/icons/Home';
+import Work from '@material-ui/icons/Work';
+
 const useStyles = makeStyles(theme => ({
     image: {
         margin:32,
@@ -63,7 +75,16 @@ const Services = () => {
             setLoading(false)
            }))
       }, []);
-     
+      function handleClick(event) {
+        setAnchorEl(event.currentTarget);
+      }
+    
+      function handleClose() {
+        setAnchorEl(null);
+      }
+      const [anchorEl, setAnchorEl] = React.useState(null);
+      const open = Boolean(anchorEl);
+      const id = open ? 'simple-popover' : undefined;
       const [loading, setLoading] = React.useState(true);
       const [about, setAbout] = React.useState([]);
       const [team, setTeam] = React.useState([]);
@@ -82,7 +103,7 @@ const Services = () => {
           <title>About | Larkcs Life Link</title>
           <meta name="description" content="Larkcs Life Link Career page" />
         </Helmet>
-          <Header/><br/><br/><br/><br/><br/>
+          <Header menu={true} handleClick={handleClick}/><br/><br/><br/><br/><br/>
           <Typography style={{textAlign:"center",fontFamily: "Georgia",
   fontWeight: "bold",
       fontSize: 24}} variant="h6">{about[0].Title}</Typography><br/><br/><br/>
@@ -113,6 +134,52 @@ const Services = () => {
       })}
       <Team data={team}/>
       </div>
+      <Popover
+            classes={{
+              paper: classes.paper,
+            }}
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'center',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+      >
+        <List>
+        <Link to="/home" style={{textDecoration:"none",color:"#1C1C1C"}}>
+          <ListItem button>
+        <ListItemIcon>
+          <Home style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Home" /></ListItem></Link>
+      <Link to="/services" style={{textDecoration:"none",color:"#1C1C1C"}}>
+      <ListItem button>
+        <ListItemIcon>
+          <LocalPharmacy style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Services" />
+      </ListItem></Link>
+        <Link to="/gallery" style={{textDecoration:"none",color:"#1C1C1C"}}>
+        <ListItem button>
+        <ListItemIcon>
+          <PermMedia style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Gallery" />
+      </ListItem></Link>
+      <Link to="/career" style={{textDecoration:"none",color:"#1C1C1C"}}>
+      <ListItem button>
+        <ListItemIcon>
+          <Work style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Career" />
+      </ListItem></Link></List>
+      </Popover>
         </React.Fragment>
     );
     }

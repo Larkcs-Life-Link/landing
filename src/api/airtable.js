@@ -135,6 +135,22 @@ router.get('/loadBlog',(req,res)=>{
 });
 BlogData = [];
 })
+
+router.get('/loadFooter',(req,res)=>{
+  homeList('Footer').select({
+    view: "Grid view"
+}).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function(record) {
+      FooterData = FooterData.concat(record.fields)
+    });
+    res.json(FooterData)
+}, function done(err) {
+    if (err) { console.error(err); return; }
+});
+FooterData = [];
+})
+
+
 router.get('/loadImages',(req,res)=>{
   galleryList('Gallery').select({
     view: "Gallery",

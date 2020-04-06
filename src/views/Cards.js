@@ -30,9 +30,11 @@ const Cards = (props) => {
                 return(
                     <div className={classes.box} key={index} style={{margin:"24px"}}>
       <GridItem>
-          <Typography variant="h6" style={{fontSize:20,margin:"0 auto",fontWeight: "bold"}}>
-           {instance.Title}
-        </Typography><br/>
+      <Typography variant="h6" style={{maxWidth:500,display:"flex"}} >
+    <div><img height={50} width={50} style={{marginRight:12}} src={instance.Icon[0].url}/></div>
+         <div style={{fontFamily: "Georgia",fontWeight: "bold"}}>
+         {instance.Title}</div>
+    </Typography><br/>
         <Typography variant="h6" style={{fontSize:16,width:"fit-content"}}>
            {instance.Content}
         </Typography><br/>

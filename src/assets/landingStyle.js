@@ -5,10 +5,9 @@ const logoStyle = {
   marginTop:12
 }
 const titleStyle = {
-  fontFamily: "Georgia",
   fontWeight: "bold",
   fontSize: 18,
-  marginLeft: 45,
+  marginLeft: 50,
   marginTop: -38,
   cursor: "pointer"
 }
@@ -32,7 +31,6 @@ const box = {
   borderRadius: 12
 }
 const headerStyle = {
-  fontFamily: "Georgia",
   fontWeight: "bold",
   fontSize: 32
 }
