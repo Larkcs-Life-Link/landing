@@ -148,8 +148,9 @@ const Career = () => {
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails className={classes.ExpansionPanelDetails}><br />
                     <GridContainer>
-                      <GridItem xs={12} sm={12} md={post.VideoLink?6:12}><Typography variant="subtitle1">About the Role</Typography><hr /><br />
-                      <Typography>{post.description}</Typography></GridItem>
+                      {post.description?<GridItem xs={12} sm={12} md={post.VideoLink?6:12}>
+                        <Typography variant="subtitle1">About the Role</Typography><hr /><br />
+                      <Typography>{post.description}</Typography></GridItem>:null}
                       {post.VideoLink?<GridItem xs={12} sm={12} md={post.VideoLink?6:12} style={{marginTop:42}}>
                     <div className={classes.box}>
                     <iframe style={{marginTop:42}} src={post.VideoLink} title="Larkcs" style={{margin:10,borderRadius:12}} width="95%" height="auto" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
@@ -158,17 +159,17 @@ const Career = () => {
                       <br /><br />
                       <Typography variant="subtitle1">What You'll Do</Typography><hr /><br />
                       <Typography component={'span'}>
-                        <ul>
+                        {post.responsibilities?<ul>
                           {post.responsibilities.map((points, index) => {
                             return (
                               <li key={index}>{points}</li>
                             )
                           })}
-                        </ul>
+                        </ul>:null}
                         <br />
-                        <em style={{ fontSize: 12 }}><strong>NB:</strong>
+                        {post.NB?<em style={{ fontSize: 12 }}><strong>NB:</strong>
                           {post.NB}
-                        </em>
+                        </em>:null}
                       </Typography><br /><br />
                       <Link to={{ pathname: `/apply/${post.link}/` }} style={{ textDecoration: "none" }}>
                         <Button color="success">Apply Now</Button></Link><br /><br />

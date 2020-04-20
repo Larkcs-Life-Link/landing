@@ -68,13 +68,16 @@ const Career = (props) => {
                     {instance.Avatar? <Avatar src={instance.Avatar[0].url} aria-label="recipe" className={classes.avatar}/>:<Avatar aria-label="recipe" className={classes.avatar}>
       {instance.Name.charAt(0)}
           </Avatar>}
-          <Typography variant="h6" className={classes.typography}>
+          {instance.Name?<Typography variant="h6" className={classes.typography}>
           {instance.Name}
-          </Typography>
+          </Typography>:null}
           {instance.Subtitle?<div className={classes.typography}>
           {instance.Subtitle}
           </div>:null}<br/><br/>
-          <div style={{textAlign:"center"}}><div><FormatQuote/></div> <div style={{margin:"0 auto",maxWidth:"90%"}}>{instance.Message}</div> </div><br/><br/>
+          {instance.Message?<div style={{textAlign:"center"}}><div><FormatQuote/></div> 
+          <div style={{margin:"0 auto",maxWidth:"90%"}}>{instance.Message}</div>
+           </div>:null}
+           <br/><br/>
                     </div>
                     </div>
                      )

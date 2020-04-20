@@ -247,6 +247,7 @@ const Home = () => {
     feedback: "",
     msg: "Error. Try again"
   });
+  const [subscriptionEmail,setsubscriptionEmail] = React.useState("");
   const handleChange = name => event => {
     setValues({ ...values, [name]: event.target.value });
   };
@@ -262,6 +263,22 @@ const Home = () => {
   }
   function handleCloseSnack() {
     setSnack(false);
+  }
+  function handleSubscription(){
+    axios.post('/api/sync/subscribe',{Email:subscriptionEmail}).then((response)=>{
+     if(response){
+      handleCloseModal();
+      setValues({ ...values, msg: "Successfully subscribed" });
+      setSnack(true)
+      setsubscriptionEmail("");
+     }else{
+      handleCloseModal();
+      setValues({ ...values, msg: "Failed to subscribe. Please feel free to contact us directly!" });
+      setSnack(true)
+      setsubscriptionEmail("");
+     }
+     })
+
   }
 
   function handleSnack() {
@@ -406,7 +423,7 @@ const Home = () => {
     <GridContainer>
     <GridItem xs={12} sm={12} md={6}>
     <Typography variant="subtitle1" style={{maxWidth:500,margin:32}}>
-      <p>{about[0].content}</p>
+      {about[0].content?<p>{about[0].content}</p>:null}
     </Typography>
     <Link to='/about' style={{textDecoration:"none"}}>
     <Button color="success" style={{margin:32,marginTop: -16}}>Learn More</Button></Link>
@@ -418,8 +435,9 @@ const Home = () => {
     </Typography>
     </GridItem>
      <GridItem xs={12} sm={12} md={6}>
-       <div className={classes.box}>
-       <iframe src={about[0].VideoLink} title="Larkcs" style={{margin:10,borderRadius:12}} width="95%" height="250" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe></div>
+     {about[0].VideoLink?<div className={classes.box}>
+         <iframe src={about[0].VideoLink} title="Larkcs" style={{margin:10,borderRadius:12}} width="95%" height="250" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
+       </div>:null}
       </GridItem>
     </GridContainer>
     <br/><Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef1}>
@@ -437,7 +455,8 @@ const Home = () => {
          <FlightTakeoff style={{color:"#39802D",marginRight:12}} />
            We are Growing!</p>
     </Typography><br/>
-    <div className={classes.container}><Statistics data={statistics}/><br/></div><br/>
+    <div className={classes.container}><Statistics data={statistics}/><br/></div>
+    <br/>
     <Typography variant="h6" style={{maxWidth:500,marginLeft:32,display:"flex"}} >
     <div><SentimentVerySatisfiedIcon style={{color:"#39802D",marginRight:12}} /></div>
          <div style={{fontFamily: "Georgia",fontWeight: "bold"}}>
@@ -465,8 +484,7 @@ const Home = () => {
           {contact.map((field,index)=>{
             console.log(field)
             return (
-              <React.Fragment key={index}>
-                 <TextField
+              <React.Fragment key={index}><TextField
           id="standard-name"
           name={field.Title}
           label={field.Title}
@@ -477,7 +495,8 @@ const Home = () => {
           value={values[field.Title]}
           onChange={handleChange([field.Title])}
           margin="normal"
-        /><br/>
+        />
+                 <br/>
               </React.Fragment>
             )
           })}<br/>
@@ -485,21 +504,21 @@ const Home = () => {
             Submit
           </Button></div></GridItem>
           <GridItem xs={12} sm={12} md={6}>
-          <div className={classes.container} style={{textAlign:"center",marginTop:52}}>
-    <FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{window.open(media[0].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{window.open(media[1].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{window.open(`https://wa.me/${media[2].Link}`,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faYoutube} size="2x" onClick={()=>{window.open(media[3].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faLinkedinIn} size="2x" onClick={()=>{window.open(media[4].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{window.open(media[5].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+          <div className={classes.container} style={{textAlign:"center",marginTop:52,maxWidth:450}}>
+        {media[0].Link?<FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{window.open(media[0].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null} 
+        {media[1].Link?<FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{window.open(media[1].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}               
+        {media[2].Link?<FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{window.open(`https://wa.me/${media[2].Link}`,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
+        {media[3].Link?<FontAwesomeIcon icon={faYoutube} size="2x" onClick={()=>{window.open(media[3].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
+        {media[4].Link?<FontAwesomeIcon icon={faLinkedinIn} size="2x" onClick={()=>{window.open(media[4].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
+        {media[5].Link?<FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{window.open(media[5].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
       <br/><br/><Typography variant="subtitle1" style={{fontWeight:"initial"}}>
          <GridContainer style={{maxWidth:500,margin:"0 auto"}}>
-          <GridItem xs={12} sm={12} md={6} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`mailto:${media[5].Link}`,'_blank');}}>
+         {media[5].Link?<GridItem xs={12} sm={12} md={12} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`mailto:${media[5].Link}`,'_blank');}}>
           <FontAwesomeIcon icon={faEnvelope} style={{marginRight:6}}></FontAwesomeIcon>
-          support@larkcs.com </GridItem>
-          <GridItem xs={12} sm={12} md={6} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`tel:${media[6].Link}`,'_blank');}}>
+          support@larkcs.com </GridItem>:null}
+          {media[6].Link?<GridItem xs={12} sm={12} md={12} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`tel:${media[6].Link}`,'_blank');}}>
           <FontAwesomeIcon icon={faPhoneAlt} style={{marginRight:6}}></FontAwesomeIcon>
-          +918111888892 </GridItem></GridContainer></Typography><br/>
+          +918111888892 </GridItem>:null}</GridContainer></Typography><br/>
       </div>
           </GridItem>
           </GridContainer>
@@ -511,7 +530,6 @@ const Home = () => {
            <Button color="success">Go to Career Page</Button></Link>
        </Typography></div>
   </div> <Dialog open={modal} onClose={handleClose} aria-labelledby="form-dialog-title">
-  <form method="POST" action="https://formsubmit.co/support@larkcs.com">
         <DialogTitle id="form-dialog-title">We are not live yet!!</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -519,16 +537,18 @@ const Home = () => {
           </DialogContentText>
           <TextField
             id="name"
+            value={subscriptionEmail}
+            onChange={(e)=>{setsubscriptionEmail(e.target.value)}}
             label="Email Address"
             type="email"
             name="Email"
             fullWidth
-          /> <input type="hidden" name="New Subscription" value="Subscription from landing page"></input></DialogContent>
+          /></DialogContent>
         <DialogActions>
           <Button onClick={handleCloseModal} color="gray">
             Cancel
           </Button>
-          <Button onClick={handleCloseModal} color="success" type="submit">
+          <Button onClick={handleSubscription} color="success" type="submit">
             Subscribe
           </Button>
         </DialogActions><DialogContent><div className={classes.follow}><DialogContentText>Follow our channels for more updates:</DialogContentText><div style={{textAlign:"center"}}>
@@ -541,9 +561,6 @@ const Home = () => {
       <Typography variant="subtitle1" style={{fontWeight:"initial"}}>
       </Typography><br/>
       </div></div></DialogContent>
-      <input type="hidden" name="_next" value="http://www.larkcs.com"></input>
-        <input type="hidden" name="_captcha" value="false"></input>
-      </form>
       </Dialog>
       {/* <Footer data={footer} media={media}/> */}
         </React.Fragment>

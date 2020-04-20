@@ -2,10 +2,7 @@ import App from './App';
 import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import express from 'express';
-import theme from './theme';
 import { Helmet } from 'react-helmet';
-import { ServerStyleSheets } from '@material-ui/styles';
-import { ThemeProvider  } from '@material-ui/core/styles';
 import { renderToString } from 'react-dom/server';
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
 const bodyParser = require('body-parser')
@@ -23,17 +20,11 @@ server
   })
   .get(/^\/(?!api).*/, (req, res) => {
     const context = {};
-    const sheets = new ServerStyleSheets()
     const markup = renderToString(
-      sheets.collect(
-        <ThemeProvider  theme={theme}>
             <StaticRouter context={context} location={req.url}>
         <App />
       </StaticRouter>
-      </ThemeProvider >
-      )
     );
-    const css = sheets.toString();
 const html= `<!doctype html>
 <html lang="">
 <head>
@@ -48,7 +39,6 @@ const html= `<!doctype html>
         <link rel="stylesheet" href="${assets.client.css}">`
         : ''
     }
-    <style id="jss-server-side">${css}</style>
     ${
       process.env.NODE_ENV === 'production'
         ? `<script src="${assets.client.js}" defer></script>`
@@ -87,7 +77,6 @@ const helmet = Helmet.renderStatic();
                 ? `<script src="${assets.client.js}" defer></script>`
                 : `<script src="${assets.client.js}" defer crossorigin></script>`
             }
-            <style id="jss-server-side">${css}</style>
           </head>
           <body>
           <div id="root">${markup}</div>

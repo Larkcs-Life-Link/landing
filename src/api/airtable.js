@@ -18,6 +18,7 @@ const openingBase = 'app8M0GZ2nBY5HUs9';
 const galleryBase = 'app7wMsarA1tUHbfF';
 const applicationBase = 'appCAjLMcjxpSwPgu';
 const careerBase = 'app27ibjc251l39Tr';
+const subscriptionBase = 'appR7l5019NaU8wRU';
 sgMail.setApiKey('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');
 var homeList = new Airtable({apiKey: homeAPI}).base(homeBase)
 var aboutList = new Airtable({apiKey: homeAPI}).base(aboutBase)
@@ -27,6 +28,7 @@ var openingsList = new Airtable({apiKey: careerAPI}).base(openingBase);
 var galleryList = new Airtable({apiKey: homeAPI}).base(galleryBase);
 var careerList = new Airtable({apiKey: homeAPI}).base(careerBase);
 var applications = new Airtable({apiKey: careerAPI}).base(applicationBase);
+var Subscriptions = new Airtable({apiKey: homeAPI}).base(subscriptionBase);
 
 router.get('/loadHeaders',(req,res)=>{
   homeList('Headers').select({
@@ -343,6 +345,23 @@ router.post('/applyForJob',(req,res)=>{
       Larkcs Life Link</p>`,
     };
     sgMail.send(msg).then((res) => {console.log(res)}, console.error);;
+    res.send("success")
+  });
+})
+
+router.post('/subscribe',(req,res)=>{
+  const data = req.body;
+  Subscriptions('Subscriptions').create([
+    {
+      "fields": {
+        "Email":data.Email,
+      }
+    }
+  ], function(err, records) {
+    if (err) {
+      res.error(err)
+      return;
+    }
     res.send("success")
   });
 })
