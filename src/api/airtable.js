@@ -365,4 +365,23 @@ router.post('/subscribe',(req,res)=>{
     res.send("success")
   });
 })
+
+router.post('/feedback',(req,res)=>{
+  const data = req.body;
+  Subscriptions('Feedback').create([
+    {
+      "fields": {
+        "Email":data.Email,
+        "Name":data.Name,
+        "Feedback":data.Feedback,
+      }
+    }
+  ], function(err, records) {
+    if (err) {
+      res.error(err)
+      return;
+    }
+    res.send("success")
+  });
+})
 module.exports = router;

@@ -5,8 +5,6 @@ import GridItem from '../../components/Grid/GridItem';
 import CountUp from 'react-countup';
 
 const Statistics = (props) => {
-    
-    console.log(props.Statistics)
     if(props.data.length>0){
         return (<GridContainer style={{margin:24,padding:24}}>
 {

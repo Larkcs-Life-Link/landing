@@ -139,7 +139,9 @@ const Career = () => {
                         title={<Typography
                           onClick={event => event.stopPropagation()}
                           onFocus={event => event.stopPropagation()} style={{ fontSize: 17 }} variant="h6">{post.opening}</Typography>}
-                        subheader={<Typography style={{ fontSize: 14}}><span>{post.jobType},<span><LocationOn style={{ marginLeft: 12, marginBottom: -6 }} />{post.location}</span></span>
+                        subheader={<Typography style={{ fontSize: 13}}><span>
+                          {post.jobType?<span>{post.jobType},</span>:null}<span>
+                            <LocationOn style={{ marginLeft: 0,marginBottom:-3, fontSize: 17 }} />{post.location}</span></span>
                           <br/><br/><Link to={{ pathname: `/apply/${post.link}/` }} className={classes.button}>
                             <Button color="success">Apply Now</Button></Link>
                             <FlatButton color="#00000" style={{margin:12,backgroundColor:"#F5F5F5"}}>Learn More</FlatButton>

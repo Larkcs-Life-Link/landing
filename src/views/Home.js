@@ -242,13 +242,15 @@ const Home = () => {
   const [contact, setContact] = React.useState([]);
   const [footer, setFooter] = React.useState([]);
   const [values, setValues] = React.useState({
-    name: '',
-    email: "",
-    feedback: "",
+    Name: '',
+    Email: "",
+    Feedback: "",
     msg: "Error. Try again"
   });
   const [subscriptionEmail,setsubscriptionEmail] = React.useState("");
   const handleChange = name => event => {
+    console.log(name)
+    console.log( event.target.value)
     setValues({ ...values, [name]: event.target.value });
   };
  
@@ -274,7 +276,7 @@ const Home = () => {
      }else{
       handleCloseModal();
       setValues({ ...values, msg: "Failed to subscribe. Please feel free to contact us directly!" });
-      setSnack(true)
+      setSnack(true)  
       setsubscriptionEmail("");
      }
      })
@@ -282,22 +284,23 @@ const Home = () => {
   }
 
   function handleSnack() {
-    if(values.name===""||values.email===""||values.feedback===""){
+    if(values.Name===""||values.Email===""||values.Feedback===""){
+      console.log(values)
       setValues({ ...values, msg: "Please fill all fields" });
       setSnack(true)
     }
     else{
-      setValues({ ...values, msg: "Feedback Received" });
-      $.ajax({
-        url: "https://formsubmit.co/ajax/support@larkcs.com",
-        method: "POST",
-        data: {
-          name: values.name,
-          email: values.email,
-          feedback: values.feedback
+      axios.post('/api/sync/feedback',{Email:values.Email,Name:values.Name,Feedback:values.Feedback}).then((response)=>{
+        if(response){
+          setValues({  Name: '',
+          Email: "",
+          Feedback: "", msg: "Feedback Received" });
+          setSnack(true);
+        }else{
+         setValues({ ...values, msg: "Failed to submit Feedback. Please feel free to contact us directly!" });
+         setSnack(true)  
         }
-      })
-      setSnack(true)
+        })
     }
   }
 
@@ -482,7 +485,6 @@ const Home = () => {
          boxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
         }}>
           {contact.map((field,index)=>{
-            console.log(field)
             return (
               <React.Fragment key={index}><TextField
           id="standard-name"
