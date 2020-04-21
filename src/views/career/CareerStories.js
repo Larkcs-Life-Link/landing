@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
   box : {
     width: "30%",
     marginTop: 42,
+    minHeight:500,
     textDecoration:"none",
     paddingTop:35,
     backgroundColor: "#FFFFFF",
@@ -50,7 +51,7 @@ const Career = (props) => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2500,
+    autoplaySpeed: 15000,
     pauseOnHover: false,
     nextArrow: <ChevronRight />,
     prevArrow: <ChevronLeft />
@@ -74,7 +75,7 @@ const Career = (props) => {
           {instance.Subtitle?<div className={classes.typography}>
           {instance.Subtitle}
           </div>:null}<br/><br/>
-          {instance.Message?<div style={{textAlign:"center"}}><div><FormatQuote/></div> 
+          {instance.Message?<div><div><FormatQuote style={{margin:"0 auto",display:"block"}}/></div> 
           <div style={{margin:"0 auto",maxWidth:"90%"}}>{instance.Message}</div>
            </div>:null}
            <br/><br/>

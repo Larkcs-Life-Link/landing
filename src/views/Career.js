@@ -121,6 +121,10 @@ const Career = () => {
         </Helmet>
         <Header menu={true} handleClick={handleClick}/><br/><br/><br/><br/><br/>
         <Join description={description} callback={executeScroll}/>
+        <Typography style={{  textAlign: "center", fontSize: 24 }} variant="h6">
+         <p>Hear from our Employees!</p>
+       </Typography>
+        <CareerStories data={stories} />
         <Typography style={{  textAlign: "center", fontSize: 24 }} variant="h6" ref={myRef}>
           <p>Job Openings</p>
         </Typography><br /><br />
@@ -181,10 +185,6 @@ const Career = () => {
               )
             }) : null
         }
-        <Typography style={{  textAlign: "center", fontSize: 24 }} variant="h6">
-         <p>Hear from our Employees!</p>
-       </Typography>
-        <CareerStories data={stories} />
         <Popover
             classes={{
               paper: classes.paper,
