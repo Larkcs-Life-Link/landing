@@ -101,17 +101,17 @@ const Services = () => {
          <p style={{fontFamily: "Georgia",fontWeight: "bold"}}>{service.Title}</p>
     </Typography>
     <GridContainer>
-    <GridItem xs={12} sm={12} md={6}>
-    <Typography variant="subtitle1" style={{maxWidth:500,margin:32}}>
-      <p>{service.Description}</p>
+    <GridItem xs={12} sm={12} md={service.VideoLink?6:9}>
+    <Typography variant="subtitle1" style={{margin:32}}>
+    {service.Description?<p>{service.Description}</p>:null}
     </Typography>
     <hr className={classes.hide}/><br/>
-    <img className={classes.image} src={service.Posters[0].url} alt=""/>
+    {service.Posters?<img className={classes.image} src={service.Posters[0].url} alt=""/>:null}
     </GridItem>
-     <GridItem xs={12} sm={12} md={6}>
+     {service.VideoLink?<GridItem xs={12} sm={12} md={6}>
        <div className={classes.box}>
        <iframe src={service.VideoLink} title="Larkcs" style={{margin:10,borderRadius:12}} width="95%" height="250" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe></div>
-      </GridItem>
+      </GridItem>:null}
     </GridContainer>
     </React.Fragment>
         )
