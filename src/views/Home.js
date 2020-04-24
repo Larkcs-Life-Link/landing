@@ -516,10 +516,10 @@ const Home = () => {
         {media[5].Link?<FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{window.open(media[5].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
       <br/><br/><Typography variant="subtitle1" style={{fontWeight:"initial"}}>
          <GridContainer style={{maxWidth:500,margin:"0 auto"}}>
-         {media[5].Link?<GridItem xs={12} sm={12} md={12} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`mailto:${media[5].Link}`,'_blank');}}>
+         {media[6].Link?<GridItem xs={12} sm={12} md={12} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`mailto:${media[6].Link}`,'_blank');}}>
           <FontAwesomeIcon icon={faEnvelope} style={{marginRight:6}}></FontAwesomeIcon>
           support@larkcs.com </GridItem>:null}
-          {media[6].Link?<GridItem xs={12} sm={12} md={12} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`tel:${media[6].Link}`,'_blank');}}>
+          {media[7].Link?<GridItem xs={12} sm={12} md={12} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`tel:${media[7].Link}`,'_blank');}}>
           <FontAwesomeIcon icon={faPhoneAlt} style={{marginRight:6}}></FontAwesomeIcon>
           +918111888892 </GridItem>:null}</GridContainer></Typography><br/>
       </div>
