@@ -34,7 +34,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope,faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
-import $ from 'jquery';
+import Phone from '@material-ui/icons/Phone';
 import Snackbar from '@material-ui/core/Snackbar';
 import Fade from '@material-ui/core/Fade';
 import CloseIcon from '@material-ui/icons/Close';
@@ -116,7 +116,7 @@ const useStyles = makeStyles(theme => ({
         },
       },
       hide: {
-        width:"80%",
+        width:"90%",
         "@media only screen and (min-width: 600px)": {
           display: "none"
         }
@@ -356,7 +356,7 @@ const Home = () => {
             </IconButton>,
           ]}
         />
-                    <Header id={id} menu={true} handleClick={handleClick} handleClickOpen={handleClickOpen}/>
+                    <Header phn={about[0].BookingNo} id={id} menu={true} handleClick={handleClick} handleClickOpen={handleClickOpen}/>
                     <br/><br/><br/><br/><br/>
                     <GridContainer style={{margin:"0 auto",maxWidth:600}}>
             <img className={classes.logo} src={Logo} alt=" "/>
@@ -418,6 +418,7 @@ const Home = () => {
           <Work style={{color:"#39802D"}} />
         </ListItemIcon>
         <ListItemText primary="Career" /></ListItem></List>
+        <Button className={classes.hide} color="info" onClick={()=>{window.open(`tel:${about[0].BookingNo}`,'_blank');}}><Phone/>Book OUR Services</Button>
       </Popover><br/><br/><br/>
       <div className={classes.container}>
     <br/><Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef}>

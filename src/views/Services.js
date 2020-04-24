@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
 import GridContainer from '../components/Grid/GridContainer';
 import GridItem from '../components/Grid/GridItem';
@@ -61,15 +61,16 @@ const style={
       cursor: "pointer"
   }
 }
-const Services = () => {
+const Services = (props) => {
     useEffect(() => {
+      console.log(props.location)
         axios.get('/api/sync/loadServicesDetail')
         .then( (response)=> {
-          console.log(response.data)
+          props.location.ref?scrollToRef(props.location.ref):null;
           setServices(response.data);
           setLoading(false)
         })
-      }, []);
+      }, [props.location]);
       function handleClick(event) {
         setAnchorEl(event.currentTarget);
       }
@@ -94,7 +95,6 @@ const Services = () => {
   fontSize: 24}} variant="h6">Our Services</Typography><br/>
                      <div style={container}>
              {services.map((service,index)=>{
-        console.log(service)
         return(
 <React.Fragment key={index}>
          <Typography variant="h6" style={{maxWidth:500,margin:32,paddingTop:32}}>

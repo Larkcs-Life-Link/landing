@@ -1,10 +1,11 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import { logoStyle, titleStyle } from "../assets/landingStyle";
 import logo from '../assets/images/logo.png';
 import IconButton from '@material-ui/core/IconButton';
 import MenuRounded from '@material-ui/icons/MenuRounded';
+import Phone from '@material-ui/icons/Phone';
 import Button from '../components/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -47,6 +48,7 @@ function Header(props) {
                    
         {props.menu?
         <div className={classes.float}><Button color="success" onClick={props.handleClickOpen}>Download App</Button>
+          <Button className={classes.display} color="info"  onClick={()=>{window.open(`tel:${props.phn}`,'_blank');}} ><Phone style={{marginRight:6}}/>Book OUR Services</Button>
 
                    <IconButton aria-describedby={props.id} variant="contained" onMouseEnter={props.handleClick} onClick={props.handleClick}>
                      

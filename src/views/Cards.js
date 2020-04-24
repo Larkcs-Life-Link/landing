@@ -27,6 +27,7 @@ const Cards = (props) => {
         <div>
     <GridContainer style={{justifyContent: "center"}}>
             {props.data.map((instance,index)=>{
+
                 return(
                     <div className={classes.box} key={index} style={{margin:"24px"}}>
       <GridItem>
@@ -38,7 +39,7 @@ const Cards = (props) => {
         {instance.Content?<Typography variant="h6" style={{fontSize:16,width:"fit-content"}}>
            {instance.Content}
         </Typography>:null}<br/>
-        <Link to='/services' style={{textDecoration:"none"}}><Button color="success">Learn More</Button></Link>
+        <Link to={{ pathname: '/services', ref: `${instance.scrollTo}` }} style={{textDecoration:"none"}}><Button color="success">Learn More</Button></Link>
         </GridItem></div>
                 )
             })}

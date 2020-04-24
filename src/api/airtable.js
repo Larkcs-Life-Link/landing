@@ -58,6 +58,21 @@ router.get('/loadAbout',(req,res)=>{
 AboutData = [];
 })
 
+router.get('/loadAbout',(req,res)=>{
+  homeList('About').select({
+    view: "Grid view",
+    fields: ["BookingNo"]
+}).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function(record) {
+      PhnData = PhnData.concat(record.fields)
+    });
+    res.json(PhnData)
+}, function done(err) {
+    if (err) { console.error(err); return; }
+});
+PhnData = [];
+})
+
 router.get('/loadServices',(req,res)=>{
   homeList('Services').select({
     view: "Grid view"
