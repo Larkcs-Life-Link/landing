@@ -418,7 +418,7 @@ const Home = () => {
           <Work style={{color:"#39802D"}} />
         </ListItemIcon>
         <ListItemText primary="Career" /></ListItem></List>
-        <Button className={classes.hide} color="info" onClick={()=>{window.open(`tel:${about[0].BookingNo}`,'_blank');}}><Phone/>Book OUR Services</Button>
+        <Button className={classes.hide} color="info" onClick={()=>{window.open(`tel:${about[0].BookingNo}`,'_blank');}}><Phone/>Call us for booking</Button>
       </Popover><br/><br/><br/>
       <div className={classes.container}>
     <br/><Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef}>

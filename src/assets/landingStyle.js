@@ -1,14 +1,14 @@
 const logoStyle = {
-  maxHeight: 35,
+  maxHeight: 40,
   marginLeft: 12,
   cursor: "pointer",
-  marginTop:12
+  marginTop:10
 }
 const titleStyle = {
   fontWeight: "bold",
-  fontSize: 18,
-  marginLeft: 50,
-  marginTop: -38,
+  fontSize: 22,
+  marginLeft: 58,
+  marginTop: -45,
   cursor: "pointer"
 }
 

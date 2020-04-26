@@ -63,14 +63,12 @@ const style={
 }
 const Services = (props) => {
     useEffect(() => {
-      console.log(props.location)
         axios.get('/api/sync/loadServicesDetail')
         .then( (response)=> {
-          props.location.ref?scrollToRef(props.location.ref):null;
           setServices(response.data);
           setLoading(false)
         })
-      }, [props.location]);
+      }, []);
       function handleClick(event) {
         setAnchorEl(event.currentTarget);
       }

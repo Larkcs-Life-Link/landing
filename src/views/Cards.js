@@ -39,7 +39,7 @@ const Cards = (props) => {
         {instance.Content?<Typography variant="h6" style={{fontSize:16,width:"fit-content"}}>
            {instance.Content}
         </Typography>:null}<br/>
-        <Link to={{ pathname: '/services', ref: `${instance.scrollTo}` }} style={{textDecoration:"none"}}><Button color="success">Learn More</Button></Link>
+        <Link to="/services" style={{textDecoration:"none"}}><Button color="success">Learn More</Button></Link>
         </GridItem></div>
                 )
             })}
