@@ -224,13 +224,13 @@ const Career = () => {
         </ListItemIcon>
         <ListItemText primary="Services" />
       </ListItem>
+      </Link>
       <ListItem button onClick={()=>{window.location.href="https://blog.larkcs.com"}}>
         <ListItemIcon>
           <MenuBook style={{color:"#39802D"}} />
         </ListItemIcon>
         <ListItemText primary="Blog" />
       </ListItem>
-      </Link>
       <Link to="/gallery" style={{textDecoration:"none",color:"#1C1C1C"}}>
       <ListItem button>
         <ListItemIcon>
