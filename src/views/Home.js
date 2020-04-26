@@ -2,6 +2,7 @@ import React, {useEffect,useRef} from 'react';
 import {Link} from 'react-router-dom';
 import Logo from '../assets/images/logo.png';
 import playstore from '../assets/images/playstore.jpg';
+import appstore from '../assets/images/appstore.png';
 import axios from 'axios';
 import GridContainer from '../components/Grid/GridContainer';
 import GridItem from '../components/Grid/GridItem';
@@ -116,7 +117,6 @@ const useStyles = makeStyles(theme => ({
         },
       },
       hide: {
-        width:"90%",
         "@media only screen and (min-width: 600px)": {
           display: "none"
         }
@@ -418,7 +418,6 @@ const Home = () => {
           <Work style={{color:"#39802D"}} />
         </ListItemIcon>
         <ListItemText primary="Career" /></ListItem></List>
-        <Button className={classes.hide} color="info" onClick={()=>{window.open(`tel:${about[0].BookingNo}`,'_blank');}}><Phone/>Call us for booking</Button>
       </Popover><br/><br/><br/>
       <div className={classes.container}>
     <br/><Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef}>
@@ -431,11 +430,16 @@ const Home = () => {
     </Typography>
     <Link to='/about' style={{textDecoration:"none"}}>
     <Button color="success" style={{margin:32,marginTop: -16}}>Learn More</Button></Link>
-    <hr className={classes.hide}/>
-    <Typography variant="h6" style={{padding:12}}>
+    <Button className={classes.hide} style={{margin:32,marginTop: -8}} color="info" onClick={()=>{window.open(`tel:${about[0].BookingNo}`,'_blank');}}><Phone/>Call us for booking</Button>
+    <hr className={classes.hide} style={{maxWidth:"80%"}}/>
+    <Typography variant="h6" style={{padding:12,marginLeft:32}}>
+      
+    <p>Download our app from your app store</p>
           <img src={playstore} alt=" " style={{height:60,float:"left",marginRight:12,marginBottom:20,marginTop:10}}/>
-          <p>Download our Android app from Playstore</p><br/>
-          <Button style={{margin:16}} color="success" onClick={handleClickOpen}>Download App</Button>
+          <img src={appstore} alt=" " style={{height:60,marginRight:12,marginBottom:20,marginTop:10}}/>
+          
+          <Button style={{verticalAlign:"top",marginTop:"18px"}} color="success" onClick={handleClickOpen}>
+            Download App</Button><br/>
     </Typography>
     </GridItem>
      <GridItem xs={12} sm={12} md={6}>
