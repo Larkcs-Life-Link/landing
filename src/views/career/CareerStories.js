@@ -24,11 +24,11 @@ const useStyles = makeStyles(theme => ({
     marginBottom:82,
     borderRadius: 12,
     border: "1px solid #FFFFFF",
-      WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.14)",
-    boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.24)",
+      WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.07)",
+    boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.07)",
     whiteSpace:"pre-wrap",
     "@media only screen and (max-width: 600px)": {
-      width: "85%",
+      width: "80%",
       minHeight:500,
     }
   },
