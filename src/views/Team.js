@@ -34,9 +34,9 @@ const Team = (props) => {
             <p>{instance.Name}</p>
             <p>{instance.Position}</p>
     </Typography>
-    {instance.MailId?<FontAwesomeIcon icon={faEnvelope} onClick={()=>{window.open(`mailto:${instance.MailId}`,'_blank');}} style={{cursor:"pointer",paddingLeft:12}}></FontAwesomeIcon>:null}
-    {instance.Facebook?<FontAwesomeIcon icon={faFacebook} onClick={()=>{window.open(instance.Facebook,'_blank');}} style={{cursor:"pointer",paddingLeft:12}}></FontAwesomeIcon>:null}
-    {instance.LinkedIn?<FontAwesomeIcon icon={faLinkedinIn} onClick={()=>{window.open(instance.LinkedIn,'_blank');}} style={{cursor:"pointer",paddingLeft:12}}></FontAwesomeIcon>:null}
+    {instance.MailId?<FontAwesomeIcon icon={faEnvelope} onClick={()=>{window.open(`mailto:${instance.MailId}`,'_blank');}} style={{cursor:"pointer",paddingLeft:18}}></FontAwesomeIcon>:null}
+    {instance.Facebook?<FontAwesomeIcon icon={faFacebook} onClick={()=>{window.open(instance.Facebook,'_blank');}} style={{cursor:"pointer",paddingLeft:18}}></FontAwesomeIcon>:null}
+    {instance.LinkedIn?<FontAwesomeIcon icon={faLinkedinIn} onClick={()=>{window.open(instance.LinkedIn,'_blank');}} style={{cursor:"pointer",paddingLeft:18}}></FontAwesomeIcon>:null}
     <br/><br/><br/></div>
                 )
             })}

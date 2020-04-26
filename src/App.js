@@ -9,6 +9,7 @@ import  Services from './views/Services';
 import  About from './views/About';
 import  Founders from './views/Founders';
 import './App.css';
+import Download from './components/Download';
 
 const App = () => (
   <Switch>
@@ -19,6 +20,7 @@ const App = () => (
     <Route path="/services" component={Services}/>
     <Route path="/about" component={About}/>
     <Route path="/team" component={Founders}/>
+    <Route path="/download" component={Download}/>
   </Switch>
 );
 

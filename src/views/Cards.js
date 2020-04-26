@@ -10,6 +10,7 @@ const useStyles = makeStyles(theme => ({
       box: {
           padding: 24,
         maxWidth:"320px",
+        minHeight: 350,
         height: "fit-content",
         marginBottom: "52px !important",
         border: "1px solid #ffffff",
