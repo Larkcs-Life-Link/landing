@@ -173,7 +173,7 @@ FooterData = [];
 router.get('/loadImages',(req,res)=>{
   galleryList('Gallery').select({
     view: "Gallery",
-    filterByFormula: "({Name} = 'Main')",
+    filterByFormula: "({ShowInHome} = 1)",
     maxRecords: 3
 }).eachPage(function page(records, fetchNextPage) {
     records.forEach(function(record) {
