@@ -12,9 +12,9 @@ import "../../assets/slick.css";
 
 const useStyles = makeStyles(theme => ({
   box : {
-    width: "30%",
+    width: "40%",
     marginTop: 42,
-    minHeight:500,
+    minHeight:400,
     textDecoration:"none",
     paddingTop:35,
     backgroundColor: "#FFFFFF",
@@ -27,6 +27,7 @@ const useStyles = makeStyles(theme => ({
     whiteSpace:"pre-wrap",
     "@media only screen and (max-width: 600px)": {
       width: "90%",
+      minHeight:500,
     }
   },
   slider:{
