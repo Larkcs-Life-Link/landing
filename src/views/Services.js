@@ -6,8 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
-import Button from '../components/Button';
-import {container,headerStyle} from '../assets/landingStyle';
+import MenuBook from '@material-ui/icons/MenuBook';
+import {container} from '../assets/landingStyle';
 import Header from '../components/Header';
 import Popover from '@material-ui/core/Popover';
 import List from '@material-ui/core/List';
@@ -146,6 +146,12 @@ const Services = (props) => {
         </ListItemIcon>
         <ListItemText primary="About" />
       </ListItem></Link>
+      <ListItem button onClick={()=>{window.location.href="https://blog.larkcs.com"}}>
+        <ListItemIcon>
+          <MenuBook style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Blog" />
+      </ListItem>
       <Link to="/gallery" style={{textDecoration:"none",color:"#1C1C1C"}}>
       <ListItem button>
         <ListItemIcon>

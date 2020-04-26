@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import GridContainer from '../components/Grid/GridContainer';
+import MenuBook from '@material-ui/icons/MenuBook';
 import { Helmet } from 'react-helmet';
-import GridItem from '../components/Grid/GridItem';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
-import {container,headerStyle} from '../assets/landingStyle';
+import {container} from '../assets/landingStyle';
 import Header from '../components/Header';
 import Team from './Team'
 import DoubleArrow from '@material-ui/icons/DoubleArrow';
@@ -148,6 +147,12 @@ const Services = () => {
         </ListItemIcon>
         <ListItemText primary="Services" />
       </ListItem></Link>
+      <ListItem button onClick={()=>{window.location.href="https://blog.larkcs.com"}}>
+        <ListItemIcon>
+          <MenuBook style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Blog" />
+      </ListItem>
         <Link to="/gallery" style={{textDecoration:"none",color:"#1C1C1C"}}>
         <ListItem button>
         <ListItemIcon>

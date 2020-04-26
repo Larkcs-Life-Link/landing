@@ -9,7 +9,7 @@ import "../../assets/slick.css";
 
 const useStyles = makeStyles(theme => ({
   box : {
-    width: "60%",
+    width: "55%",
     maxHeight: 500,
     overflow: "hidden",
     marginTop: 42,

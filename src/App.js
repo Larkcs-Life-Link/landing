@@ -21,6 +21,10 @@ const App = () => (
     <Route path="/about" component={About}/>
     <Route path="/team" component={Founders}/>
     <Route path="/download" component={Download}/>
+    <Route path='/blog' component={() => { 
+     window.location.href = 'https://blog.larkcs.com'; 
+     return null;
+}}/>
   </Switch>
 );
 

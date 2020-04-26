@@ -9,6 +9,7 @@ import GridItem from '../components/Grid/GridItem';
 import Form from '../components/Form';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import axios from 'axios';
+import Header from '../components/Header';
 
 const Apply = (props) => {
 const path = props.location.pathname?props.location.pathname.slice(6).replace(/\//g,""):"";
@@ -32,10 +33,7 @@ if (loading===true){
 }else{
   return (
     <React.Fragment>
-                <Typography variant="h6" color="inherit">
-     <img src={logo} alt="" style={logoStyle}/>
-     <p style={titleStyle}>LARKCS</p>
-   </Typography><br/>
+                <Header/>
    <Typography style={{margin:"0 auto",textAlign:"center",fontSize:18}} variant="h6">
      <p>{title}</p>
    </Typography><br/><br/>

@@ -20,6 +20,7 @@ import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import Group from '@material-ui/icons/Group';
 import Home from '@material-ui/icons/Home';
 import Work from '@material-ui/icons/Work';
+import MenuBook from '@material-ui/icons/MenuBook';
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -178,6 +179,12 @@ const Gallery = () => {
         </ListItemIcon>
         <ListItemText primary="Services" />
       </ListItem></Link>
+      <ListItem button onClick={()=>{window.location.href="https://blog.larkcs.com"}}>
+        <ListItemIcon>
+          <MenuBook style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Blog" />
+      </ListItem>
       <Link to="/team" style={{textDecoration:"none",color:"#1C1C1C"}}>
       <ListItem button>
         <ListItemIcon>

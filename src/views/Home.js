@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Popover from '@material-ui/core/Popover';
 import IconButton from '@material-ui/core/IconButton';
 import ThumbUp from '@material-ui/icons/ThumbUp';
+import MenuBook from '@material-ui/icons/MenuBook';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -395,6 +396,12 @@ const Home = () => {
         </ListItemIcon>
         <ListItemText primary="Services" />
       </ListItem>
+      <ListItem button onClick={()=>{window.location.href="https://blog.larkcs.com"}}>
+        <ListItemIcon>
+          <MenuBook style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Blog" />
+      </ListItem>
       <Link to="/gallery" style={{textDecoration:"none",color:"#1C1C1C"}}>
       <ListItem button>
         <ListItemIcon>
@@ -430,7 +437,7 @@ const Home = () => {
     </Typography>
     <Link to='/about' style={{textDecoration:"none"}}>
     <Button color="success" style={{margin:32,marginTop: -16}}>Learn More</Button></Link>
-    <Button className={classes.hide} style={{margin:32,marginTop: -8}} color="info" onClick={()=>{window.open(`tel:${about[0].BookingNo}`,'_blank');}}><Phone/>Call us for booking</Button>
+    <Button className={classes.hide} style={{margin:32,marginTop: -8}} color="info" onClick={()=>{window.open(`tel:${about[0].BookingNo}`);}}><Phone/>Call us for booking</Button>
     <hr className={classes.hide} style={{maxWidth:"80%"}}/>
     <Typography variant="h6" style={{padding:12,marginLeft:32}}>
       

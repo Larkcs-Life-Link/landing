@@ -28,6 +28,7 @@ import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import PermMedia from '@material-ui/icons/PermMedia';
 import Home from '@material-ui/icons/Home';
 import Group from '@material-ui/icons/Group';
+import MenuBook from '@material-ui/icons/MenuBook';
 
 const scrollToRef = (ref) => window.scrollTo({
   top: ref.current.offsetTop,
@@ -222,7 +223,14 @@ const Career = () => {
           <LocalPharmacy style={{color:"#39802D"}} />
         </ListItemIcon>
         <ListItemText primary="Services" />
-      </ListItem></Link>
+      </ListItem>
+      <ListItem button onClick={()=>{window.location.href="https://blog.larkcs.com"}}>
+        <ListItemIcon>
+          <MenuBook style={{color:"#39802D"}} />
+        </ListItemIcon>
+        <ListItemText primary="Blog" />
+      </ListItem>
+      </Link>
       <Link to="/gallery" style={{textDecoration:"none",color:"#1C1C1C"}}>
       <ListItem button>
         <ListItemIcon>
