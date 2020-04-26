@@ -357,7 +357,7 @@ const Home = () => {
             </IconButton>,
           ]}
         />
-                    <Header phn={about[0].BookingNo} id={id} menu={true} handleClick={handleClick} handleClickOpen={handleClickOpen}/>
+                    <Header openPop={true} phn={about[0].BookingNo} id={id} menu={true} handleClick={handleClick} handleClickOpen={handleClickOpen}/>
                     <br/><br/><br/><br/><br/>
                     <GridContainer style={{margin:"0 auto",maxWidth:600}}>
             <img className={classes.logo} src={Logo} alt=" "/>

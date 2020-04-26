@@ -19,8 +19,8 @@ class Download extends Component {
                 <LinearProgress/>:
                 <React.Fragment>
                 <Header />
-                <div style={{textAlign:"center"}}>
-                <img src={notfound} alt={<div style={{minHeight:300}}/>} style={{maxWidth:"100%",maxHeight:500}}></img>
+                <div style={{textAlign:"center",margin:32}}>
+                <div style={{minHeight:300}}><img src={notfound} alt="" style={{maxWidth:"100%",maxHeight:500}}></img></div>
                     <Typography variant="h6">
                         We are not live yet! The app will be soon coming to playstore and apple appstore. 
                     </Typography><br/>

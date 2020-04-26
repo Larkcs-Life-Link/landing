@@ -48,7 +48,7 @@ function Header(props) {
                    
         {props.menu?
         <div className={classes.float}>
-          {props.handleClick? <Link to="/download" style={{textDecoration:"none",color:"#1C1C1C"}}><Button color="success">Download App</Button></Link>
+          {!props.openPop? <Link to="/download" style={{textDecoration:"none",color:"#1C1C1C"}}><Button color="success">Download App</Button></Link>
           :          <Button color="success" onClick={props.handleClickOpen}>Download App</Button>
         }
           <Button className={classes.display} color="info"  onClick={()=>{window.open(`tel:${props.phn}`);}} ><Phone style={{marginRight:6}}/>Call us for booking</Button>
