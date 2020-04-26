@@ -28,18 +28,16 @@ const Team = (props) => {
     <GridContainer className={classes.container}>
             {props.data.map((instance,index)=>{
                 return(
-                    <div key={index} style={{margin:"24px",textAlign:"center"}}>
-      <GridItem alignContent="flex-start" alignItems="flex-start" xs={12} sm={6} md={3}>
+                    <div key={index} style={{margin:"38px",textAlign:"center"}}>
     <Typography variant="h6" style={{fontSize:16,width:"fit-content"}}>
     <img src={instance.Avatar[0].url} alt=" " className={classes.team}/>
             <p>{instance.Name}</p>
             <p>{instance.Position}</p>
     </Typography>
-    <div style={{display:"flex",marginLeft:22}}><FontAwesomeIcon icon={faEnvelope} onClick={()=>{window.open(`mailto:${instance.MailId}`,'_blank');}} style={{cursor:"pointer"}}></FontAwesomeIcon>
-    <FontAwesomeIcon icon={faFacebook} onClick={()=>{window.open(instance.Facebook,'_blank');}} style={{cursor:"pointer",marginLeft:32}}></FontAwesomeIcon>
-    <FontAwesomeIcon icon={faLinkedinIn} onClick={()=>{window.open(instance.LinkedIn,'_blank');}} style={{cursor:"pointer",marginLeft:32}}></FontAwesomeIcon>
-    </div>
-    <br/><br/><br/></GridItem></div>
+    {instance.MailId?<FontAwesomeIcon icon={faEnvelope} onClick={()=>{window.open(`mailto:${instance.MailId}`,'_blank');}} style={{cursor:"pointer",paddingLeft:12}}></FontAwesomeIcon>:null}
+    {instance.Facebook?<FontAwesomeIcon icon={faFacebook} onClick={()=>{window.open(instance.Facebook,'_blank');}} style={{cursor:"pointer",paddingLeft:12}}></FontAwesomeIcon>:null}
+    {instance.LinkedIn?<FontAwesomeIcon icon={faLinkedinIn} onClick={()=>{window.open(instance.LinkedIn,'_blank');}} style={{cursor:"pointer",paddingLeft:12}}></FontAwesomeIcon>:null}
+    <br/><br/><br/></div>
                 )
             })}
             </GridContainer>    
