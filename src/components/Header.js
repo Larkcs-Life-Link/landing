@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles(theme => ({
     margin : {
         marginLeft: "30%",
-        marginTop: -78,
+        marginTop: -90,
       },
       float: {
         float: "right",
@@ -42,14 +42,14 @@ function Header(props) {
         <div className={classes.header}>
             <Typography variant="h6" color="inherit">
             <Link to='/home' style={{textDecoration:"none",color:"#000000"}}><img src={logo} alt="" style={logoStyle} /></Link>
-          <Link to='/home' className={classes.display} style={{textDecoration:"none",color:"#000000"}}><p style={titleStyle}>Larkcs Life Link</p></Link>
+          <Link to='/home' style={{textDecoration:"none",color:"#000000"}}><p style={titleStyle}>Larkcs<br/><div style={{fontSize:14,marginTop:-5}}>Always with you</div></p></Link>
         </Typography><br />
         <div className={classes.margin}>
                    
         {props.menu?
         <div className={classes.float}>
           {!props.openPop? <Link to="/download" style={{textDecoration:"none",color:"#1C1C1C"}}><Button color="success">Download App</Button></Link>
-          :          <Button color="success" onClick={props.handleClickOpen}>Download App</Button>
+          :          <Button className={classes.display} color="success" onClick={props.handleClickOpen}>Download App</Button>
         }
           <Button className={classes.display} color="info"  onClick={()=>{window.open(`tel:${props.phn}`);}} ><Phone style={{marginRight:6}}/>Call us for booking</Button>
 

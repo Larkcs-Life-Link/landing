@@ -122,6 +122,11 @@ const useStyles = makeStyles(theme => ({
           display: "none"
         }
       },
+      hideScr: {
+        "@media only screen and (max-width: 600px)": {
+          display: "none"
+        }
+      },
       follow: {
         "@media only screen and (max-width: 600px)": {
           display: "none"
@@ -362,8 +367,8 @@ const Home = () => {
                     <GridContainer style={{margin:"0 auto",maxWidth:600}}>
             <img className={classes.logo} src={Logo} alt=" "/>
             <Typography style={{margin:"0 auto",textAlign:"center",marginTop:32}}>
-                <span style={headerStyle}>Larkcs Life Link</span><br/>
-                <span style={subtitleStyle}>Always with you.</span><br/><br/>
+                <span style={headerStyle}>Larkcs</span><br/>
+                <span style={subtitleStyle}>Always with you</span><br/><br/>
              </Typography>
             </GridContainer>
             <Slider headers={headers}/>
@@ -424,7 +429,10 @@ const Home = () => {
         <ListItemIcon>
           <Work style={{color:"#39802D"}} />
         </ListItemIcon>
-        <ListItemText primary="Career" /></ListItem></List>
+        <ListItemText primary="Career" /></ListItem>
+        <Button className={classes.hide} style={{verticalAlign:"top",marginTop:"18px"}} color="success" onClick={handleClickOpen}>
+            Download App</Button><br/>
+            </List>
       </Popover><br/><br/><br/>
       <div className={classes.container}>
     <br/><Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef}>
@@ -437,7 +445,7 @@ const Home = () => {
     </Typography>
     <Link to='/about' style={{textDecoration:"none"}}>
     <Button color="success" style={{margin:32,marginTop: -16}}>Learn More</Button></Link>
-    <Button className={classes.hide} style={{margin:32,marginTop: -8}} color="info" onClick={()=>{window.open(`tel:${about[0].BookingNo}`);}}><Phone/>Call us for booking</Button>
+    <Button className={classes.hideScr} style={{margin:32,marginTop: -8}} color="info" onClick={()=>{window.open(`tel:${about[0].BookingNo}`);}}><Phone/>Call us for booking</Button>
     <hr className={classes.hide} style={{maxWidth:"80%"}}/>
     <Typography variant="h6" style={{padding:12,marginLeft:32}}>
       
@@ -577,6 +585,7 @@ const Home = () => {
       </div></div></DialogContent>
       </Dialog>
       {/* <Footer data={footer} media={media}/> */}
+          <Button className={classes.hide} style={{width:"100%",bottom:0,position:"fixed",minHeight:55}} color="info" onClick={()=>{window.open(`tel:${about[0].BookingNo}`);}}><Phone/>Call us for booking</Button>
         </React.Fragment>
     );
       }
