@@ -1,4 +1,5 @@
 import React, {useEffect,useRef} from 'react';
+import ReactGA from 'react-ga';
 import {Link} from 'react-router-dom';
 import Logo from '../assets/images/logo.png';
 import playstore from '../assets/images/playstore.jpg';
@@ -264,6 +265,10 @@ const Home = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   function handleClickOpen() {
+    ReactGA.event({
+      category: "Download App",
+      action: "User tried to download app",
+    });
     setOpen(true);
   }
   function handleCloseModal() {
@@ -273,6 +278,10 @@ const Home = () => {
     setSnack(false);
   }
   function handleSubscription(){
+    ReactGA.event({
+      category: "Subscription",
+      action: "User tried to subscribe to mailing list",
+    });
     axios.post('/api/sync/subscribe',{Email:subscriptionEmail}).then((response)=>{
      if(response){
       handleCloseModal();
@@ -290,6 +299,10 @@ const Home = () => {
   }
 
   function handleSnack() {
+    ReactGA.event({
+      category: `Feedback`,
+      action: `User tried to submit feedback`,
+    });
     if(values.Name===""||values.Email===""||values.Feedback===""){
       console.log(values)
       setValues({ ...values, msg: "Please fill all fields" });
@@ -445,7 +458,10 @@ const Home = () => {
     </Typography>
     <Link to='/about' style={{textDecoration:"none"}}>
     <Button color="success" style={{margin:32,marginTop: -16}}>Learn More</Button></Link>
-    <Button className={classes.hideScr} style={{margin:32,marginTop: -8}} color="info" onClick={()=>{window.open(`tel:${about[0].BookingNo}`);}}><Phone/>Call us for booking</Button>
+    <Button className={classes.hideScr} style={{margin:32,marginTop: -8}} color="info" onClick={()=>{ReactGA.event({
+      category: "Call for Booking",
+      action: "User tried to book services on call",
+    });window.open(`tel:${about[0].BookingNo}`);}}><Phone/>Call us for booking</Button>
     <hr className={classes.hide} style={{maxWidth:"80%"}}/>
     <Typography variant="h6" style={{padding:12,marginLeft:32}}>
       
@@ -527,18 +543,42 @@ const Home = () => {
           </Button></div></GridItem>
           <GridItem xs={12} sm={12} md={6}>
           <div className={classes.container} style={{textAlign:"center",marginTop:52,maxWidth:450}}>
-        {media[0].Link?<FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{window.open(media[0].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null} 
-        {media[1].Link?<FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{window.open(media[1].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}               
-        {media[2].Link?<FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{window.open(`https://wa.me/${media[2].Link}`,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
-        {media[3].Link?<FontAwesomeIcon icon={faYoutube} size="2x" onClick={()=>{window.open(media[3].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
-        {media[4].Link?<FontAwesomeIcon icon={faLinkedinIn} size="2x" onClick={()=>{window.open(media[4].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
-        {media[5].Link?<FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{window.open(media[5].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
+        {media[0].Link?<FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{ReactGA.event({
+  category: "Facebook Link",
+  action: "User tried to visit facebook page",
+});window.open(media[0].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null} 
+        {media[1].Link?<FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{ReactGA.event({
+  category: "Instagram link",
+  action: "User tried to visit instagram page",
+});window.open(media[1].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}               
+        {media[2].Link?<FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{ReactGA.event({
+  category: "Whatsapp",
+  action: "User tried to contact on whatsapp",
+});window.open(`https://wa.me/${media[2].Link}`,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
+        {media[3].Link?<FontAwesomeIcon icon={faYoutube} size="2x" onClick={()=>{ReactGA.event({
+  category: "Youtube link",
+  action: "User tried to visit youtube channel",
+});window.open(media[3].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
+        {media[4].Link?<FontAwesomeIcon icon={faLinkedinIn} size="2x" onClick={()=>{ReactGA.event({
+  category: "Linkedin link",
+  action: "User tried to visit linkedin page",
+});window.open(media[4].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
+        {media[5].Link?<FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{ReactGA.event({
+  category: "Twitter Link",
+  action: "User tried to visit twitter handle",
+});window.open(media[5].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
       <br/><br/><Typography variant="subtitle1" style={{fontWeight:"initial"}}>
          <GridContainer style={{maxWidth:500,margin:"0 auto"}}>
-         {media[6].Link?<GridItem xs={12} sm={12} md={12} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`mailto:${media[6].Link}`,'_blank');}}>
+         {media[6].Link?<GridItem xs={12} sm={12} md={12} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{ReactGA.event({
+  category: "Mail Id",
+  action: "User tried to contact via mail",
+});window.open(`mailto:${media[6].Link}`,'_blank');}}>
           <FontAwesomeIcon icon={faEnvelope} style={{marginRight:6}}></FontAwesomeIcon>
           support@larkcs.com </GridItem>:null}
-          {media[7].Link?<GridItem xs={12} sm={12} md={12} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{window.open(`tel:${media[7].Link}`,'_blank');}}>
+          {media[7].Link?<GridItem xs={12} sm={12} md={12} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{ReactGA.event({
+  category: "Phone No.",
+  action: "User tried to contact on official phone no.",
+});window.open(`tel:${media[7].Link}`,'_blank');}}>
           <FontAwesomeIcon icon={faPhoneAlt} style={{marginRight:6}}></FontAwesomeIcon>
           +918111888892 </GridItem>:null}</GridContainer></Typography><br/>
       </div>
@@ -574,12 +614,30 @@ const Home = () => {
             Subscribe
           </Button>
         </DialogActions><DialogContent><div className={classes.follow}><DialogContentText>Follow our channels for more updates:</DialogContentText><div style={{textAlign:"center"}}>
-        <FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{window.open(media[0].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{window.open(media[1].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{window.open(`https://wa.me/${media[2].Link}`,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faYoutube} size="2x" onClick={()=>{window.open(media[3].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faLinkedinIn} size="2x" onClick={()=>{window.open(media[4].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{window.open(media[5].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{ReactGA.event({
+  category: "Facebook Link",
+  action: "User tried to visit facebook page",
+});window.open(media[0].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{ReactGA.event({
+  category: "Instagram link",
+  action: "User tried to visit instagram page",
+});window.open(media[1].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{ReactGA.event({
+  category: "Whatsapp",
+  action: "User tried to contact on whatsapp",
+});window.open(`https://wa.me/${media[2].Link}`,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faYoutube} size="2x" onClick={()=>{ReactGA.event({
+  category: "Youtube link",
+  action: "User tried to visit youtube channel",
+});window.open(media[3].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faLinkedinIn} size="2x" onClick={()=>{ReactGA.event({
+  category: "Linkedin link",
+  action: "User tried to visit linkedin page",
+});window.open(media[4].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
+        <FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{ReactGA.event({
+  category: "Twitter Link",
+  action: "User tried to visit twitter handle",
+});window.open(media[5].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
       <Typography variant="subtitle1" style={{fontWeight:"initial"}}>
       </Typography><br/>
       </div></div></DialogContent>

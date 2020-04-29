@@ -48,10 +48,16 @@ function Header(props) {
                    
         {props.menu?
         <div className={classes.float}>
-          {!props.openPop? <Link to="/download" style={{textDecoration:"none",color:"#1C1C1C"}}><Button className={classes.display} color="success">Download App</Button></Link>
+          {!props.openPop? <Link to="/download" style={{textDecoration:"none",color:"#1C1C1C"}}><Button className={classes.display} color="success" onClick={()=>{ReactGA.event({
+      category: "Download App",
+      action: "User tried to download app",
+    });}}>Download App</Button></Link>
           :          <Button className={classes.display} color="success" onClick={props.handleClickOpen}>Download App</Button>
         }
-          <Button className={classes.display} color="info"  onClick={()=>{window.open(`tel:${props.phn}`);}} ><Phone style={{marginRight:6}}/>Call us for booking</Button>
+          <Button className={classes.display} color="info"  onClick={()=>{ReactGA.event({
+      category: "Call for Booking",
+      action: "User tried to book services on call",
+    });window.open(`tel:${props.phn}`);}} ><Phone style={{marginRight:6}}/>Call us for booking</Button>
 
                    <IconButton aria-describedby={props.id} variant="contained" onMouseEnter={props.handleClick} onClick={props.handleClick}>
                      

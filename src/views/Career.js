@@ -148,7 +148,10 @@ const Career = () => {
                           {post.jobType?<span>{post.jobType},</span>:null}<span>
                             <LocationOn style={{ marginLeft: 0,marginBottom:-3, fontSize: 17 }} />{post.location}</span></span>
                           <br/><br/><Link to={{ pathname: `/apply/${post.link}/` }} className={classes.button}>
-                            <Button color="success">Apply Now</Button></Link>
+                            <Button color="success" onClick={()=>{ReactGA.event({
+      category: `Apply for ${post.opening}`,
+      action: `User tried to apply for ${post.opening}`,
+    });}}>Apply Now</Button></Link>
                             <FlatButton color="#00000" style={{margin:12,backgroundColor:"#F5F5F5"}}>Learn More</FlatButton>
                         </Typography>}
                       />
@@ -179,7 +182,10 @@ const Career = () => {
                         </em>:null}
                       </Typography><br /><br />
                       <Link to={{ pathname: `/apply/${post.link}/` }} style={{ textDecoration: "none" }}>
-                        <Button color="success">Apply Now</Button></Link><br /><br />
+                        <Button color="success" onClick={()=>{ReactGA.event({
+      category: `Apply for ${post.opening}`,
+      action: `User tried to apply for ${post.opening}`,
+    });}}>Apply Now</Button></Link><br /><br />
                     </ExpansionPanelDetails>
                   </ExpansionPanel>
                 </div>
