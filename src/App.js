@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactGA from 'react-ga';
-import { createBrowserHistory } from 'history';
+import { createMemoryHistory } from 'history';
 import {Route,Redirect} from 'react-router-dom';
 import {Switch} from 'react-router-dom';
 import Home from './views/Home';
@@ -15,7 +15,7 @@ import Download from './components/Download';
 
 const trackingId = "UA-164944336-1"; 
 ReactGA.initialize(trackingId);
-const history = createBrowserHistory();
+const history = createMemoryHistory();
 
 // Initialize google analytics page view tracking
 history.listen(location => {
