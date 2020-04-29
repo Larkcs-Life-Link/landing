@@ -6,9 +6,9 @@ const logoStyle = {
 }
 const titleStyle = {
   fontWeight: "bold",
-  fontSize: "1.25rem",
+  fontSize: "1.6rem",
   marginLeft: 58,
-  marginTop: -55,
+  marginTop: -48,
   cursor: "pointer"
 }
 

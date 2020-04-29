@@ -585,7 +585,8 @@ const Home = () => {
       </div></div></DialogContent>
       </Dialog>
       {/* <Footer data={footer} media={media}/> */}
-          <Button className={classes.hide} style={{width:"100%",bottom:0,position:"fixed",minHeight:55}} color="info" onClick={()=>{window.open(`tel:${about[0].BookingNo}`);}}><Phone/>Call us for booking</Button>
+          <Button className={classes.hide} style={{width:"100%",bottom:0,position:"fixed",minHeight:55, WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
+         boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",}} color="white" onClick={()=>{window.open(`tel:${about[0].BookingNo}`);}}><Phone style={{color:"#4caf50"}}/>Call us for booking</Button>
         </React.Fragment>
     );
       }

@@ -42,7 +42,7 @@ function Header(props) {
         <div className={classes.header}>
             <Typography variant="h6" color="inherit">
             <Link to='/home' style={{textDecoration:"none",color:"#000000"}}><img src={logo} alt="" style={logoStyle} /></Link>
-          <Link to='/home' style={{textDecoration:"none",color:"#000000"}}><p style={titleStyle}>Larkcs<br/><div style={{fontSize:14,marginTop:-5}}>Always with you</div></p></Link>
+          <Link to='/home' style={{textDecoration:"none",color:"#000000"}}><p style={titleStyle}>Larkcs</p></Link>
         </Typography><br />
         <div className={classes.margin}>
                    
