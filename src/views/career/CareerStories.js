@@ -74,7 +74,7 @@ const Career = (props) => {
               <div key={index}>
                 <div className={classes.box}>
                   <div>
-                  {instance.Message ? <div><div><FormatQuote style={{ display: "block", color: "#4CAF50", fontSize: 52, marginLeft: 12 }} /></div>
+                  {instance.Message ? <div><div><FormatQuote style={{ display: "block", color: "#4CAF50", fontSize: 52, marginLeft: "4%" }} /></div>
                     <div style={{ margin: "0 auto", maxWidth: "90%" }}>{instance.Message}</div><br />
                     <Divider style={{ maxWidth: "80%", margin: "0 auto" }} /><br />
                     <div style={{ display: "flex"}}>
@@ -85,7 +85,7 @@ const Career = (props) => {
                       {instance.Name ? <Typography variant="h6" style={{fontSize:16}} className={classes.typography}>
                         {instance.Name}
                       </Typography> : null}
-                      {instance.Subtitle ? <div className={classes.typography}>
+                      {instance.Subtitle ? <div className={classes.typography} style={{fontSize:14}} >
                         {instance.Subtitle}
                       </div> : null}</div></div><br />
                   </div> : null}
