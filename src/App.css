@@ -12,3 +12,28 @@ body {
       "Segoe UI Emoji",
       "Segoe UI Symbol";
   }
+  
+#blue-neon{
+  background-color: #00e5ff !important;
+  height: 1.8px !important;
+  }
+  #green-neon{
+    background-color: #09FBD3 !important;
+    height: 1.8px !important;
+    }
+    #pink-neon{
+      background-color: #FE53BB !important;
+      height: 1.8px !important;
+      }
+      #yellow-neon{
+        background-color: #F5D201 !important;
+        height: 1.8px !important;
+        }
+        #violet-neon{
+          background-color: #7122FA !important;
+          height: 1.8px !important;
+          }
+          #black-neon{
+            background-color: #000000 !important;
+            height: 1.8px !important; 
+          }
