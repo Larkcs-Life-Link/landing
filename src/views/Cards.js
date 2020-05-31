@@ -57,10 +57,10 @@ const Cards = (props) => {
         const handleColor = (index)=>{
             switch(index) {
                 case 0:
-                  return {color:'#00e5ff',backgroundColor:"#f5f5f5"}
+                  return {color:'#00b8d4',backgroundColor:"#f5f5f5"}
                   break;
                   case 1:
-                    return {color:'#09FBD3',backgroundColor:"#f5f5f5"}
+                    return {color:'#fb8c00',backgroundColor:"#f5f5f5"}
                     break;
                     case 2:
                   return {color:'#FE53BB',backgroundColor:"#f5f5f5"}
