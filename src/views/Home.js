@@ -543,27 +543,27 @@ const Home = () => {
           </Button></div></GridItem>
           <GridItem xs={12} sm={12} md={6}>
           <div className={classes.container} style={{textAlign:"center",marginTop:52,maxWidth:450}}>
-        {media[0].Link?<FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{ReactGA.event({
+        {media[0].Link?<FontAwesomeIcon color="#6385A6" icon={faFacebookF} size="2x" onClick={()=>{ReactGA.event({
   category: "Facebook Link",
   action: "User tried to visit facebook page",
 });window.open(media[0].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null} 
-        {media[1].Link?<FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{ReactGA.event({
+        {media[1].Link?<FontAwesomeIcon color="#AF3D83" icon={faInstagram} size="2x" onClick={()=>{ReactGA.event({
   category: "Instagram link",
   action: "User tried to visit instagram page",
 });window.open(media[1].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}               
-        {media[2].Link?<FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{ReactGA.event({
+        {media[2].Link?<FontAwesomeIcon color="#31A940" icon={faWhatsapp} size="2x" onClick={()=>{ReactGA.event({
   category: "Whatsapp",
   action: "User tried to contact on whatsapp",
 });window.open(`https://wa.me/${media[2].Link}`,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
-        {media[3].Link?<FontAwesomeIcon icon={faYoutube} size="2x" onClick={()=>{ReactGA.event({
+        {media[3].Link?<FontAwesomeIcon color="#E83F3A" icon={faYoutube} size="2x" onClick={()=>{ReactGA.event({
   category: "Youtube link",
   action: "User tried to visit youtube channel",
 });window.open(media[3].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
-        {media[4].Link?<FontAwesomeIcon icon={faLinkedinIn} size="2x" onClick={()=>{ReactGA.event({
+        {media[4].Link?<FontAwesomeIcon color="#0678B6" icon={faLinkedinIn} size="2x" onClick={()=>{ReactGA.event({
   category: "Linkedin link",
   action: "User tried to visit linkedin page",
 });window.open(media[4].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
-        {media[5].Link?<FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{ReactGA.event({
+        {media[5].Link?<FontAwesomeIcon color="#37B1E2" icon={faTwitter} size="2x" onClick={()=>{ReactGA.event({
   category: "Twitter Link",
   action: "User tried to visit twitter handle",
 });window.open(media[5].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>:null}
@@ -573,13 +573,13 @@ const Home = () => {
   category: "Mail Id",
   action: "User tried to contact via mail",
 });window.open(`mailto:${media[6].Link}`,'_blank');}}>
-          <FontAwesomeIcon icon={faEnvelope} style={{marginRight:6}}></FontAwesomeIcon>
+          <FontAwesomeIcon color="#D13935" icon={faEnvelope} style={{marginRight:6}}></FontAwesomeIcon>
           support@larkcs.com </GridItem>:null}
           {media[7].Link?<GridItem xs={12} sm={12} md={12} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{ReactGA.event({
   category: "Phone No.",
   action: "User tried to contact on official phone no.",
 });window.open(`tel:${media[7].Link}`,'_blank');}}>
-          <FontAwesomeIcon icon={faPhoneAlt} style={{marginRight:6}}></FontAwesomeIcon>
+          <FontAwesomeIcon color="#31A940" icon={faPhoneAlt} style={{marginRight:6}}></FontAwesomeIcon>
           +918111888892 </GridItem>:null}</GridContainer></Typography><br/>
       </div>
           </GridItem>
@@ -614,27 +614,27 @@ const Home = () => {
             Subscribe
           </Button>
         </DialogActions><DialogContent><div className={classes.follow}><DialogContentText>Follow our channels for more updates:</DialogContentText><div style={{textAlign:"center"}}>
-        <FontAwesomeIcon icon={faFacebookF} size="2x" onClick={()=>{ReactGA.event({
+        <FontAwesomeIcon color="#6385A6" icon={faFacebookF} size="2x" onClick={()=>{ReactGA.event({
   category: "Facebook Link",
   action: "User tried to visit facebook page",
 });window.open(media[0].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faInstagram} size="2x" onClick={()=>{ReactGA.event({
+        <FontAwesomeIcon color="#AF3D83" icon={faInstagram} size="2x" onClick={()=>{ReactGA.event({
   category: "Instagram link",
   action: "User tried to visit instagram page",
 });window.open(media[1].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faWhatsapp} size="2x" onClick={()=>{ReactGA.event({
+        <FontAwesomeIcon color="#31A940" icon={faWhatsapp} size="2x" onClick={()=>{ReactGA.event({
   category: "Whatsapp",
   action: "User tried to contact on whatsapp",
 });window.open(`https://wa.me/${media[2].Link}`,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faYoutube} size="2x" onClick={()=>{ReactGA.event({
+        <FontAwesomeIcon color="#E83F3A" icon={faYoutube} size="2x" onClick={()=>{ReactGA.event({
   category: "Youtube link",
   action: "User tried to visit youtube channel",
 });window.open(media[3].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faLinkedinIn} size="2x" onClick={()=>{ReactGA.event({
+        <FontAwesomeIcon color="#0678B6" icon={faLinkedinIn} size="2x" onClick={()=>{ReactGA.event({
   category: "Linkedin link",
   action: "User tried to visit linkedin page",
 });window.open(media[4].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
-        <FontAwesomeIcon icon={faTwitter} size="2x" onClick={()=>{ReactGA.event({
+        <FontAwesomeIcon color="#37B1E2" icon={faTwitter} size="2x" onClick={()=>{ReactGA.event({
   category: "Twitter Link",
   action: "User tried to visit twitter handle",
 });window.open(media[5].Link,'_blank');}} style={{margin:28,marginBottom:0,cursor:"pointer"}}></FontAwesomeIcon>
