@@ -47,7 +47,8 @@ const useStyles = makeStyles(theme => ({
   },
   typography: {
     textAlign: "left",
-    marginLeft: 12
+    marginLeft: 12,
+    fontWeight: 500
   }
 }))
 const Career = (props) => {
@@ -82,9 +83,9 @@ const Career = (props) => {
                         {instance.Name.charAt(0)}
                       </Avatar>}
                       <div>
-                      {instance.Name ? <Typography variant="h6" style={{fontSize:16}} className={classes.typography}>
+                      {instance.Name ? <div className={classes.typography} style={{fontSize:16}} >
                         {instance.Name}
-                      </Typography> : null}
+                        </div> : null}
                       {instance.Subtitle ? <div className={classes.typography} style={{fontSize:14}} >
                         {instance.Subtitle}
                       </div> : null}</div></div><br />

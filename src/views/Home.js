@@ -458,7 +458,7 @@ const Home = () => {
     </Typography>
     <Link to='/about' style={{textDecoration:"none"}}>
     <Button color="success" style={{margin:32,marginTop: -16}}>Learn More</Button></Link>
-    <Button className={classes.hideScr} style={{margin:32,marginTop: -8}} color="info" onClick={()=>{ReactGA.event({
+    <Button className={classes.hideScr} style={{margin:32,marginTop: -16}} color="info" onClick={()=>{ReactGA.event({
       category: "Call for Booking",
       action: "User tried to book services on call",
     });window.open(`tel:${about[0].BookingNo}`);}}><Phone/>Call us for booking</Button>

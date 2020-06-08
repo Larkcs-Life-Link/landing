@@ -60,7 +60,7 @@ const Cards = (props) => {
             {props.data.map((instance,index)=>{
 
                 return(
-                    <div id={instance.color?instance.color : white} className={classes.box} key={index} style={{margin:"24px"}}>
+                    <div id={instance.color?instance.color : 'white'} className={classes.box} key={index} style={{margin:"24px"}}>
                          {instance.Icon?<div className={classes.icon}><img style={{margin:"0 auto",width: "inherit",height: "inherit"}} src={instance.Icon[0].url}/></div>:null}
       <GridItem><br/>
       <Typography variant="h6" style={{maxWidth:500}} >
