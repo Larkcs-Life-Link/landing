@@ -41,8 +41,8 @@ const useStyles = makeStyles(theme => ({
     outline: "none"
   },
   avatar: {
-    height: 40,
-    width: 40,
+    width: theme.spacing(7),
+    height: theme.spacing(7),
     marginLeft:24
   },
   typography: {
@@ -75,10 +75,10 @@ const Career = (props) => {
                 <div className={classes.box}>
                   <div>
                   {instance.Message ? <div><div><FormatQuote style={{ display: "block", color: "#4CAF50", fontSize: 52, marginLeft: "4%" }} /></div>
-                    <div style={{ margin: "0 auto", maxWidth: "90%" }}>{instance.Message}</div><br />
+                    <br/><div style={{ margin: "0 auto", maxWidth: "90%",lineHeight:2 }}>{instance.Message}</div><br />
                     <Divider style={{ maxWidth: "80%", margin: "0 auto" }} /><br />
                     <div style={{ display: "flex"}}>
-                      {instance.Avatar ? <Avatar size="small" src={instance.Avatar[0].url} aria-label="recipe" className={classes.avatar} /> : <Avatar aria-label="recipe" className={classes.avatar}>
+                      {instance.Avatar ? <Avatar style={{}} src={instance.Avatar[0].url} aria-label="recipe" className={classes.avatar} /> : <Avatar aria-label="recipe" className={classes.avatar}>
                         {instance.Name.charAt(0)}
                       </Avatar>}
                       <div>
