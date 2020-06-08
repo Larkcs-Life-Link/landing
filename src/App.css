@@ -13,27 +13,255 @@ body {
       "Segoe UI Symbol";
   }
   
-#blue-neon{
-  background-color: #00b8d4 !important;
+#white-line{
+  background-color: #ffffff !important;
   height: 1.8px !important;
   }
-  #green-neon{
-    background-color: #fb8c00 !important;
-    height: 1.8px !important;
-    }
-    #pink-neon{
-      background-color: #FE53BB !important;
-      height: 1.8px !important;
-      }
-      #yellow-neon{
-        background-color: #F5D201 !important;
-        height: 1.8px !important;
-        }
-        #violet-neon{
-          background-color: #7122FA !important;
-          height: 1.8px !important;
-          }
-          #black-neon{
-            background-color: #000000 !important;
-            height: 1.8px !important; 
-          }
+          #primary {
+            background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important; }
+          
+          #secondary {
+            background: linear-gradient(87deg, #f7fafc 0, #f7f8fc 100%) !important; }
+          
+          #success {
+            background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important; }
+          
+          #info {
+            background: linear-gradient(87deg, #11cdef 0, #1171ef 100%) !important; }
+          
+          #warning {
+            background: linear-gradient(87deg, #fb6340 0, #fbb140 100%) !important; }
+          
+          #danger {
+            background: linear-gradient(87deg, #f5365c 0, #f56036 100%) !important; }
+          
+          #light {
+            background: linear-gradient(87deg, #adb5bd 0, #adaebd 100%) !important; }
+          
+          #dark {
+            background: linear-gradient(87deg, #212529 0, #212229 100%) !important; }
+          
+          #default {
+            background: linear-gradient(87deg, #172b4d 0, #1a174d 100%) !important; }
+          
+          #white {
+            background: linear-gradient(87deg, #fff 0, white 100%) !important; }
+          
+          #neutral {
+            background: linear-gradient(87deg, #fff 0, white 100%) !important; }
+          
+          #darker {
+            background: linear-gradient(87deg, black 0, black 100%) !important; }
+          
+          #blue {
+            background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important; }
+          
+          #indigo {
+            background: linear-gradient(87deg, #5603ad 0, #9d03ad 100%) !important; }
+          
+          #purple {
+            background: linear-gradient(87deg, #8965e0 0, #bc65e0 100%) !important; }
+          
+          #pink {
+            background: linear-gradient(87deg, #f3a4b5 0, #f3b4a4 100%) !important; }
+          
+          #red {
+            background: linear-gradient(87deg, #f5365c 0, #f56036 100%) !important; }
+          
+          #orange {
+            background: linear-gradient(87deg, #fb6340 0, #fbb140 100%) !important; }
+          
+          #yellow {
+            background: linear-gradient(87deg, #ffd600 0, #beff00 100%) !important; }
+          
+          #green {
+            background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important; }
+          
+          #teal {
+            background: linear-gradient(87deg, #11cdef 0, #1171ef 100%) !important; }
+          
+          #cyan {
+            background: linear-gradient(87deg, #2bffc6 0, #2be0ff 100%) !important; }
+          
+          #white {
+            background: linear-gradient(87deg, #fff 0, white 100%) !important; }
+          
+          #gray {
+            background: linear-gradient(87deg, #8898aa 0, #888aaa 100%) !important; }
+          
+          #gray-dark {
+            background: linear-gradient(87deg, #32325d 0, #44325d 100%) !important; }
+          
+          #light {
+            background: linear-gradient(87deg, #ced4da 0, #cecfda 100%) !important; }
+          
+          #lighter {
+            background: linear-gradient(87deg, #e9ecef 0, #e9eaef 100%) !important; }
+           #primary {
+            background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important; }
+          
+          #secondary {
+            background: linear-gradient(87deg, #f7fafc 0, #f7f8fc 100%) !important; }
+          
+          #success {
+            background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important; }
+          
+          #info {
+            background: linear-gradient(87deg, #11cdef 0, #1171ef 100%) !important; }
+          
+          #warning {
+            background: linear-gradient(87deg, #fb6340 0, #fbb140 100%) !important; }
+          
+          #danger {
+            background: linear-gradient(87deg, #f5365c 0, #f56036 100%) !important; }
+          
+          #light {
+            background: linear-gradient(87deg, #adb5bd 0, #adaebd 100%) !important; }
+          
+          #dark {
+            background: linear-gradient(87deg, #212529 0, #212229 100%) !important; }
+          
+          #default {
+            background: linear-gradient(87deg, #172b4d 0, #1a174d 100%) !important; }
+          
+          #white {
+            background: linear-gradient(87deg, #fff 0, white 100%) !important; }
+          
+          #neutral {
+            background: linear-gradient(87deg, #fff 0, white 100%) !important; }
+          
+          #darker {
+            background: linear-gradient(87deg, black 0, black 100%) !important; }
+          
+          #blue {
+            background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important; }
+          
+          #indigo {
+            background: linear-gradient(87deg, #5603ad 0, #9d03ad 100%) !important; }
+          
+          #purple {
+            background: linear-gradient(87deg, #8965e0 0, #bc65e0 100%) !important; }
+          
+          #pink {
+            background: linear-gradient(87deg, #f3a4b5 0, #f3b4a4 100%) !important; }
+          
+          #red {
+            background: linear-gradient(87deg, #f5365c 0, #f56036 100%) !important; }
+          
+          #orange {
+            background: linear-gradient(87deg, #fb6340 0, #fbb140 100%) !important; }
+          
+          #yellow {
+            background: linear-gradient(87deg, #ffd600 0, #beff00 100%) !important; }
+          
+          #green {
+            background: linear-gradient(87deg, #2dce89 0, #2dcecc 100%) !important; }
+          
+          #teal {
+            background: linear-gradient(87deg, #11cdef 0, #1171ef 100%) !important; }
+          
+          #cyan {
+            background: linear-gradient(87deg, #2bffc6 0, #2be0ff 100%) !important; }
+          
+          #white {
+            background: linear-gradient(87deg, #fff 0, white 100%) !important; }
+          
+          #gray {
+            background: linear-gradient(87deg, #8898aa 0, #888aaa 100%) !important; }
+          
+          #gray-dark {
+            background: linear-gradient(87deg, #32325d 0, #44325d 100%) !important; }
+          
+          #light {
+            background: linear-gradient(87deg, #ced4da 0, #cecfda 100%) !important; }
+          
+          #lighter {
+            background: linear-gradient(87deg, #e9ecef 0, #e9eaef 100%) !important; }
+          
+
+
+
+
+            #primary-text {
+              color: #5e72e4 !important; }
+            
+            #secondary-text  {
+              color:  #f7fafc }
+            
+            #success-text  {
+              color:  #2dce89 !important; }
+            
+            #info-text  {
+              color: #11cdef !important; }
+            
+            #warning-text  {
+              color: #fb6340 !important; }
+            
+            #danger-text  {
+              color: #f5365c !important; }
+            
+            #light-text  {
+              color:  #adb5bd  !important; }
+            
+            #dark-text  {
+              color:  #212529  !important; }
+            
+            #default-text  {
+              color:  #172b4d !important; }
+            
+            #white-text  {
+              color:  #fff  !important; }
+            
+            #neutral-text  {
+              color:  #fff !important; }
+            
+            #darker-text  {
+              color:  black  !important; }
+            
+            #blue-text  {
+              color:  #5e72e4 !important; }
+            
+            #indigo-text  {
+              color:  #5603ad  !important; }
+            
+            #purple-text  {
+              color:  #8965e0 !important; }
+            
+            #pink-text  {
+              color:  #f3a4b5  !important; }
+            
+            #red-text  {
+              color: #f5365c !important; }
+            
+            #orange-text  {
+              color: #fb6340  !important; }
+            
+            #yellow-text  {
+              color: #ffd600 !important; }
+            
+            #green-text  {
+              color: #2dce89 !important; }
+            
+            #teal-text  {
+              color: #11cdef !important; }
+            
+            #cyan-text  {
+              color: #2bffc6 !important; }
+            
+            #white-text  {
+              color:#fff !important; }
+            
+            #gray-text  {
+              color: #8898aa !important; }
+            
+            #gray-dark-text  {
+              color: #32325d !important; }
+            
+            #light-text  {
+              color: #ced4da !important; }
+            
+            #lighter-text  {
+              color:  #e9ecef !important; }
+            #black-text  {
+                color:  #000000 !important; }
+            

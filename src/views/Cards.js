@@ -6,7 +6,6 @@ import GridContainer from '../components/Grid/GridContainer';
 import GridItem from '../components/Grid/GridItem';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '../components/Button';
-import FlatButton from '@material-ui/core/Button';
 const useStyles = makeStyles(theme => ({
       box: {
           padding: 24,
@@ -54,27 +53,6 @@ const Cards = (props) => {
                 return 'black-neon'
           }
         }
-        const handleColor = (index)=>{
-            switch(index) {
-                case 0:
-                  return {color:'#00b8d4',backgroundColor:"#f5f5f5"}
-                  break;
-                  case 1:
-                    return {color:'#fb8c00',backgroundColor:"#f5f5f5"}
-                    break;
-                    case 2:
-                  return {color:'#FE53BB',backgroundColor:"#f5f5f5"}
-                  break;
-                  case 3:
-                  return {color:'#F5D201',backgroundColor:"#f5f5f5"}
-                  break;
-                  case 4:
-                  return {color:'#7122FA',backgroundColor:"#f5f5f5"}
-                  break;
-                default:
-                    return {color:'green',backgroundColor:"#f5f5f5"}
-              }
-            }
     const classes = useStyles();
     return (
         <div>
@@ -82,18 +60,18 @@ const Cards = (props) => {
             {props.data.map((instance,index)=>{
 
                 return(
-                    <div className={classes.box} key={index} style={{margin:"24px"}}>
+                    <div id={instance.color?instance.color : white} className={classes.box} key={index} style={{margin:"24px"}}>
                          {instance.Icon?<div className={classes.icon}><img style={{margin:"0 auto",width: "inherit",height: "inherit"}} src={instance.Icon[0].url}/></div>:null}
       <GridItem><br/>
       <Typography variant="h6" style={{maxWidth:500}} >
-         {instance.Title?<div style={{fontFamily: "Georgia",fontWeight: "bold"}}>
+         {instance.Title?<div id={instance.titleColor} style={{fontFamily: "Georgia",fontWeight: "bold"}}>
          {instance.Title}</div>:null}
     </Typography><br/>
-    <Divider id={handleClassName(index)}/><br/>
-        {instance.Content?<Typography variant="h6" style={{fontSize:16,width:"fit-content"}}>
+    <Divider id={instance.buttonColor}/><br/>
+        {instance.Content?<Typography id={instance.textColor}  variant="h6" style={{fontSize:16,width:"fit-content"}}>
            {instance.Content}
         </Typography>:null}<br/>
-        <Link to="/services" style={{textDecoration:"none"}}><FlatButton style={handleColor(index)}>Learn More</FlatButton></Link>
+        <Link to="/services" style={{textDecoration:"none"}}><Button id={instance.buttonColor}>Learn More</Button></Link>
         </GridItem></div>
                 )
             })}
