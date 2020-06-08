@@ -48,7 +48,8 @@ const useStyles = makeStyles(theme => ({
   typography: {
     textAlign: "left",
     marginLeft: 12,
-    fontWeight: 500
+    fontWeight: 500,
+    marginBottom: 8
   }
 }))
 const Career = (props) => {
