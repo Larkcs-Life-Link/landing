@@ -573,7 +573,7 @@ const Home = () => {
   category: "Mail Id",
   action: "User tried to contact via mail",
 });window.open(`mailto:${media[6].Link}`,'_blank');}}>
-          <FontAwesomeIcon color="#D13935" icon={faEnvelope} style={{marginRight:6}}></FontAwesomeIcon>
+          <FontAwesomeIcon color="#31A940" icon={faEnvelope} style={{marginRight:6}}></FontAwesomeIcon>
           support@larkcs.com </GridItem>:null}
           {media[7].Link?<GridItem xs={12} sm={12} md={12} style={{cursor:"pointer",marginBottom:24}} onClick={()=>{ReactGA.event({
   category: "Phone No.",

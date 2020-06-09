@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
           padding: 24,
         maxWidth:"320px",
         minHeight: 350,
-        height: "fit-content",
+        height: "auto",
         marginBottom: "52px !important",
         border: "1px solid #ffffff",
         WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.14)",
@@ -56,11 +56,11 @@ const Cards = (props) => {
     const classes = useStyles();
     return (
         <div>
-    <GridContainer style={{justifyContent: "center"}}>
+    <GridContainer style={{justifyContent: "space-evenly",maxWidth:1300}}>
             {props.data.map((instance,index)=>{
 
                 return(
-                    <div id={instance.color?instance.color : 'white'} className={classes.box} key={index} style={{margin:"24px"}}>
+                    <div id={instance.color?instance.color : 'white'} className={classes.box} key={index} style={{margin:"32px"}}>
                          {instance.Icon?<div className={classes.icon}><img style={{margin:"0 auto",width: "inherit",height: "inherit"}} src={instance.Icon[0].url}/></div>:null}
       <GridItem><br/>
       <Typography variant="h6" style={{maxWidth:500}} >

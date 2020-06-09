@@ -23,7 +23,8 @@ const useStyles = makeStyles(theme => ({
     paddingTop: 35,
     paddingLeft: 12,
     paddingRight: 12,
-    backgroundColor: "#FFFFFF",
+    background: "#373d42",
+    color: "white",
     margin: "0 auto",
     marginBottom: 82,
     borderRadius: 12,
@@ -74,20 +75,20 @@ const Career = (props) => {
           props.data.map((instance, index) => {
             return (
               <div key={index}>
-                <div className={classes.box}>
+                <div id={instance.boxColor} className={classes.box}>
                   <div>
-                  {instance.Message ? <div><div><FormatQuote style={{ display: "block", color: "#4CAF50", fontSize: 52, marginLeft: "4%" }} /></div>
-                    <br/><div style={{ margin: "0 auto", maxWidth: "90%",lineHeight:2 }}>{instance.Message}</div><br />
+                  {instance.Message ? <div><div><FormatQuote id={instance.iconColor} style={{ display: "block", fontSize: instance.iconSize, margin:"0 auto" }} /></div>
+                    <br/><div style={{ margin: "0 auto", maxWidth: "90%",lineHeight:2,fontSize: instance.messageSize }}>{instance.Message}</div><br />
                     <Divider style={{ maxWidth: "80%", margin: "0 auto" }} /><br />
                     <div style={{ display: "flex"}}>
                       {instance.Avatar ? <Avatar style={{}} src={instance.Avatar[0].url} aria-label="recipe" className={classes.avatar} /> : <Avatar aria-label="recipe" className={classes.avatar}>
                         {instance.Name.charAt(0)}
                       </Avatar>}
                       <div>
-                      {instance.Name ? <div className={classes.typography} style={{fontSize:16}} >
+                      {instance.Name ? <div className={classes.typography} style={{fontSize: instance.authorSize}} >
                         {instance.Name}
                         </div> : null}
-                      {instance.Subtitle ? <div className={classes.typography} style={{fontSize:14}} >
+                      {instance.Subtitle ? <div className={classes.typography} style={{fontSize: instance.subtitleSize}} >
                         {instance.Subtitle}
                       </div> : null}</div></div><br />
                   </div> : null}
