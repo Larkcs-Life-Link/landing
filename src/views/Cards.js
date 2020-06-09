@@ -63,12 +63,12 @@ const Cards = (props) => {
                     <div id={instance.color?instance.color : 'white'} className={classes.box} key={index} style={{margin:"32px"}}>
                          {instance.Icon?<div className={classes.icon}><img style={{margin:"0 auto",width: "inherit",height: "inherit"}} src={instance.Icon[0].url}/></div>:null}
       <GridItem><br/>
-      <Typography variant="h6" style={{maxWidth:500}} >
+      <Typography variant="h6" style={{maxWidth:500,fontSize:instance.titleSize}} >
          {instance.Title?<div id={instance.titleColor} style={{fontFamily: "Georgia",fontWeight: "bold"}}>
          {instance.Title}</div>:null}
     </Typography><br/>
     <Divider id={instance.buttonColor}/><br/>
-        {instance.Content?<Typography id={instance.textColor}  variant="h6" style={{fontSize:16,width:"fit-content"}}>
+        {instance.Content?<Typography id={instance.textColor}  variant="h6" style={{fontSize:instance.textSize,width:"fit-content"}}>
            {instance.Content}
         </Typography>:null}<br/>
         <Link to="/services" style={{textDecoration:"none"}}><Button id={instance.buttonColor}>Learn More</Button></Link>
