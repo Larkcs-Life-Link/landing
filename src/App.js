@@ -33,7 +33,6 @@ const App = () => (
     <Route history={history} path="/about" component={About}/>
     <Route history={history} path="/team" component={Founders}/>
     <Route history={history} path="/download" component={Download}/>
-    <Route history={history} path="/terms&conditions" component={Terms}/>
     <Route history={history} path='/blog' component={() => { 
      window.location.href = 'https://blog.larkcs.com'; 
      return null;
