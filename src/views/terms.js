@@ -20,8 +20,6 @@ import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import PermMedia from '@material-ui/icons/PermMedia';
 import Home from '@material-ui/icons/Home';
 import Work from '@material-ui/icons/Work';
-import { Document, Page } from 'react-pdf';
-import Pagination from '@material-ui/lab/Pagination';
 import { Translate } from '@material-ui/icons';
 
 const useStyles = makeStyles(theme => ({
@@ -90,10 +88,6 @@ const Terms = (props) => {
       function handleClose() {
         setAnchorEl(null);
       }
-    const onDocumentLoadSuccess = ({ numPages }) => {
-      setpdfLoading(false)
-      setnumPages(numPages)
-    }
     const handleChange = (event, value) => {
       setpageNumber(value);
     };
@@ -101,9 +95,6 @@ const Terms = (props) => {
       const open = Boolean(anchorEl);
       const id = open ? 'simple-popover' : undefined;
       const [loading, setLoading] = React.useState(true);
-      const [pdfloading, setpdfLoading] = React.useState(true);
-      const [numPages,setnumPages] = React.useState(null);
-      const [pageNumber,setpageNumber] = React.useState(1);
       const [services, setServices] = React.useState([]);
     const classes = useStyles();
     if (loading===true){
@@ -116,18 +107,6 @@ const Terms = (props) => {
   fontWeight: "bold",
   fontSize: 24}} variant="h6">Terms and conditions</Typography><br/>
                      <div style={container}>
-        <Document
-          loading = {<div style={{minHeight:600,maxWidth:100,margin:"0 auto",paddingTop:80}}><CircularProgress/></div>}
-          className="doc"
-          file={services[0].Attachments[0].url}
-          onLoadSuccess={onDocumentLoadSuccess}
-        >
-          <Page scale={1.6} className="page" renderMode="canvas" pageNumber={pageNumber} />
-        </Document>
-        {pdfloading?null:<>
-        <div className={classes.root}>
-        <Pagination count={numPages} size="small"  variant="outlined" color="primary" style={{maxWidth:255,transform:"translate(0, -40px)" ,margin:"0 auto"}} page={pageNumber} onChange={handleChange} />
-        </div></>}
         </div>
       <Popover
             classes={{
