@@ -10,7 +10,7 @@ import  Gallery from './views/Gallery';
 import  Services from './views/Services';
 import  About from './views/About';
 import  Founders from './views/Founders';
-import  Terms from './views/Terms';
+import  Terms from './views/terms';
 import './App.css';
 import Download from './components/Download';
 
