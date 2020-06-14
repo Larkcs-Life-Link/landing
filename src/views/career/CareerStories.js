@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     alignItems: "center",
     width: "40%",
     marginTop: 42,
-    minHeight: 400,
+    minHeight: 500,
     textDecoration: "none",
     paddingTop: 35,
     paddingLeft: 12,
@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: "pre-wrap",
     "@media only screen and (max-width: 600px)": {
       width: "80%",
-      minHeight: 500,
+      minHeight: 720,
     }
   },
   slider: {

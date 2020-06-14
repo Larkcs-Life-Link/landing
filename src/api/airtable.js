@@ -19,6 +19,7 @@ const galleryBase = 'app7wMsarA1tUHbfF';
 const applicationBase = 'appCAjLMcjxpSwPgu';
 const careerBase = 'app27ibjc251l39Tr';
 const subscriptionBase = 'appR7l5019NaU8wRU';
+const termBase = 'appNY7VCbpn1STZlH';
 sgMail.setApiKey('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');
 var homeList = new Airtable({apiKey: homeAPI}).base(homeBase)
 var aboutList = new Airtable({apiKey: homeAPI}).base(aboutBase)
@@ -29,7 +30,7 @@ var galleryList = new Airtable({apiKey: homeAPI}).base(galleryBase);
 var careerList = new Airtable({apiKey: homeAPI}).base(careerBase);
 var applications = new Airtable({apiKey: careerAPI}).base(applicationBase);
 var Subscriptions = new Airtable({apiKey: homeAPI}).base(subscriptionBase);
-
+var termsList = new Airtable({apiKey: homeAPI}).base(termBase);
 router.get('/loadHeaders',(req,res)=>{
   homeList('Headers').select({
     view: "Grid view"
@@ -168,7 +169,19 @@ router.get('/loadFooter',(req,res)=>{
 });
 FooterData = [];
 })
-
+router.get('/loadTerms',(req,res)=>{
+  termsList('Terms').select({
+    view: "Grid view"
+}).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function(record) {
+      TermData = TermData.concat(record.fields)
+    });
+    res.json(TermData)
+}, function done(err) {
+    if (err) { console.error(err); return; }
+});
+TermData = [];
+})
 
 router.get('/loadImages',(req,res)=>{
   galleryList('Gallery').select({
