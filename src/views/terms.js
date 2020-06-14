@@ -1,9 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
-import GridContainer from '../components/Grid/GridContainer';
-import GridItem from '../components/Grid/GridItem';
 import Typography from '@material-ui/core/Typography';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
@@ -20,7 +17,6 @@ import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import PermMedia from '@material-ui/icons/PermMedia';
 import Home from '@material-ui/icons/Home';
 import Work from '@material-ui/icons/Work';
-import { Translate } from '@material-ui/icons';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -88,9 +84,6 @@ const Terms = (props) => {
       function handleClose() {
         setAnchorEl(null);
       }
-    const handleChange = (event, value) => {
-      setpageNumber(value);
-    };
       const [anchorEl, setAnchorEl] = React.useState(null);
       const open = Boolean(anchorEl);
       const id = open ? 'simple-popover' : undefined;
