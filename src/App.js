@@ -18,6 +18,7 @@ const trackingId = "UA-164944336-1";
 ReactGA.initialize(trackingId);
 const history = createMemoryHistory();
 
+
 // Initialize google analytics page view tracking
 history.listen(location => {
   ReactGA.set({ page: location.pathname }); // Update the user's current page
