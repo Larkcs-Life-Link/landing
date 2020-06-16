@@ -458,7 +458,7 @@ const Home = () => {
     </Typography>
     <Link to='/about' style={{textDecoration:"none"}}>
     <Button color="success" style={{margin:32,marginTop: -16}}>Learn More</Button></Link>
-    <Button className={classes.hideScr} style={{margin:32,marginTop: -16,zIndex:2}} color="info" onClick={()=>{ReactGA.event({
+    <Button className={classes.hideScr} style={{margin:32,marginTop: -16}} color="info" onClick={()=>{ReactGA.event({
       category: "Call for Booking",
       action: "User tried to book services on call",
     });window.open(`tel:${about[0].BookingNo}`);}}><Phone/>Call us for booking</Button>
@@ -582,6 +582,7 @@ const Home = () => {
           <FontAwesomeIcon color="#31A940" icon={faPhoneAlt} style={{marginRight:6}}></FontAwesomeIcon>
           +918111888892 </GridItem>:null}</GridContainer></Typography><br/>
       </div>
+      
           </GridItem>
           </GridContainer>
         <br/><br/>
@@ -643,9 +644,9 @@ const Home = () => {
       </div></div></DialogContent>
       </Dialog>
       {/* <Footer data={footer} media={media}/> */}
-          <Button className={classes.hide} style={{width:"100%",zIndex:2,margin:"0px",bottom:0,position:"fixed",minHeight:55, WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
+          <Button className={classes.hide} style={{width:"100%",margin:"0px",bottom:0,position:"fixed",minHeight:55, WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
          boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",}} color="success" onClick={()=>{window.open(`tel:${about[0].BookingNo}`);}}><Phone/>Call us for booking</Button>
-        <Footer data={footer}/></React.Fragment>
+        </React.Fragment>
     );
       }
 };
