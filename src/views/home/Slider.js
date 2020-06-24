@@ -20,8 +20,8 @@ const useStyles = makeStyles(theme => ({
     marginBottom:82,
     borderRadius: 12,
     border: "1px solid #FFFFFF",
-      WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
-    boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+      WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.14)",
+    boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
     whiteSpace:"pre-wrap",
     "@media only screen and (max-width: 600px)": {
       width:"90% !important"

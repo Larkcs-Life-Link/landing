@@ -16,8 +16,8 @@ const container = {
   width:"90%",
   margin:"0 auto",
   borderRadius:12,
-  WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
-  boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+  WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.24)",
+  boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.24)",
   marginBottom: 42
 }
 const box = {
@@ -26,8 +26,8 @@ const box = {
   margin: "0 auto",
   marginBottom:42,
     border: "1px solid #ffffff",
-    WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
-  boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+    WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
+  boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
   borderRadius: 12
 }
 const headerStyle = {
@@ -52,8 +52,8 @@ const embed = {
   display:"inline-block",
   border: "1rem solid #fff",
   borderRadius: "20px",
-  "-webkit-box-shadow": "10px 10px 21px 20px rgba(136,136,136,0.05)",
-  boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+  "-webkit-box-shadow": "20px 20px 31px 30px rgba(136,136,136,0.24)",
+  boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
   margin: "1rem"
 }
 const description = {

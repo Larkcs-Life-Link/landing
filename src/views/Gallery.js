@@ -40,8 +40,8 @@ const useStyles = makeStyles(theme => ({
     paper: {
       padding: theme.spacing(2),
       width: 200,
-      WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
-       boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+      WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
+       boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
     },
     containedImages: {
         maxHeight: 280,
