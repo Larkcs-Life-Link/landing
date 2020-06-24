@@ -67,6 +67,14 @@ const useStyles = makeStyles(theme => ({
       boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.24)",
       marginBottom: 42
 },
+mainContainer: {
+  width:"90%",
+  margin:"0 auto",
+  borderRadius:12,
+  WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+  boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+  marginBottom: 42
+},
     box: {
       maxHeight: 250,
       maxWidth: 450,
@@ -447,7 +455,7 @@ const Home = () => {
             Download App</Button><br/>
             </List>
       </Popover><br/><br/><br/>
-      <div className={classes.container}>
+      <div className={classes.mainContainer}>
     <br/><Typography variant="h6" style={{maxWidth:500,margin:32}} ref={myRef}>
       <p style={{fontFamily: "Georgia",fontWeight: "bold"}}><VerifiedUser style={{color:"#39802D",marginRight:12}} />{about[0].Title}</p>
     </Typography>
