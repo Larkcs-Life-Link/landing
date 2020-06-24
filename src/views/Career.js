@@ -42,8 +42,8 @@ const useStyles = makeStyles(theme => ({
     margin: "0 auto !important",
     marginBottom: "52px !important",
     border: "1px solid #ffffff",
-    WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.14)",
-    boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.14)",
+    WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+    boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
     borderRadius: 12,
     "@media only screen and (max-width: 600px)": {
       width: "90%",
@@ -55,8 +55,8 @@ const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
     width: 200,
-    WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
-     boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
+    WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+     boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
   },
   button: {
     textDecoration: "none"

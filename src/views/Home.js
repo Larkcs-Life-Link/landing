@@ -63,8 +63,8 @@ const useStyles = makeStyles(theme => ({
       width:"90%",
       margin:"0 auto",
       borderRadius:12,
-      WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.24)",
-      boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.24)",
+      WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+      boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
       marginBottom: 42
 },
 mainContainer: {
@@ -73,7 +73,10 @@ mainContainer: {
   borderRadius:12,
   WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
   boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
-  marginBottom: 42
+  marginBottom: 42,
+  "@media only screen and (max-width: 600px)": {
+    width:"100%",
+  },
 },
     box: {
       maxHeight: 250,
@@ -81,16 +84,16 @@ mainContainer: {
       "@media only screen and (min-width: 600px)": {
         margin:32,
         border: "1px solid #ffffff",
-        WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
-      boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
+        WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+      boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
       borderRadius: 12
       }
     },
       paper: {
         padding: theme.spacing(2),
         width: 200,
-        WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
-         boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
+        WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+         boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
       },
       logo: {
         height:150,
@@ -113,8 +116,8 @@ mainContainer: {
         margin:32,
         border: "10px solid #ffffff",
         borderRadius: 12,
-        WebkitBoxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
-         boxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
+        WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+         boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
         },
         "@media only screen and (max-width: 600px)": {
         width:"95%",
@@ -122,8 +125,8 @@ mainContainer: {
         margin:"0 auto",
         border: "10px solid #ffffff",
         borderRadius: 12,
-        WebkitBoxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
-         boxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
+        WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+         boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
         },
       },
       hide: {
@@ -175,8 +178,8 @@ const style={
     }
   },
     pop: {
-         WebkitBoxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
-         boxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
+         WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+         boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
     }
 }
 
@@ -525,8 +528,8 @@ const Home = () => {
         margin:24,
         border: "10px solid #ffffff",
         borderRadius: 12,
-        WebkitBoxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
-         boxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
+        WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+         boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
         }}>
           {contact.map((field,index)=>{
             return (
@@ -652,8 +655,8 @@ const Home = () => {
       </div></div></DialogContent>
       </Dialog>
       {/* <Footer data={footer} media={media}/> */}
-          <Button className={classes.hide} style={{width:"100%",margin:"0px",bottom:0,position:"fixed",minHeight:55, WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
-         boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",}} color="success" onClick={()=>{window.open(`tel:${about[0].BookingNo}`);}}><Phone/>Call us for booking</Button>
+          <Button className={classes.hide} style={{width:"100%",margin:"0px",bottom:0,position:"fixed",minHeight:55, WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+         boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",}} color="success" onClick={()=>{window.open(`tel:${about[0].BookingNo}`);}}><Phone/>Call us for booking</Button>
         </React.Fragment>
     );
       }

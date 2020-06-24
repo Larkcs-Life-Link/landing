@@ -37,8 +37,8 @@ const useStyles = makeStyles(theme => ({
       paper: {
         padding: theme.spacing(2),
         width: 200,
-        WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
-         boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
+        WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+         boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
       },
       box: {
         maxHeight: 250,
@@ -46,8 +46,8 @@ const useStyles = makeStyles(theme => ({
         "@media only screen and (min-width: 600px)": {
           margin:32,
           border: "1px solid #ffffff",
-          WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
-        boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
+          WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+        boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
         borderRadius: 12
         }
       }

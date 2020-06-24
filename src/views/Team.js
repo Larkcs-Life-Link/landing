@@ -13,8 +13,8 @@ const useStyles = makeStyles(theme => ({
         height: 150,
         border: "4px solid #ffffff",
         borderRadius: "50%",
-        WebkitBoxShadow: "10px 10px 11px 8px rgba(136,136,136,0.24)",
-        boxShadow: "10px 10px 11px 8px rgba(136,136,136,0.24)",
+        WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
+        boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
       },
       container: {
           margin:32,
