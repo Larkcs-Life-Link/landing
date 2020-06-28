@@ -1,6 +1,7 @@
 import React, {useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Slider from "react-slick";
+import Placeholder from "../../assets/images/placeholder.gif";
 import ChevronLeft from '@material-ui/icons/ArrowBack';
 import ChevronRight from '@material-ui/icons/ArrowForward';
 import "slick-carousel/slick/slick.css";
@@ -64,7 +65,7 @@ const HeaderSlider = (props) => {
                     return(
                       <div key={index}>
                     <div className={classes.box}>
-                        <img style={{width:"100%",maxHeight: 500,}} src={headers.Attachments[0].url} alt=""/>
+                        <img style={{width:"100%",maxHeight: 500,}} src={headers.Attachments[0].url} alt={Placeholder}/>
                    </div>
                     </div>
                      )
