@@ -15,23 +15,16 @@ const useStyles = makeStyles(theme => ({
         margin: "0 auto",
         marginBottom: 0,
         paddingBottom: 40,
-        marginTop: 42,
-        WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.24)",
-        boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.24)",
+        marginTop: 80,
+        WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.10)",
+        boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.10)",
     },
 }));
 
 const Statistics = (props) => {
-    useEffect(() => {
-        axios.get('/api/sync/loadMediaLinks')
-            .then((response) => {
-                console.log(response.data)
-                setMedia(response.data);
-            })
-    }, []);
     const classes = useStyles();
 
-    const [media, setMedia] = React.useState([]);
+    const media = props.data;
     if (media.length > 0) {
         return (<div className={classes.container}><GridContainer style={{ marginLeft: 24, padding: 33 }}>
             <GridItem xs="12" sm="6" md="6">

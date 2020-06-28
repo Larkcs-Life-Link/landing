@@ -20,6 +20,7 @@ import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import PermMedia from '@material-ui/icons/PermMedia';
 import Home from '@material-ui/icons/Home';
 import Work from '@material-ui/icons/Work';
+import Footer from './home/Footer';
 
 const useStyles = makeStyles(theme => ({
     image: {
@@ -69,6 +70,11 @@ const Services = () => {
             .then( (response)=> {
               console.log(response.data)
               setTeam(response.data);
+            }),
+            axios.get('/api/sync/loadMediaLinks')
+            .then((response) => {
+                console.log(response.data)
+                setMedia(response.data);
             })
         ])
         .then(axios.spread(function () {
@@ -87,6 +93,7 @@ const Services = () => {
       const id = open ? 'simple-popover' : undefined;
       const [loading, setLoading] = React.useState(true);
       const [team, setTeam] = React.useState([]);
+      const [media, setMedia] = React.useState([]);
     const classes = useStyles();
     if (loading===true){
       return(<React.Fragment><Helmet>
@@ -168,6 +175,7 @@ const Services = () => {
         <ListItemText primary="Career" />
       </ListItem></Link></List>
       </Popover>
+      <Footer data={media}/>
         </React.Fragment>
     );
     }

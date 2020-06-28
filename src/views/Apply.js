@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
-import logo from '../assets/images/logo.png';
 import remote from '../assets/images/remote-team.svg';
 import Typography from '@material-ui/core/Typography';
 import {logoStyle,titleStyle,box} from "../assets/landingStyle";
@@ -10,21 +8,33 @@ import Form from '../components/Form';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import axios from 'axios';
 import Header from '../components/Header';
+import Footer from './home/Footer';
 
 const Apply = (props) => {
 const path = props.location.pathname?props.location.pathname.slice(6).replace(/\//g,""):"";
 useEffect(() => {
   let array = [];
+  
+  axios.all([
    axios.post('/api/sync/loadApplicationDetails',{url:path}).then((response)=>{
      setTitle(response.data[0].opening);
      setmailContent(response.data[0].mailContent)
       axios.post('/api/sync/loadFieldDetails',{values:response.data[0].Fields}).then((res)=>{
         setData(res.data);
-        setLoading(false)
      })
-    })
+    }),
+    axios.get('/api/sync/loadMediaLinks')
+            .then((response) => {
+                console.log(response.data)
+                setMedia(response.data);
+            })
+  ])
+  .then(axios.spread(function () {
+   setLoading(false)
+  }))
 }, []);
 const [data, setData] = React.useState([]);
+const [media, setMedia] = React.useState([]);
 const [title, setTitle] = React.useState("");
 const [mailContent, setmailContent] = React.useState("");
 const [loading, setLoading] = React.useState(true);
@@ -43,6 +53,7 @@ if (loading===true){
   </GridItem></GridContainer>
                 
   </div>
+  <Footer data={media}/>
   </React.Fragment>
 )
   }

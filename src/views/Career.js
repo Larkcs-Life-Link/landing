@@ -29,6 +29,7 @@ import PermMedia from '@material-ui/icons/PermMedia';
 import Home from '@material-ui/icons/Home';
 import Group from '@material-ui/icons/Group';
 import MenuBook from '@material-ui/icons/MenuBook';
+import Footer from './home/Footer';
 
 const scrollToRef = (ref) => window.scrollTo({
   top: ref.current.offsetTop,
@@ -85,6 +86,11 @@ const Career = () => {
       axios.get('/api/sync/loadDescription')
            .then((response) => {
             setDescription(response.data)
+           }),
+           axios.get('/api/sync/loadMediaLinks')
+           .then((response) => {
+               console.log(response.data)
+               setMedia(response.data);
            })
     ])
     .then(axios.spread(function () {
@@ -104,6 +110,7 @@ const Career = () => {
   const [postings, setPostings] = React.useState([]);
   const [stories, setStories] = React.useState([]);
   const [description, setDescription] = React.useState([]);
+  const [media, setMedia] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const classes = useStyles();
   if (loading === true) {
@@ -252,6 +259,7 @@ const Career = () => {
         <ListItemText primary="Our Team" />
       </ListItem></Link></List>
       </Popover>
+      <Footer data={media}/>
       </div>)
   }
 };

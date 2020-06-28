@@ -231,6 +231,11 @@ const Home = () => {
     .then( (response)=> {
       console.log(response.data)
       setImages(response.data);
+    }),
+    axios.get('/api/sync/loadMediaLinks')
+    .then((response) => {
+        console.log(response.data)
+        setMedia(response.data);
     })
     ])
     .then(axios.spread(function () {
@@ -647,7 +652,7 @@ const Home = () => {
       </Typography><br/>
       </div></div></DialogContent>
       </Dialog>
-      <Footer/>
+      <Footer data={media}/>
           <Button className={classes.hide} style={{width:"100%",margin:"0px",bottom:0,position:"fixed",minHeight:55, WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
          boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",}} color="success" onClick={()=>{window.open(`tel:${about[0].BookingNo}`);}}><Phone/>Call us for booking</Button>
         </React.Fragment>

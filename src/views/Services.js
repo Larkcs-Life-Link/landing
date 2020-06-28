@@ -19,6 +19,7 @@ import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import PermMedia from '@material-ui/icons/PermMedia';
 import Home from '@material-ui/icons/Home';
 import Work from '@material-ui/icons/Work';
+import Footer from './home/Footer';
 
 const useStyles = makeStyles(theme => ({
     image: {
@@ -63,12 +64,22 @@ const style={
 }
 const Services = (props) => {
     useEffect(() => {
+      axios.all([
         axios.get('/api/sync/loadServicesDetail')
         .then( (response)=> {
           setServices(response.data);
           setLoading(false)
+        }),
+        axios.get('/api/sync/loadMediaLinks')
+        .then((response) => {
+            console.log(response.data)
+            setMedia(response.data);
         })
-      }, []);
+      ])
+  .then(axios.spread(function () {
+      setLoading(false)
+     }))
+}, []);
       function handleClick(event) {
         setAnchorEl(event.currentTarget);
       }
@@ -81,6 +92,7 @@ const Services = (props) => {
       const id = open ? 'simple-popover' : undefined;
       const [loading, setLoading] = React.useState(true);
       const [services, setServices] = React.useState([]);
+      const [media, setMedia] = React.useState([]);
     const classes = useStyles();
     if (loading===true){
       return(<LinearProgress />)
@@ -174,6 +186,7 @@ const Services = (props) => {
         <ListItemText primary="Career" />
       </ListItem></Link></List>
       </Popover>
+      <Footer data={media}/>
         </React.Fragment>
     );
     }
