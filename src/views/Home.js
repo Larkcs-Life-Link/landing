@@ -65,7 +65,6 @@ const useStyles = makeStyles(theme => ({
       borderRadius:12,
       WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.24)",
       boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.24)",
-      marginBottom: 42
 },
 mainContainer: {
   width:"90%",
@@ -73,7 +72,6 @@ mainContainer: {
   borderRadius:12,
   WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
   boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.05)",
-  marginBottom: 42,
   "@media only screen and (max-width: 600px)": {
     width:"100%",
   },
@@ -233,11 +231,6 @@ const Home = () => {
     .then( (response)=> {
       console.log(response.data)
       setImages(response.data);
-    }),
-    axios.get('/api/sync/loadFooter')
-    .then( (response)=> {
-      console.log(response.data)
-      setFooter(response.data);
     })
     ])
     .then(axios.spread(function () {
@@ -597,7 +590,7 @@ const Home = () => {
           </GridItem>
           </GridContainer>
         <br/><br/>
-      <div style={{height:150,backgroundColor:"#F3F3FE",padding:32}}>
+      <div style={{backgroundColor:"#F3F3FE",padding:32}}>
         <Typography style={{margin:"0 auto",textAlign:"center"}} ref={myRef4}>
          <span style={headerStyle}>We are Hiring!!</span><br/>
          <Link to='/career' style={{textDecoration:"none"}}>
@@ -654,7 +647,7 @@ const Home = () => {
       </Typography><br/>
       </div></div></DialogContent>
       </Dialog>
-      {/* <Footer data={footer} media={media}/> */}
+      <Footer/>
           <Button className={classes.hide} style={{width:"100%",margin:"0px",bottom:0,position:"fixed",minHeight:55, WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
          boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",}} color="success" onClick={()=>{window.open(`tel:${about[0].BookingNo}`);}}><Phone/>Call us for booking</Button>
         </React.Fragment>
