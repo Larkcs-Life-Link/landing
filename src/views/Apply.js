@@ -23,6 +23,11 @@ useEffect(() => {
         setData(res.data);
      })
     }),
+    axios.get('/api/sync/loadAbout')
+    .then( (response)=> {
+      console.log(response.data)
+      setPhn(response.data);
+    }),
     axios.get('/api/sync/loadMediaLinks')
             .then((response) => {
                 console.log(response.data)
@@ -35,6 +40,7 @@ useEffect(() => {
 }, []);
 const [data, setData] = React.useState([]);
 const [media, setMedia] = React.useState([]);
+const [phn, setPhn] = React.useState([]);
 const [title, setTitle] = React.useState("");
 const [mailContent, setmailContent] = React.useState("");
 const [loading, setLoading] = React.useState(true);
@@ -43,7 +49,7 @@ if (loading===true){
 }else{
   return (
     <React.Fragment>
-                <Header/>
+                <Header phn={phn[0].BookingNo}/>
    <Typography style={{margin:"0 auto",textAlign:"center",fontSize:18}} variant="h6">
      <p>{title}</p>
    </Typography><br/><br/>

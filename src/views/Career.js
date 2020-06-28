@@ -1,4 +1,4 @@
-import React, { useEffect,useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -57,13 +57,13 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
     width: 200,
     WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
-     boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
+    boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
   },
   button: {
     textDecoration: "none"
   },
   hide: {
-    width:"80%",
+    width: "80%",
     "@media only screen and (min-width: 600px)": {
       display: "none"
     }
@@ -71,31 +71,36 @@ const useStyles = makeStyles(theme => ({
 }))
 const Career = () => {
   const myRef = useRef(null)
-  const executeScroll = () => {scrollToRef(myRef)}
+  const executeScroll = () => { scrollToRef(myRef) }
 
   useEffect(() => {
     axios.all([
       axios.get('/api/sync/loadCareer')
-      .then((response) => {
-        setPostings(response.data)
-      }),
+        .then((response) => {
+          setPostings(response.data)
+        }),
       axios.get('/api/sync/loadStories')
-      .then((response) => {
-        setStories(response.data)
-      }),
+        .then((response) => {
+          setStories(response.data)
+        }),
+      axios.get('/api/sync/loadAbout')
+        .then((response) => {
+          console.log(response.data)
+          setPhn(response.data);
+        }),
       axios.get('/api/sync/loadDescription')
-           .then((response) => {
-            setDescription(response.data)
-           }),
-           axios.get('/api/sync/loadMediaLinks')
-           .then((response) => {
-               console.log(response.data)
-               setMedia(response.data);
-           })
+        .then((response) => {
+          setDescription(response.data)
+        }),
+      axios.get('/api/sync/loadMediaLinks')
+        .then((response) => {
+          console.log(response.data)
+          setMedia(response.data);
+        })
     ])
-    .then(axios.spread(function () {
-      setLoading(false)
-     }))
+      .then(axios.spread(function () {
+        setLoading(false)
+      }))
   }, []);
   function handleClick(event) {
     setAnchorEl(event.currentTarget);
@@ -110,6 +115,7 @@ const Career = () => {
   const [postings, setPostings] = React.useState([]);
   const [stories, setStories] = React.useState([]);
   const [description, setDescription] = React.useState([]);
+  const [phn, setPhn] = React.useState([]);
   const [media, setMedia] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const classes = useStyles();
@@ -127,13 +133,13 @@ const Career = () => {
           <title>Career | Larkcs Life Link</title>
           <meta name="description" content="Larkcs Life Link Career page" />
         </Helmet>
-        <Header menu={true} handleClick={handleClick}/><br/><br/><br/><br/><br/>
-        <Join description={description} callback={executeScroll}/>
-        <Typography style={{  textAlign: "center", fontSize: 24 }} variant="h6">
-         <p>Hear from our Employees!</p>
-       </Typography>
+        <Header phn={phn[0].BookingNo} menu={true} handleClick={handleClick} /><br /><br /><br /><br /><br />
+        <Join description={description} callback={executeScroll} />
+        <Typography style={{ textAlign: "center", fontSize: 24 }} variant="h6">
+          <p>Hear from our Employees!</p>
+        </Typography>
         <CareerStories data={stories} />
-        <Typography style={{  textAlign: "center", fontSize: 24 }} variant="h6" ref={myRef}>
+        <Typography style={{ textAlign: "center", fontSize: 24 }} variant="h6" ref={myRef}>
           <p>Job Openings</p>
         </Typography><br /><br />
         {
@@ -151,48 +157,42 @@ const Career = () => {
                         title={<Typography
                           onClick={event => event.stopPropagation()}
                           onFocus={event => event.stopPropagation()} style={{ fontSize: 17 }} variant="h6">{post.opening}</Typography>}
-                        subheader={<Typography style={{ fontSize: 13}}><span>
-                          {post.jobType?<span>{post.jobType},</span>:null}<span>
-                            <LocationOn style={{ marginLeft: 0,marginBottom:-3, fontSize: 17 }} />{post.location}</span></span>
-                          <br/><br/><Link to={{ pathname: `/apply/${post.link}/` }} className={classes.button}>
-                            <Button color="success" onClick={()=>{ReactGA.event({
-      category: `Apply for ${post.opening}`,
-      action: `User tried to apply for ${post.opening}`,
-    });}}>Apply Now</Button></Link>
-                            <FlatButton color="#00000" style={{margin:12,backgroundColor:"#F5F5F5"}}>Learn More</FlatButton>
+                        subheader={<Typography style={{ fontSize: 13 }}><span>
+                          {post.jobType ? <span>{post.jobType},</span> : null}<span>
+                            <LocationOn style={{ marginLeft: 0, marginBottom: -3, fontSize: 17 }} />{post.location}</span></span>
+                          <br /><br /><Link to={{ pathname: `/apply/${post.link}/` }} className={classes.button}>
+                            <Button color="success">Apply Now</Button></Link>
+                          <FlatButton color="#00000" style={{ margin: 12, backgroundColor: "#F5F5F5" }}>Learn More</FlatButton>
                         </Typography>}
                       />
                     </ExpansionPanelSummary>
                     <ExpansionPanelDetails className={classes.ExpansionPanelDetails}><br />
-                    <GridContainer>
-                      {post.description?<GridItem xs={12} sm={12} md={post.VideoLink?6:12}>
-                        <Typography variant="subtitle1">About the Role</Typography><hr /><br />
-                      <Typography>{post.description}</Typography></GridItem>:null}
-                      {post.VideoLink?<GridItem xs={12} sm={12} md={post.VideoLink?6:12} style={{marginTop:42}}>
-                    <div className={classes.box}>
-                    <iframe style={{marginTop:42}} src={post.VideoLink} title="Larkcs" style={{margin:10,borderRadius:12}} width="95%" height="auto" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
-                    </div></GridItem>: null}
-                    </GridContainer>
+                      <GridContainer>
+                        {post.description ? <GridItem xs={12} sm={12} md={post.VideoLink ? 6 : 12}>
+                          <Typography variant="subtitle1">About the Role</Typography><hr /><br />
+                          <Typography>{post.description}</Typography></GridItem> : null}
+                        {post.VideoLink ? <GridItem xs={12} sm={12} md={post.VideoLink ? 6 : 12} style={{ marginTop: 42 }}>
+                          <div className={classes.box}>
+                            <iframe style={{ marginTop: 42 }} src={post.VideoLink} title="Larkcs" style={{ margin: 10, borderRadius: 12 }} width="95%" height="auto" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
+                          </div></GridItem> : null}
+                      </GridContainer>
                       <br /><br />
                       <Typography variant="subtitle1">What You'll Do</Typography><hr /><br />
                       <Typography component={'span'}>
-                        {post.responsibilities?<ul>
+                        {post.responsibilities ? <ul>
                           {post.responsibilities.map((points, index) => {
                             return (
                               <li key={index}>{points}</li>
                             )
                           })}
-                        </ul>:null}
+                        </ul> : null}
                         <br />
-                        {post.NB?<em style={{ fontSize: 12 }}><strong>NB:</strong>
+                        {post.NB ? <em style={{ fontSize: 12 }}><strong>NB:</strong>
                           {post.NB}
-                        </em>:null}
+                        </em> : null}
                       </Typography><br /><br />
                       <Link to={{ pathname: `/apply/${post.link}/` }} style={{ textDecoration: "none" }}>
-                        <Button color="success" onClick={()=>{ReactGA.event({
-      category: `Apply for ${post.opening}`,
-      action: `User tried to apply for ${post.opening}`,
-    });}}>Apply Now</Button></Link><br /><br />
+                        <Button color="success">Apply Now</Button></Link><br /><br />
                     </ExpansionPanelDetails>
                   </ExpansionPanel>
                 </div>
@@ -200,66 +200,66 @@ const Career = () => {
             }) : null
         }
         <Popover
-            classes={{
-              paper: classes.paper,
-            }}
-        id={id}
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
-        }}
-        transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
-        }}
-      >
-        <List>
-        <Link to="/home" style={{textDecoration:"none",color:"#1C1C1C"}}>
-          <ListItem button>
-        <ListItemIcon>
-          <Home style={{color:"#39802D"}} />
-        </ListItemIcon>
-        <ListItemText primary="Home" /></ListItem></Link>
-        <Link to="/about" style={{textDecoration:"none",color:"#1C1C1C"}}>
-        <ListItem button>
-        <ListItemIcon>
-          <VerifiedUser style={{color:"#39802D"}} />
-        </ListItemIcon>
-        <ListItemText primary="About" />
-      </ListItem></Link>
-      <Link to="/services" style={{textDecoration:"none",color:"#1C1C1C"}}>
-      <ListItem button>
-        <ListItemIcon>
-          <LocalPharmacy style={{color:"#39802D"}} />
-        </ListItemIcon>
-        <ListItemText primary="Services" />
-      </ListItem>
-      </Link>
-      <ListItem button onClick={()=>{window.location.href="https://blog.larkcs.com"}}>
-        <ListItemIcon>
-          <MenuBook style={{color:"#39802D"}} />
-        </ListItemIcon>
-        <ListItemText primary="Blog" />
-      </ListItem>
-      <Link to="/gallery" style={{textDecoration:"none",color:"#1C1C1C"}}>
-      <ListItem button>
-        <ListItemIcon>
-          <PermMedia style={{color:"#39802D"}} />
-        </ListItemIcon>
-        <ListItemText primary="Gallery" />
-      </ListItem></Link>
-      <Link to="/team" style={{textDecoration:"none",color:"#1C1C1C"}}>
-      <ListItem button>
-        <ListItemIcon>
-          <Group style={{color:"#39802D"}} />
-        </ListItemIcon>
-        <ListItemText primary="Our Team" />
-      </ListItem></Link></List>
-      </Popover>
-      <Footer data={media}/>
+          classes={{
+            paper: classes.paper,
+          }}
+          id={id}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+          }}
+        >
+          <List>
+            <Link to="/home" style={{ textDecoration: "none", color: "#1C1C1C" }}>
+              <ListItem button>
+                <ListItemIcon>
+                  <Home style={{ color: "#39802D" }} />
+                </ListItemIcon>
+                <ListItemText primary="Home" /></ListItem></Link>
+            <Link to="/about" style={{ textDecoration: "none", color: "#1C1C1C" }}>
+              <ListItem button>
+                <ListItemIcon>
+                  <VerifiedUser style={{ color: "#39802D" }} />
+                </ListItemIcon>
+                <ListItemText primary="About" />
+              </ListItem></Link>
+            <Link to="/services" style={{ textDecoration: "none", color: "#1C1C1C" }}>
+              <ListItem button>
+                <ListItemIcon>
+                  <LocalPharmacy style={{ color: "#39802D" }} />
+                </ListItemIcon>
+                <ListItemText primary="Services" />
+              </ListItem>
+            </Link>
+            <ListItem button onClick={() => { window.location.href = "https://blog.larkcs.com" }}>
+              <ListItemIcon>
+                <MenuBook style={{ color: "#39802D" }} />
+              </ListItemIcon>
+              <ListItemText primary="Blog" />
+            </ListItem>
+            <Link to="/gallery" style={{ textDecoration: "none", color: "#1C1C1C" }}>
+              <ListItem button>
+                <ListItemIcon>
+                  <PermMedia style={{ color: "#39802D" }} />
+                </ListItemIcon>
+                <ListItemText primary="Gallery" />
+              </ListItem></Link>
+            <Link to="/team" style={{ textDecoration: "none", color: "#1C1C1C" }}>
+              <ListItem button>
+                <ListItemIcon>
+                  <Group style={{ color: "#39802D" }} />
+                </ListItemIcon>
+                <ListItemText primary="Our Team" />
+              </ListItem></Link></List>
+        </Popover>
+        <Footer data={media} />
       </div>)
   }
 };

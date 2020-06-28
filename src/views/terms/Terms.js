@@ -45,6 +45,11 @@ const useStyles = makeStyles(theme => ({
 const Services = (props) => {
     useEffect(() => {
       axios.all([
+        axios.get('/api/sync/loadAbout')
+        .then( (response)=> {
+          console.log(response.data)
+          setPhn(response.data);
+        }),
         axios.get('/api/sync/loadMediaLinks')
         .then((response) => {
             console.log(response.data)
@@ -68,13 +73,14 @@ const Services = (props) => {
       const [loading, setLoading] = React.useState(true);
       const [services, setServices] = React.useState([]);
       const [media, setMedia] = React.useState([]);
+      const [phn, setPhn] = React.useState([]);
     const classes = useStyles();
     if (loading===true){
       return(<LinearProgress />)
     }else{
       return (
         <React.Fragment>
-          <Header menu={true} handleClick={handleClick}/> <br/><br/><br/><br/><br/>
+          <Header phn={phn[0].BookingNo} menu={true} handleClick={handleClick}/> <br/><br/><br/><br/><br/>
                      <Typography style={{textAlign:"center",fontFamily: "Georgia",
   fontWeight: "bold",
   fontSize: 24}} variant="h6">Terms and Conditions</Typography><br/>

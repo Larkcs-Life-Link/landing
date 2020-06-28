@@ -78,7 +78,12 @@ const Gallery = () => {
     .then((response) => {
         console.log(response.data)
         setMedia(response.data);
-    })
+    }),
+    axios.get('/api/sync/loadAbout')
+    .then( (response)=> {
+      console.log(response.data)
+      setPhn(response.data);
+    }),
   ])
   .then(axios.spread(function () {
       setLoading(false)
@@ -97,6 +102,7 @@ const Gallery = () => {
   const classes = useStyles();
   const [data, setData] = React.useState([]);
   const [media, setMedia] = React.useState([]);
+  const [phn, setPhn] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
       if (loading===true){
         return(<React.Fragment><Helmet>
@@ -108,7 +114,7 @@ const Gallery = () => {
       }else{
           return(
               <div>
-                    <Header menu={true} handleClick={handleClick}/>
+                    <Header phn={phn[0].BookingNo} menu={true} handleClick={handleClick}/>
                     <br/><br/><br/><br/><br/>
 {
      Object.entries(data).map(function(key, values) {

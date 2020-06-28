@@ -69,6 +69,11 @@ const Services = (props) => {
         .then( (response)=> {
           setServices(response.data);
           setLoading(false)
+        }), 
+        axios.get('/api/sync/loadAbout')
+        .then( (response)=> {
+          console.log(response.data)
+          setPhn(response.data);
         }),
         axios.get('/api/sync/loadMediaLinks')
         .then((response) => {
@@ -92,6 +97,7 @@ const Services = (props) => {
       const id = open ? 'simple-popover' : undefined;
       const [loading, setLoading] = React.useState(true);
       const [services, setServices] = React.useState([]);
+      const [phn, setPhn] = React.useState([]);
       const [media, setMedia] = React.useState([]);
     const classes = useStyles();
     if (loading===true){
@@ -99,7 +105,7 @@ const Services = (props) => {
     }else{
       return (
         <React.Fragment>
-          <Header menu={true} handleClick={handleClick}/> <br/><br/><br/><br/><br/>
+          <Header phn={phn[0].BookingNo} menu={true} handleClick={handleClick}/> <br/><br/><br/><br/><br/>
                      <Typography style={{textAlign:"center",fontFamily: "Georgia",
   fontWeight: "bold",
   fontSize: 24}} variant="h6">Our Services</Typography><br/>

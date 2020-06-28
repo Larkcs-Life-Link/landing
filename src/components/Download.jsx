@@ -16,8 +16,8 @@ class Download extends Component {
         axios.get('/api/sync/loadMediaLinks')
             .then((response) => {
                 this.setState({media:response.data})
+                this.setState({loading:false})
             })
-        this.setState({loading:false})
     }
     render() {
         return (

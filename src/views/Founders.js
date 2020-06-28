@@ -71,6 +71,12 @@ const Services = () => {
               console.log(response.data)
               setTeam(response.data);
             }),
+            
+      axios.get('/api/sync/loadAbout')
+      .then( (response)=> {
+        console.log(response.data)
+        setPhn(response.data);
+      }),
             axios.get('/api/sync/loadMediaLinks')
             .then((response) => {
                 console.log(response.data)
@@ -93,6 +99,7 @@ const Services = () => {
       const id = open ? 'simple-popover' : undefined;
       const [loading, setLoading] = React.useState(true);
       const [team, setTeam] = React.useState([]);
+      const [phn, setPhn] = React.useState([]);
       const [media, setMedia] = React.useState([]);
     const classes = useStyles();
     if (loading===true){
@@ -109,7 +116,7 @@ const Services = () => {
           <title>Team | Larkcs Life Link</title>
           <meta name="description" content="Larkcs Life Link Career page" />
         </Helmet>
-          <Header menu={true} handleClick={handleClick}/><br/><br/><br/><br/><br/>
+          <Header phn={phn[0].BookingNo} menu={true} handleClick={handleClick}/><br/><br/><br/><br/><br/>
           <Typography style={{textAlign:"center",fontFamily: "Georgia",
   fontWeight: "bold",
       fontSize: 24}} variant="h6">Our Team</Typography><br/><br/><br/>
