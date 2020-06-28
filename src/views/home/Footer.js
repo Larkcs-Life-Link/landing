@@ -91,9 +91,7 @@ const Statistics = (props) => {
           +918111888892 </GridItem> : null}</GridContainer></Typography><br />
             </GridItem>
             <GridItem xs="12" sm="6" md="4" style={{ marginTop: 18 }}>
-            <Link to="/terms" style={{textDecoration:"none",color:"#1C1C1C"}}>
                 <FlatButton style={{ backgroundColor: "#fafafa" }} color="primary">Terms and Conditions</FlatButton>
-                </Link>
                 </GridItem>
             <GridItem xs="12" sm="6" md="2" style={{ marginTop: 18 }}>© Larkcs Life Link, 2020</GridItem>
         </GridContainer></div>)
