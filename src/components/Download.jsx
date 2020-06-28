@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import Button from "./Button";
-import { Typography, LinearProgress, CircularProgress } from "@material-ui/core";
+import { Typography, LinearProgress } from "@material-ui/core";
 import notfound from '../assets/images/not-found.svg';
 import Header from "./Header";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import Footer from '../views/home/Footer';
 
 class Download extends Component {
         state  = {
+            media: [],
             loading: true
         }
     componentDidMount(){
+        axios.get('/api/sync/loadMediaLinks')
+            .then((response) => {
+                this.setState({media:response.data})
+            })
         this.setState({loading:false})
     }
     render() {
@@ -26,6 +33,7 @@ class Download extends Component {
                     </Typography><br/>
                     <Link to="/home" style={{textDecoration:"none",color:"#1C1C1C"}}><Button color="success">Go to Homepage</Button></Link>
                 </div>
+                <Footer data={this.state.media}/>
                 </React.Fragment>
                 }
             </React.Fragment>
