@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import {Link} from 'react-router-dom';
 import { Typography } from '@material-ui/core';
 import GridContainer from '../../components/Grid/GridContainer';
 import GridItem from '../../components/Grid/GridItem';
@@ -13,6 +14,7 @@ const useStyles = makeStyles(theme => ({
     container: {
         margin: "0 auto",
         marginBottom: 0,
+        paddingBottom: 40,
         marginTop: 42,
         WebkitBoxShadow: "10px 10px 21px 20px rgba(136,136,136,0.24)",
         boxShadow: "10px 10px 21px 20px rgba(136,136,136,0.24)",
@@ -88,7 +90,11 @@ const Statistics = (props) => {
                                 <FontAwesomeIcon color="#31A940" icon={faPhoneAlt} style={{ marginRight: 6 }}></FontAwesomeIcon>
           +918111888892 </GridItem> : null}</GridContainer></Typography><br />
             </GridItem>
-            <GridItem xs="12" sm="6" md="4" style={{ marginTop: 18 }}><FlatButton style={{ backgroundColor: "#fafafa" }} color="primary">Terms and Conditions</FlatButton></GridItem>
+            <GridItem xs="12" sm="6" md="4" style={{ marginTop: 18 }}>
+            <Link to="/terms" style={{textDecoration:"none",color:"#1C1C1C"}}>
+                <FlatButton style={{ backgroundColor: "#fafafa" }} color="primary">Terms and Conditions</FlatButton>
+                </Link>
+                </GridItem>
             <GridItem xs="12" sm="6" md="2" style={{ marginTop: 18 }}>© Larkcs Life Link, 2020</GridItem>
         </GridContainer></div>)
 

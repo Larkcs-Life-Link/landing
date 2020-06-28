@@ -499,7 +499,7 @@ const Home = () => {
            We are Growing!</p>
     </Typography><br/>
     <div className={classes.container}><Statistics data={statistics}/><br/></div>
-    <br/>
+    <br/><br/>
     <Typography variant="h6" style={{maxWidth:500,marginLeft:32,display:"flex"}} >
     <div><SentimentVerySatisfiedIcon style={{color:"#39802D",marginRight:12}} /></div>
          <div style={{fontFamily: "Georgia",fontWeight: "bold"}}>
