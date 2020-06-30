@@ -1,7 +1,7 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
-import GridContainer from '../../components/Grid/GridContainer';
-import GridItem from '../../components/Grid/GridItem';
+import GridContainer from './Grid/GridContainer';
+import GridItem from './Grid/GridItem';
 import CountUp from 'react-countup';
 
 const Statistics = (props) => {

@@ -1,14 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import GridContainer from '../../components/Grid/GridContainer';
-import GridItem from '../../components/Grid/GridItem';
 import Typography from '@material-ui/core/Typography';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import MenuBook from '@material-ui/icons/MenuBook';
-import { container } from '../../assets/landingStyle';
-import Header from '../../components/Header';
+import { container } from '../assets/js-styles/landingStyle';
+import Header from '../components/Header';
 import Popover from '@material-ui/core/Popover';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -19,7 +17,7 @@ import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import PermMedia from '@material-ui/icons/PermMedia';
 import Home from '@material-ui/icons/Home';
 import Work from '@material-ui/icons/Work';
-import Footer from '../home/Footer';
+import Footer from '../components/Footer';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -42,7 +40,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const Services = (props) => {
+const Terms = (props) => {
   useEffect(() => {
     axios.all([
       axios.get('/api/sync/loadAbout')
@@ -71,7 +69,6 @@ const Services = (props) => {
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
   const [loading, setLoading] = React.useState(true);
-  const [services, setServices] = React.useState([]);
   const [media, setMedia] = React.useState([]);
   const [phn, setPhn] = React.useState([]);
   const classes = useStyles();
@@ -156,4 +153,4 @@ const Services = (props) => {
 
 };
 
-export default Services;
+export default Terms;

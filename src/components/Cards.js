@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
-import GridContainer from '../components/Grid/GridContainer';
-import GridItem from '../components/Grid/GridItem';
+import GridContainer from './Grid/GridContainer';
+import GridItem from './Grid/GridItem';
 import { makeStyles } from '@material-ui/core/styles';
-import Button from '../components/Button';
+import Button from './Button';
 const useStyles = makeStyles(theme => ({
   box: {
     padding: 24,

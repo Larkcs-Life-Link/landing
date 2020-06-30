@@ -6,7 +6,7 @@ import GridItem from '../components/Grid/GridItem';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
-import { container, headerStyle } from '../assets/landingStyle';
+import { container, headerStyle } from '../assets/js-styles/landingStyle';
 import Header from '../components/Header';
 import DoubleArrow from '@material-ui/icons/DoubleArrow';
 import MenuBook from '@material-ui/icons/MenuBook';
@@ -21,7 +21,7 @@ import Group from '@material-ui/icons/Group';
 import PermMedia from '@material-ui/icons/PermMedia';
 import Home from '@material-ui/icons/Home';
 import Work from '@material-ui/icons/Work';
-import Footer from './home/Footer';
+import Footer from '../components/Footer';
 
 const useStyles = makeStyles(theme => ({
   image: {

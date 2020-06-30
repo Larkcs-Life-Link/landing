@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import Button from '../../components/Button';
-import GridContainer from '../../components/Grid/GridContainer';
-import GridItem from '../../components/Grid/GridItem';
+import Button from './Button';
+import GridContainer from './Grid/GridContainer';
+import GridItem from './Grid/GridItem';
 import FormatQuote from '@material-ui/icons/FormatQuote';
 
 const useStyles = makeStyles(theme => ({
@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
     }
   }
 }))
-const Join = (props) => {
+const CareerHeader = (props) => {
   const classes = useStyles();
   if (props.description.length > 0) {
     return (<React.Fragment><Typography variant="h6" className={classes.typography}>
@@ -65,4 +65,4 @@ const Join = (props) => {
   }
 }
 
-export default Join;
+export default CareerHeader;

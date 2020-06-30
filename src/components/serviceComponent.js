@@ -1,9 +1,9 @@
 import React from 'react';
-import GridContainer from '../components/Grid/GridContainer';
-import GridItem from '../components/Grid/GridItem';
+import GridContainer from './Grid/GridContainer';
+import GridItem from './Grid/GridItem';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
-import { container } from '../assets/landingStyle';
+import { container } from '../assets/js-styles/landingStyle';
 
 
 const styles = {

@@ -7,13 +7,12 @@ import Button from '../components/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import { Helmet } from 'react-helmet';
-import CareerStories from './career/CareerStories';
+import Testimonials from '../components/Testimonials';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CardHeader from '@material-ui/core/CardHeader';
-import Join from './career/Join';
 import GridContainer from '../components/Grid/GridContainer';
 import GridItem from '../components/Grid/GridItem';
 import FlatButton from '@material-ui/core/Button';
@@ -29,7 +28,8 @@ import PermMedia from '@material-ui/icons/PermMedia';
 import Home from '@material-ui/icons/Home';
 import Group from '@material-ui/icons/Group';
 import MenuBook from '@material-ui/icons/MenuBook';
-import Footer from './home/Footer';
+import Footer from '../components/Footer';
+import CareerHeader from '../components/CareerHeader';
 
 const scrollToRef = (ref) => window.scrollTo({
   top: ref.current.offsetTop,
@@ -134,11 +134,11 @@ const Career = () => {
           <meta name="description" content="Larkcs Life Link Career page" />
         </Helmet>
         <Header phn={phn[0].BookingNo} menu={true} handleClick={handleClick} /><br /><br /><br /><br /><br />
-        <Join description={description} callback={executeScroll} />
+        <CareerHeader description={description} callback={executeScroll} />
         <Typography style={{ textAlign: "center", fontSize: 24 }} variant="h6">
           <p>Hear from our Employees!</p>
         </Typography>
-        <CareerStories data={stories} />
+        <Testimonials data={stories} />
         <Typography style={{ textAlign: "center", fontSize: 24 }} variant="h6" ref={myRef}>
           <p>Job Openings</p>
         </Typography><br /><br />

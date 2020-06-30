@@ -5,10 +5,9 @@ import { Helmet } from 'react-helmet';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
-import { container } from '../assets/landingStyle';
+import { container } from '../assets/js-styles/landingStyle';
 import Header from '../components/Header';
-import Team from './Team'
-import DoubleArrow from '@material-ui/icons/DoubleArrow';
+import Team from '../components/Team'
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Popover from '@material-ui/core/Popover';
 import List from '@material-ui/core/List';
@@ -20,7 +19,7 @@ import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import PermMedia from '@material-ui/icons/PermMedia';
 import Home from '@material-ui/icons/Home';
 import Work from '@material-ui/icons/Work';
-import Footer from './home/Footer';
+import Footer from '../components/Footer';
 
 const useStyles = makeStyles(theme => ({
   image: {

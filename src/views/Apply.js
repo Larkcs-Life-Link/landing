@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import remote from '../assets/images/remote-team.svg';
 import Typography from '@material-ui/core/Typography';
-import { logoStyle, titleStyle, box } from "../assets/landingStyle";
+import { box } from "../assets/js-styles/landingStyle";
 import GridContainer from '../components/Grid/GridContainer';
 import GridItem from '../components/Grid/GridItem';
 import Form from '../components/Form';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import axios from 'axios';
 import Header from '../components/Header';
-import Footer from './home/Footer';
+import Footer from '../components/Footer';
 
 const Apply = (props) => {
   const path = props.location.pathname ? props.location.pathname.slice(6).replace(/\//g, "") : "";

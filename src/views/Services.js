@@ -15,8 +15,8 @@ import VerifiedUser from '@material-ui/icons/VerifiedUser';
 import PermMedia from '@material-ui/icons/PermMedia';
 import Home from '@material-ui/icons/Home';
 import Work from '@material-ui/icons/Work';
-import Footer from './home/Footer';
-import ServiceComponent from './serviceComponent';
+import Footer from '../components/Footer';
+import ServiceComponent from '../components/serviceComponent';
 
 const useStyles = makeStyles(theme => ({
   paper: {

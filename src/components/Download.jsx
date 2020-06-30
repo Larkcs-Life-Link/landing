@@ -5,7 +5,7 @@ import notfound from '../assets/images/not-found.svg';
 import Header from "./Header";
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Footer from '../views/home/Footer';
+import Footer from './Footer';
 
 class Download extends Component {
     state = {

@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Slider from "react-slick";
-import Placeholder from "../../assets/images/placeholder.gif";
+import Placeholder from "../assets/images/placeholder.gif";
 import ChevronLeft from '@material-ui/icons/ArrowBack';
 import ChevronRight from '@material-ui/icons/ArrowForward';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../../assets/slick.css";
+import "../assets/css-styles/slick.css";
 
 const useStyles = makeStyles(theme => ({
   box: {

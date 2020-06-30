@@ -21,7 +21,7 @@ import Group from '@material-ui/icons/Group';
 import Home from '@material-ui/icons/Home';
 import Work from '@material-ui/icons/Work';
 import MenuBook from '@material-ui/icons/MenuBook';
-import Footer from './home/Footer';
+import Footer from '../components/Footer';
 
 const useStyles = makeStyles(theme => ({
   container: {

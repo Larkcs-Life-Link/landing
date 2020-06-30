@@ -25,7 +25,7 @@ import PermMedia from '@material-ui/icons/PermMedia';
 import HomeWork from '@material-ui/icons/HomeWork';
 import Work from '@material-ui/icons/Work';
 import Group from '@material-ui/icons/Group';
-import { headerStyle, subtitleStyle } from "../assets/landingStyle";
+import { headerStyle, subtitleStyle } from "../assets/js-styles/landingStyle";
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -42,13 +42,14 @@ import Fade from '@material-ui/core/Fade';
 import CloseIcon from '@material-ui/icons/Close';
 import { faFacebookF, faInstagram, faTwitter, faWhatsapp, faYoutube, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 import { Helmet } from 'react-helmet';
-import Slider from './home/Slider';
-import Statistics from './home/Statistics';
-import CareerStories from "./career/CareerStories";
-import Cards from './Cards';
+import Slider from '../components/Slider';
+import Statistics from '../components/Statistics';
+import Testimonials from "../components/Testimonials";
+import Cards from '../components/Cards';
 import Header from '../components/Header';
-import Communities from './Communities';
-import Footer from './home/Footer';
+import Communities from '../components/Communities';
+import Footer from '../components/Footer';
+
 const scrollToRef = (ref) => window.scrollTo({
   top: ref.current.offsetTop,
   bottom: 0,
@@ -496,7 +497,7 @@ const Home = () => {
             <div style={{ fontFamily: "Georgia", fontWeight: "bold" }}>
               Our Happy Customers!</div>
           </Typography>
-          <CareerStories data={testimonials} />
+          <Testimonials data={testimonials} />
           <Typography variant="h6" style={{ maxWidth: 500, margin: 32 }} ref={myRef3}>
             <p style={{ fontFamily: "Georgia", fontWeight: "bold" }}>
               <ThumbUp style={{ color: "#39802D", marginRight: 12 }} />

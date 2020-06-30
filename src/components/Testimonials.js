@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Divider from '@material-ui/core/Divider';
 import Avatar from '@material-ui/core/Avatar';
-import Typography from '@material-ui/core/Typography';
 import Slider from "react-slick";
 import FormatQuote from '@material-ui/icons/FormatQuote';
 import ChevronLeft from '@material-ui/icons/ArrowBack';
 import ChevronRight from '@material-ui/icons/ArrowForward';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "../../assets/slick.css";
+import "../assets/css-styles/slick.css";
 
 const useStyles = makeStyles(theme => ({
   box: {
@@ -53,7 +52,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: 8
   }
 }))
-const Career = (props) => {
+const Testimonials = (props) => {
   var settings = {
     dots: true,
     infinite: true,
@@ -107,7 +106,7 @@ const Career = (props) => {
   }
 }
 
-export default Career;
+export default Testimonials;
 
 
 

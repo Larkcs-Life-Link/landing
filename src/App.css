@@ -11,13 +11,13 @@ body {
       "Apple Color Emoji",
       "Segoe UI Emoji",
       "Segoe UI Symbol";
-  }
+ }
   
-#white-line{
-  background-color: #ffffff !important;
-  height: 1.8px !important;
-  }
-         
+          #white-line{
+            background-color: #ffffff !important;
+            height: 1.8px !important;
+            }
+
            #primary {
             background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important; }
           
@@ -191,5 +191,5 @@ body {
             #lighter-text  {
               color:  #e9ecef !important; }
             #black-text  {
-                color:  #000000 !important; }
+            color:  #000000 !important; }
             
