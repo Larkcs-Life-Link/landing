@@ -1,4 +1,4 @@
-import React, {useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Slider from "react-slick";
 import Placeholder from "../../assets/images/placeholder.gif";
@@ -9,37 +9,37 @@ import "slick-carousel/slick/slick-theme.css";
 import "../../assets/slick.css";
 
 const useStyles = makeStyles(theme => ({
-  box : {
+  box: {
     width: "55%",
     maxHeight: 500,
     overflow: "hidden",
     marginTop: 42,
-    textDecoration:"none",
-    padding:"8px !important",
+    textDecoration: "none",
+    padding: "8px !important",
     backgroundColor: "#FFFFFF",
     margin: "0 auto",
-    marginBottom:82,
+    marginBottom: 82,
     borderRadius: 12,
     border: "1px solid #FFFFFF",
-      WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.14)",
+    WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.14)",
     boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
-    whiteSpace:"pre-wrap",
+    whiteSpace: "pre-wrap",
     "@media only screen and (max-width: 600px)": {
-      width:"90% !important"
+      width: "90% !important"
     }
   },
-  slider:{
+  slider: {
     border: "none",
-    outline:"none"
+    outline: "none"
   },
   avatar: {
-    margin:"0 auto",
-    height:100,
-    width:100
+    margin: "0 auto",
+    height: 100,
+    width: 100
   },
-  typography:{
-    textAlign:"center",
-    margin:"0 auto"
+  typography: {
+    textAlign: "center",
+    margin: "0 auto"
   }
 }))
 const HeaderSlider = (props) => {
@@ -56,31 +56,31 @@ const HeaderSlider = (props) => {
     prevArrow: <ChevronLeft />
   };
   const classes = useStyles();
-  if(props.headers.length>0){
-        return (<div className={classes.slider}>
-           
-                      <Slider {...settings}>
-                      {
-                props.headers.map((headers,index)=>{
-                    return(
-                      <div key={index}>
-                    <div className={classes.box}>
-                        <img style={{width:"100%",maxHeight: 500,}} src={headers.Attachments[0].url} alt={Placeholder}/>
-                   </div>
-                    </div>
-                     )
-                    })
-                }
-                    </Slider>  
-                    <br/><br/>
-        </div>)
-  }else{
+  if (props.headers.length > 0) {
+    return (<div className={classes.slider}>
+
+      <Slider {...settings}>
+        {
+          props.headers.map((headers, index) => {
+            return (
+              <div key={index}>
+                <div className={classes.box}>
+                  <img style={{ width: "100%", maxHeight: 500, }} src={headers.Attachments[0].url} alt={Placeholder} />
+                </div>
+              </div>
+            )
+          })
+        }
+      </Slider>
+      <br /><br />
+    </div>)
+  } else {
     return (<div></div>)
-  }}
+  }
+}
 
 export default HeaderSlider;
 
 
 
-  
-      
+

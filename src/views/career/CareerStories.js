@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     width: theme.spacing(7),
     height: theme.spacing(7),
-    marginLeft:24
+    marginLeft: 24
   },
   typography: {
     textAlign: "left",
@@ -77,22 +77,22 @@ const Career = (props) => {
               <div key={index}>
                 <div id={instance.boxColor} className={classes.box}>
                   <div>
-                  {instance.Message ? <div><div><FormatQuote id={instance.iconColor} style={{ display: "block", fontSize: instance.iconSize, margin:"0 auto" }} /></div>
-                    <br/><div style={{ margin: "0 auto", maxWidth: "90%",lineHeight:2,fontSize: instance.messageSize }}>{instance.Message}</div><br />
-                    <Divider style={{ maxWidth: "80%", margin: "0 auto" }} /><br />
-                    <div style={{ display: "flex"}}>
-                      {instance.Avatar ? <Avatar style={{}} src={instance.Avatar[0].url} aria-label="recipe" className={classes.avatar} /> : <Avatar aria-label="recipe" className={classes.avatar}>
-                        {instance.Name.charAt(0)}
-                      </Avatar>}
-                      <div>
-                      {instance.Name ? <div className={classes.typography} style={{fontSize: instance.authorSize}} >
-                        {instance.Name}
-                        </div> : null}
-                      {instance.Subtitle ? <div className={classes.typography} style={{fontSize: instance.subtitleSize}} >
-                        {instance.Subtitle}
-                      </div> : null}</div></div><br />
-                  </div> : null}
-                  <br /><br />
+                    {instance.Message ? <div><div><FormatQuote id={instance.iconColor} style={{ display: "block", fontSize: instance.iconSize, margin: "0 auto" }} /></div>
+                      <br /><div style={{ margin: "0 auto", maxWidth: "90%", lineHeight: 2, fontSize: instance.messageSize }}>{instance.Message}</div><br />
+                      <Divider style={{ maxWidth: "80%", margin: "0 auto" }} /><br />
+                      <div style={{ display: "flex" }}>
+                        {instance.Avatar ? <Avatar style={{}} src={instance.Avatar[0].url} aria-label="recipe" className={classes.avatar} /> : <Avatar aria-label="recipe" className={classes.avatar}>
+                          {instance.Name.charAt(0)}
+                        </Avatar>}
+                        <div>
+                          {instance.Name ? <div className={classes.typography} style={{ fontSize: instance.authorSize }} >
+                            {instance.Name}
+                          </div> : null}
+                          {instance.Subtitle ? <div className={classes.typography} style={{ fontSize: instance.subtitleSize }} >
+                            {instance.Subtitle}
+                          </div> : null}</div></div><br />
+                    </div> : null}
+                    <br /><br />
                   </div>
                 </div>
               </div>
