@@ -77,7 +77,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   box: {
-    maxHeight: 250,
+    maxHeight: 269,
     maxWidth: 450,
     "@media only screen and (min-width: 600px)": {
       margin: 32,

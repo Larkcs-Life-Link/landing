@@ -27,7 +27,7 @@ const styles = {
         boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
     },
     box: {
-        maxHeight: 250,
+        maxHeight: 269,
         maxWidth: 450,
         "@media only screen and (min-width: 600px)": {
             margin: 32,
