@@ -53,8 +53,9 @@ class ServiceComponent extends React.Component {
         }
     }
     aFunction = (ref) => {
-        const param = { behavior: 'smooth' };
-        this[`${ref}_ref`].current.scrollIntoView(param);
+        const offsetTop =  this[`${ref}_ref`].current.offsetTop-80
+        const param = { behavior: 'smooth',top:offsetTop };
+        window.scrollTo(param);
     }
     render() {
         const { services, classes } = this.props;
@@ -69,12 +70,12 @@ class ServiceComponent extends React.Component {
                     {services.map((service, index) => {
                         return (
                             <React.Fragment key={index} >
-                                <Typography ref={this[`${service.ref}_ref`]} variant="h6" style={{ maxWidth: 500, margin: 32, paddingTop: 32 }}>
+                                <Typography variant="h6" ref={this[`${service.ref}_ref`]} style={{ maxWidth: 500, marginLeft: 32,marginRight:32, paddingTop: 32 }}>
                                     <p style={{ fontFamily: "Georgia", fontWeight: "bold" }}>{service.Title}</p>
                                 </Typography>
                                 <GridContainer>
                                     <GridItem xs={12} sm={12} md={service.VideoLink ? 6 : 9}>
-                                        <Typography variant="subtitle1" style={{ margin: 32 }}>
+                                        <Typography variant="subtitle1" style={{ marginLeft: 32,marginRight:32 }}>
                                             {service.Description ? <p>{service.Description}</p> : null}
                                         </Typography>
                                         <hr className={classes.hide} /><br />
