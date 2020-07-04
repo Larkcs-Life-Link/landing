@@ -26,7 +26,7 @@ const Statistics = (props) => {
     const media = props.data;
     if (media.length > 0) {
         return (<div className={classes.container}><GridContainer style={{ marginLeft: 24, padding: 33 }}>
-            <GridItem xs="12" sm="6" md="6">
+            <GridItem xs="12" sm="6" md="10">
                 {media[0].Link ? <FontAwesomeIcon color="#6385A6" icon={faFacebookF} size="2x" onClick={() => {
                     window.open(media[0].Link, '_blank');
                 }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
@@ -58,12 +58,9 @@ const Statistics = (props) => {
                             <FontAwesomeIcon color="#31A940" icon={faPhoneAlt} style={{ marginRight: 6 }}></FontAwesomeIcon>
           +918111888892 </GridItem> : null}</GridContainer></Typography><br />
             </GridItem>
-            <GridItem xs="12" sm="6" md="4" style={{ marginTop: 18 }}>
-                <Link to="/terms" style={{ textDecoration: "none", color: "#1C1C1C" }}>
-                    <FlatButton style={{ backgroundColor: "#fafafa" }} color="primary">Terms and Conditions</FlatButton>
-                </Link>
-            </GridItem>
-            <GridItem xs="12" sm="6" md="2" style={{ marginTop: 18 }}>© Larkcs Life Link, 2020</GridItem>
+            <GridItem xs="12" sm="6" md="2" style={{ marginTop: 18 }}><div>© Larkcs Life Link, 2020 </div><Link to="/terms" style={{ textDecoration: "none", color: "#1C1C1C" }}>
+                    <FlatButton style={{ backgroundColor: "#fafafa",fontSize:"10px",marginTop:20 }} color="primary">Terms and Conditions</FlatButton>
+                </Link></GridItem>
         </GridContainer></div>)
 
     } else {
