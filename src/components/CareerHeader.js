@@ -23,6 +23,14 @@ const useStyles = makeStyles(theme => ({
       width: "90%",
     }
   },
+  image: {
+    height: "90%",
+    width: "100%",
+    minHeight: 400,
+    "@media only screen and (max-width: 600px)": {
+      minHeight: 200,
+    }
+  },
   hide: {
     width: "80%",
     "@media only screen and (min-width: 600px)": {
@@ -47,7 +55,7 @@ const CareerHeader = (props) => {
       <GridContainer>
         <GridItem xs={12} sm={12} md={6}>
           <div className={classes.box}>
-            <img style={{ height: "90%", width: "100%" }} src={props.description[0].HeaderImage[0].url} alt="" />
+            <img className={classes.image} src={props.description[0].HeaderImage[0].url} alt="" />
           </div>
         </GridItem>
         <GridItem xs={12} sm={12} md={6}>

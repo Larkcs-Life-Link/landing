@@ -56,14 +56,6 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const style = {
-  image: {
-    height: 46,
-    width: 46,
-    margin: 32,
-    cursor: "pointer"
-  }
-}
 const Services = () => {
   useEffect(() => {
     axios.all([
@@ -127,12 +119,12 @@ const Services = () => {
           {about.map((about, index) => {
             return (
               <React.Fragment key={index}>
-                {index != 0 ? <React.Fragment><Typography variant="h6" style={{ maxWidth: 500, margin: 12 }}>
+                {index != 0 ? <React.Fragment><Typography variant="h6" style={{ maxWidth: 500,  marginLeft: 12,marginRight:12 }}>
                   <p style={{ fontFamily: "Georgia", fontWeight: "bold" }}> <DoubleArrow style={{ color: "#39802D", marginRight: 12, marginBottom: -4 }} />{about.Title}</p>
                 </Typography></React.Fragment> : null}
                 <GridContainer>
                   <GridItem xs={12} sm={12} md={about.VideoLink ? 6 : 10}>
-                    <Typography variant="subtitle1" style={{ margin: 32 }}>
+                    <Typography variant="subtitle1" style={{ marginLeft: 32,marginRight:32 }}>
                       <p>{about.Content}</p>
                     </Typography>
                   </GridItem>

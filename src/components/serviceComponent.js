@@ -69,8 +69,8 @@ class ServiceComponent extends React.Component {
                 <div style={container}>
                     {services.map((service, index) => {
                         return (
-                            <React.Fragment key={index} >
-                                <Typography variant="h6" ref={this[`${service.ref}_ref`]} style={{ maxWidth: 500, marginLeft: 32,marginRight:32, paddingTop: 32 }}>
+                            <div key={index} style={{paddingTop:index==0?32:0,paddingBottom:index==0?0:36}}>
+                                <Typography variant="h6" ref={this[`${service.ref}_ref`]} style={{ maxWidth: 500, marginLeft: 32,marginRight:32 }}>
                                     <p style={{ fontFamily: "Georgia", fontWeight: "bold" }}>{service.Title}</p>
                                 </Typography>
                                 <GridContainer>
@@ -86,7 +86,7 @@ class ServiceComponent extends React.Component {
                                             <iframe src={service.VideoLink} title="Larkcs" style={{ margin: 10, borderRadius: 12 }} width="95%" height="250" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe></div>
                                     </GridItem> : null}
                                 </GridContainer>
-                            </React.Fragment>
+                            </div>
                         )
 
                     })}</div>
