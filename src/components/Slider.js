@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
   box: {
     width: "55%",
     maxHeight: 500,
+    minHeight: 400,
     overflow: "hidden",
     marginTop: 42,
     textDecoration: "none",
@@ -25,7 +26,8 @@ const useStyles = makeStyles(theme => ({
     boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
     whiteSpace: "pre-wrap",
     "@media only screen and (max-width: 600px)": {
-      width: "90% !important"
+      width: "90% !important",
+      minHeight: 200
     }
   },
   slider: {
