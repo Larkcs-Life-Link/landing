@@ -26,6 +26,9 @@ const useStyles = makeStyles(theme => ({
     WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
     boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
   },
+  image: {
+    width: "100%"
+  },
   box: {
     maxHeight: 250,
     maxWidth: 450,
@@ -52,6 +55,11 @@ const Terms = (props) => {
         .then((response) => {
           console.log(response.data)
           setMedia(response.data);
+        }),
+      axios.get('/api/sync/loadTerms')
+        .then((response) => {
+          console.log(response.data)
+          setImage(response.data);
         })
     ])
       .then(axios.spread(function () {
@@ -70,6 +78,7 @@ const Terms = (props) => {
   const id = open ? 'simple-popover' : undefined;
   const [loading, setLoading] = React.useState(true);
   const [media, setMedia] = React.useState([]);
+  const [image, setImage] = React.useState([]);
   const [phn, setPhn] = React.useState([]);
   const classes = useStyles();
   if (loading === true) {
@@ -84,9 +93,10 @@ const Terms = (props) => {
           fontSize: 24
         }} variant="h6">Terms and Conditions</Typography><br />
         <div style={container}>
-
-          <iframe src="https://dl.airtable.com/.attachments/f971b5d34bbc3ed660ef3c0b77901f55/14c6924d/LarkcsTermsandConditionsVersion1.023.04.2020.pdf" width="100%" height="759" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen>
-          </iframe></div>
+          {image.map((img) => {
+            return <img className={classes.image} src={img.Attachments[0] ? img.Attachments[0].url : ""} alt="" />
+          })}
+        </div>
         <Popover
           classes={{
             paper: classes.paper,

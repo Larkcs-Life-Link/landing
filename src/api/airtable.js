@@ -25,6 +25,7 @@ const galleryBase = 'app7wMsarA1tUHbfF';
 const applicationBase = 'appCAjLMcjxpSwPgu';   
 const careerBase = 'app27ibjc251l39Tr';
 const subscriptionBase = 'appR7l5019NaU8wRU';
+const termBase = 'appNY7VCbpn1STZlH';
 const sendGridApi = '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'
 sgMail.setApiKey(sendGridApi);
 var homeList = new Airtable({ apiKey: homeAPI }).base(homeBase)
@@ -34,6 +35,7 @@ var servicesList = new Airtable({ apiKey: homeAPI }).base(servicesBase)
 var openingsList = new Airtable({ apiKey: careerAPI }).base(openingBase);
 var galleryList = new Airtable({ apiKey: homeAPI }).base(galleryBase);
 var careerList = new Airtable({ apiKey: homeAPI }).base(careerBase);
+var termsList = new Airtable({ apiKey: homeAPI }).base(termBase);
 var applications = new Airtable({ apiKey: careerAPI }).base(applicationBase);
 var Subscriptions = new Airtable({ apiKey: homeAPI }).base(subscriptionBase);
 
@@ -304,6 +306,18 @@ router.post('/loadApplicationDetails', (req, res) => {
     res.json(FieldData)
   });
   FieldData = [];
+})
+
+router.get('/loadTerms', (req, res) => {
+  termsList('Terms').select({
+    view: "Grid view",
+  }).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function (record) {
+      TermData = TermData.concat(record.fields)
+    });
+    res.json(TermData)
+  });
+  TermData = [];
 })
 
 router.post('/loadFieldDetails', (req, res) => {
