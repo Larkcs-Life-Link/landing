@@ -12,18 +12,6 @@ body {
       "Segoe UI Emoji",
       "Segoe UI Symbol";
  }
-
-  .pdf-viewer-container{
-    text-align: center;
-  }
-  @media only screen and (max-width: 600px) {
-    .pdf-canvas{
-      width: fit-content;
-    }
-  }
-  .minh{
-    min-height: 1000px;
-  }
   
           #white-line{
             background-color: #ffffff !important;

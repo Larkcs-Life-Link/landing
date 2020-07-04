@@ -18,10 +18,6 @@ import PermMedia from '@material-ui/icons/PermMedia';
 import Home from '@material-ui/icons/Home';
 import Work from '@material-ui/icons/Work';
 import Footer from '../components/Footer';
-import FileViewer from 'react-file-viewer';
-
-const file = 'https://dl.airtable.com/.attachments/f971b5d34bbc3ed660ef3c0b77901f55/14c6924d/LarkcsTermsandConditionsVersion1.023.04.2020.pdf'
-const type = 'pdf'
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -87,11 +83,10 @@ const Terms = (props) => {
           fontWeight: "bold",
           fontSize: 24
         }} variant="h6">Terms and Conditions</Typography><br />
-        <div style={container} className="minh">
-        <FileViewer
-        fileType={type}
-        filePath={file}/>
-         </div>
+        <div style={container}>
+
+          <iframe src="https://dl.airtable.com/.attachments/f971b5d34bbc3ed660ef3c0b77901f55/14c6924d/LarkcsTermsandConditionsVersion1.023.04.2020.pdf" width="100%" height="759" frameborder="0" allowfullscreen webkitallowfullscreen msallowfullscreen>
+          </iframe></div>
         <Popover
           classes={{
             paper: classes.paper,
