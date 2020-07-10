@@ -170,7 +170,7 @@ const Career = () => {
                       <GridContainer>
                         {post.description ? <GridItem xs={12} sm={12} md={post.VideoLink ? 6 : 12}>
                           <Typography variant="subtitle1">About the Role</Typography><hr /><br />
-                          <Typography>{post.description}</Typography></GridItem> : null}
+                          <Typography style={{whiteSpace:"pre-wrap"}}>{post.description}</Typography></GridItem> : null}
                         {post.VideoLink ? <GridItem xs={12} sm={12} md={post.VideoLink ? 6 : 12} style={{ marginTop: 42 }}>
                           <div className={classes.box}>
                             <iframe style={{ marginTop: 42 }} src={post.VideoLink} title="Larkcs" style={{ margin: 10, borderRadius: 12 }} width="95%" height="auto" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>

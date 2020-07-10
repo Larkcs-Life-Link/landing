@@ -75,7 +75,7 @@ class ServiceComponent extends React.Component {
                                 </Typography>
                                 <GridContainer>
                                     <GridItem xs={12} sm={12} md={service.VideoLink ? 6 : 9}>
-                                        <Typography variant="subtitle1" style={{ marginLeft: 32,marginRight:32 }}>
+                                        <Typography variant="subtitle1" style={{ marginLeft: 32,marginRight:32,whiteSpace:"pre-wrap" }}>
                                             {service.Description ? <p>{service.Description}</p> : null}
                                         </Typography>
                                         <hr className={classes.hide} /><br />

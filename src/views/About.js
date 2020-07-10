@@ -124,7 +124,7 @@ const Services = () => {
                 </Typography></React.Fragment> : null}
                 <GridContainer>
                   <GridItem xs={12} sm={12} md={about.VideoLink ? 6 : 10}>
-                    <Typography variant="subtitle1" style={{ marginLeft: 32,marginRight:32 }}>
+                    <Typography variant="subtitle1" style={{ marginLeft: 32,marginRight:32,whiteSpace:"pre-wrap" }}>
                       <p>{about.Content}</p>
                     </Typography>
                   </GridItem>
