@@ -10,6 +10,9 @@ var path=require('path');
 const airtableRoutes = require('./api/airtable')
 const publicFolder = process.env.NODE_ENV==='production' ? path.join(__dirname, '../build/public') : 'public';
 const server = express();
+require('dotenv').config()
+
+
 server
 .use(bodyParser.urlencoded({ extended: false }))
 .use(bodyParser.json())
