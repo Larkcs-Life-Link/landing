@@ -503,7 +503,7 @@ const Home = () => {
                 </div> : null}
               </GridItem>
             </GridContainer></div> : <div ref={myRef}></div>}
-          <br />{servicesConfig ? <div><Typography variant="h6" style={{ maxWidth: 500, margin: 32 }} ref={myRef1}>
+          <br />{!servicesConfig ? <div><Typography variant="h6" style={{ maxWidth: 500, margin: 32 }} ref={myRef1}>
             <p style={{ fontFamily: "Georgia", fontWeight: "bold" }}><LocalPharmacy style={{ color: "#39802D", marginRight: 12 }} />Our Services</p>
           </Typography><br />
             <Cards data={services} />
