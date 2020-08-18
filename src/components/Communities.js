@@ -26,7 +26,7 @@ const Cards = (props) => {
     return (
         <div>
             <GridContainer style={{ justifyContent: "center" }}>
-                <div className={classes.box} style={{ margin: "24px", textAlign: "center" }}>
+                {!props.blogConfig ? <div className={classes.box} style={{ margin: "24px", textAlign: "center" }}>
                     <GridItem>
                         <Typography variant="h6" style={{ fontSize: 20, margin: "0 auto", fontWeight: "bold" }}>
                             {props.data[0].Name}
@@ -38,12 +38,12 @@ const Cards = (props) => {
                             {props.data[0].Content}
                         </Typography><br />
                         <Button color="success" onClick={() => { window.open(props.data[0].url, '_blank'); }}>Read our Blog</Button>
-                    </GridItem></div>
-                <div className={classes.box} style={{ margin: "24px", textAlign: "center" }}>
+                    </GridItem></div> : null}
+                {!props.galleryConfig ? <div className={classes.box} style={{ margin: "24px", textAlign: "center" }}>
                     <GridItem>
                         <Typography variant="h6" style={{ fontSize: 20, fontWeight: "bold" }}>
                             Gallery
-        </Typography><br />
+                        </Typography><br />
                         <GridContainer style={{ minHeight: "200px", justifyContent: "center" }}>
                             {props.images.map((image, index) => {
                                 return <div key={index} style={{ maxWidth: 190, textAlign: "center" }}>
@@ -53,7 +53,7 @@ const Cards = (props) => {
                         </GridContainer>
                         <Link to="/gallery" style={{ textDecoration: "none" }}>
                             <Button color="success">View Gallery</Button></Link>
-                    </GridItem></div>
+                    </GridItem></div> : null}
             </GridContainer>
         </div>
     );

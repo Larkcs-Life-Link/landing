@@ -187,6 +187,10 @@ const style = {
 const Home = () => {
   useEffect(() => {
     axios.all([
+      axios.get('/api/sync/loadConfig')
+        .then((response) => {
+          setConfig(response.data);
+        }),
       axios.get('/api/sync/loadHeaders')
         .then((response) => {
           console.log(response.data)
@@ -247,6 +251,7 @@ const Home = () => {
   const [modal, setOpen] = React.useState(false);
   const [loading, setLoading] = React.useState(true);
   const [snack, setSnack] = React.useState(false);
+  const [config, setConfig] = React.useState([]);
   const [headers, setHeaders] = React.useState([]);
   const [about, setAbout] = React.useState([]);
   const [services, setServices] = React.useState([]);
@@ -256,7 +261,6 @@ const Home = () => {
   const [blog, setBlog] = React.useState([]);
   const [images, setImages] = React.useState([]);
   const [contact, setContact] = React.useState([]);
-  const [footer, setFooter] = React.useState([]);
   const [values, setValues] = React.useState({
     Name: '',
     Email: "",
@@ -338,6 +342,20 @@ const Home = () => {
   const executeScroll1 = () => { handleClose(); scrollToRef(myRef1) }
   const executeScroll3 = () => { handleClose(); scrollToRef(myRef3) }
   const executeScroll4 = () => { handleClose(); scrollToRef(myRef4) }
+
+  const bookingConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Booking") })[0].Hide ? true : false : false;
+  const downloadConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Download") })[0].Hide ? true : false : false;
+  const aboutConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "About") })[0].Hide ? true : false : false;
+  const teamConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Team") })[0].Hide ? true : false : false;
+  const servicesConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Services") })[0].Hide ? true : false : false;
+  const blogConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Blog") })[0].Hide ? true : false : false;
+  const galleryConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Gallery") })[0].Hide ? true : false : false;
+  const statisticsConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Statistics") })[0].Hide ? true : false : false;
+  const tesimonialsConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Testimonials") })[0].Hide ? true : false : false;
+  const feedBackConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Feedback") })[0].Hide ? true : false : false;
+  const mediaConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Media") })[0].Hide ? true : false : false;
+  const careerConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Career") })[0].Hide ? true : false : false;
+
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
   if (loading === true) {
@@ -374,7 +392,7 @@ const Home = () => {
             </IconButton>,
           ]}
         />
-        <Header openPop={true} phn={about[0].BookingNo} id={id} menu={true} handleClick={handleClick} handleClickOpen={handleClickOpen} />
+        <Header downloadConfig={downloadConfig} bookingConfig={bookingConfig} openPop={true} phn={about[0].BookingNo} id={id} menu={true} handleClick={handleClick} handleClickOpen={handleClickOpen} />
         <br /><br /><br /><br /><br />
         <GridContainer style={{ margin: "0 auto", maxWidth: 600 }}>
           <img className={classes.logo} src={Logo} alt=" " />
@@ -401,169 +419,179 @@ const Home = () => {
             horizontal: 'center',
           }}
         >
-          <List><ListItem button onClick={executeScroll}>
+          <List>
+            
+            {!aboutConfig?<ListItem button onClick={executeScroll}>
             <ListItemIcon>
               <VerifiedUser style={{ color: "#39802D" }} />
             </ListItemIcon>
             <ListItemText primary="About" />
-          </ListItem>
-            <ListItem button onClick={executeScroll1}>
+          </ListItem>:null}
+
+            {!servicesConfig?<ListItem button onClick={executeScroll1}>
               <ListItemIcon>
                 <LocalPharmacy style={{ color: "#39802D" }} />
               </ListItemIcon>
               <ListItemText primary="Services" />
-            </ListItem>
-            <ListItem button onClick={() => { window.location.href = "https://blog.larkcs.com" }}>
+            </ListItem>:null}
+
+            {!blogConfig?<ListItem button onClick={() => { window.location.href = "https://blog.larkcs.com" }}>
               <ListItemIcon>
                 <MenuBook style={{ color: "#39802D" }} />
               </ListItemIcon>
               <ListItemText primary="Blog" />
-            </ListItem>
-            <Link to="/gallery" style={{ textDecoration: "none", color: "#1C1C1C" }}>
+            </ListItem>:null}
+
+            {!galleryConfig?<Link to="/gallery" style={{ textDecoration: "none", color: "#1C1C1C" }}>
               <ListItem button>
                 <ListItemIcon>
                   <PermMedia style={{ color: "#39802D" }} />
                 </ListItemIcon>
                 <ListItemText primary="Gallery" />
-              </ListItem></Link>
-            <Link to="/team" style={{ textDecoration: "none", color: "#1C1C1C" }}>
+              </ListItem></Link>:null}
+
+            {!teamConfig?<Link to="/team" style={{ textDecoration: "none", color: "#1C1C1C" }}>
               <ListItem button>
                 <ListItemIcon>
                   <Group style={{ color: "#39802D" }} />
                 </ListItemIcon>
                 <ListItemText primary="Our Team" />
-              </ListItem></Link>
-            <ListItem button onClick={executeScroll3}>
+              </ListItem></Link>:null}
+
+            {(!feedBackConfig || !mediaConfig)?<ListItem button onClick={executeScroll3}>
               <ListItemIcon>
                 <Contacts style={{ color: "#39802D" }} />
               </ListItemIcon>
-              <ListItemText primary="Contact" /></ListItem><ListItem button onClick={executeScroll4}>
+              <ListItemText primary="Contact" /></ListItem>:null}
+              
+              {!careerConfig?<ListItem button onClick={executeScroll4}>
               <ListItemIcon>
                 <Work style={{ color: "#39802D" }} />
               </ListItemIcon>
-              <ListItemText primary="Career" /></ListItem>
-            <Button className={classes.hide} style={{ verticalAlign: "top", marginTop: "18px" }} color="success" onClick={handleClickOpen}>
-              Download App</Button><br />
+              <ListItemText primary="Career" /></ListItem>:null}
+
+            {!downloadConfig?<Button className={classes.hide} style={{ verticalAlign: "top", marginTop: "18px" }} color="success" onClick={handleClickOpen}>
+              Download App</Button>:null}<br />
           </List>
         </Popover><br /><br /><br />
         <div className={classes.mainContainer}>
-          <br /><Typography variant="h6" style={{ maxWidth: 500, margin: 32 }} ref={myRef}>
+          <br />{!aboutConfig ? <div><Typography variant="h6" style={{ maxWidth: 500, margin: 32 }} ref={myRef}>
             <p style={{ fontFamily: "Georgia", fontWeight: "bold" }}><VerifiedUser style={{ color: "#39802D", marginRight: 12 }} />{about[0].Title}</p>
           </Typography>
-          <GridContainer>
-            <GridItem xs={12} sm={12} md={6}>
-              <Typography variant="subtitle1" style={{ maxWidth: 500, margin: 32 }}>
-                {about[0].content ? <p>{about[0].content}</p> : null}
-              </Typography>
-              <Link to='/about' style={{ textDecoration: "none" }}>
-                <Button color="success" style={{ margin: 32, marginTop: -16 }}>Learn More</Button></Link>
-              <Button className={classes.hideScr} style={{ margin: 32, marginTop: -16 }} color="info" onClick={() => { window.open(`tel:${about[0].BookingNo}`); }}><Phone />Call us for booking</Button>
-              <hr className={classes.hide} style={{ maxWidth: "80%" }} />
-              <Typography variant="h6" style={{ padding: 12, marginLeft: 32 }}>
+            <GridContainer>
+              <GridItem xs={12} sm={12} md={6}>
+                <Typography variant="subtitle1" style={{ maxWidth: 500, margin: 32 }}>
+                  {about[0].content ? <p>{about[0].content}</p> : null}
+                </Typography>
+                <Link to='/about' style={{ textDecoration: "none" }}>
+                  <Button color="success" style={{ margin: 32, marginTop: -16 }}>Learn More</Button></Link>
+                {!bookingConfig ? <Button className={classes.hideScr} style={{ margin: 32, marginTop: -16 }} color="info" onClick={() => { window.open(`tel:${about[0].BookingNo}`); }}><Phone />Call us for booking</Button> : null}
+                <hr className={classes.hide} style={{ maxWidth: "80%" }} />
+                {!downloadConfig?<Typography variant="h6" style={{ padding: 12, marginLeft: 32 }}>
 
-                <p>Download our app from your app store</p>
-                <img src={playstore} alt=" " style={{ height: 60, float: "left", marginRight: 12, marginBottom: 20, marginTop: 10 }} />
-                <img src={appstore} alt=" " style={{ height: 60, marginRight: 12, marginBottom: 20, marginTop: 10 }} />
+                  <p>Download our app from your app store</p>
+                  <img src={playstore} alt=" " style={{ height: 60, float: "left", marginRight: 12, marginBottom: 20, marginTop: 10 }} />
+                  <img src={appstore} alt=" " style={{ height: 60, marginRight: 12, marginBottom: 20, marginTop: 10 }} />
 
-                <Button style={{ verticalAlign: "top", marginTop: "18px" }} color="success" onClick={handleClickOpen}>
-                  Download App</Button><br />
-              </Typography>
-            </GridItem>
-            <GridItem xs={12} sm={12} md={6}>
-              {about[0].VideoLink ? <div className={classes.box}>
-                <iframe src={about[0].VideoLink} title="Larkcs" style={{ margin: 10, borderRadius: 12 }} width="95%" height="250" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
-              </div> : null}
-            </GridItem>
-          </GridContainer>
-          <br /><Typography variant="h6" style={{ maxWidth: 500, margin: 32 }} ref={myRef1}>
+                  <Button style={{ verticalAlign: "top", marginTop: "18px" }} color="success" onClick={handleClickOpen}>
+                    Download App</Button><br />
+                </Typography>:null}
+              </GridItem>
+              <GridItem xs={12} sm={12} md={6}>
+                {about[0].VideoLink ? <div className={classes.box}>
+                  <iframe src={about[0].VideoLink} title="Larkcs" style={{ margin: 10, borderRadius: 12 }} width="95%" height="250" frameBorder="0" allow="autoplay; fullscreen" allowFullScreen></iframe>
+                </div> : null}
+              </GridItem>
+            </GridContainer></div> : <div ref={myRef}></div>}
+          <br />{servicesConfig ? <div><Typography variant="h6" style={{ maxWidth: 500, margin: 32 }} ref={myRef1}>
             <p style={{ fontFamily: "Georgia", fontWeight: "bold" }}><LocalPharmacy style={{ color: "#39802D", marginRight: 12 }} />Our Services</p>
           </Typography><br />
-          <Cards data={services} />
-          <br /><br />
-          <Typography variant="h6" style={{ maxWidth: 500, margin: 32 }}>
+            <Cards data={services} />
+            <br /><br /></div> : <div ref={myRef1}></div>}
+          {(!blogConfig || !galleryConfig) ? <div><Typography variant="h6" style={{ maxWidth: 500, margin: 32 }}>
             <p style={{ fontFamily: "Georgia", fontWeight: "bold" }}><HomeWork style={{ color: "#39802D", marginRight: 12 }} />Our Community</p>
           </Typography><br />
-          <Communities data={blog} images={images} />
-          <br /><br />
-          <Typography variant="h6" style={{ maxWidth: 500, margin: 18 }}>
+            <Communities blogConfig={blogConfig} galleryConfig={galleryConfig} data={blog} images={images} />
+            <br /><br /></div> : null}
+          {!statisticsConfig ? <div><Typography variant="h6" style={{ maxWidth: 500, margin: 18 }}>
             <p style={{ fontFamily: "Georgia", fontWeight: "bold" }}>
               <FlightTakeoff style={{ color: "#39802D", marginRight: 12 }} />
            We are Growing!</p>
           </Typography><br />
-          <div className={classes.container}><Statistics data={statistics} /><br /></div>
-          <br /><br />
-          <Typography variant="h6" style={{ maxWidth: 500, marginLeft: 32, display: "flex" }} >
+            <div className={classes.container}><Statistics data={statistics} /><br /></div>
+            <br /><br /></div> : null}
+          {!tesimonialsConfig ? <div><Typography variant="h6" style={{ maxWidth: 500, marginLeft: 32, display: "flex" }} >
             <div><SentimentVerySatisfiedIcon style={{ color: "#39802D", marginRight: 12 }} /></div>
             <div style={{ fontFamily: "Georgia", fontWeight: "bold" }}>
               Our Happy Customers!</div>
           </Typography>
-          <Testimonials data={testimonials} />
-          <Typography variant="h6" style={{ maxWidth: 500, margin: 32 }} ref={myRef3}>
+            <Testimonials data={testimonials} /></div> : null}
+          {(!feedBackConfig || !mediaConfig) ? <div><Typography variant="h6" style={{ maxWidth: 500, margin: 32 }} ref={myRef3}>
             <p style={{ fontFamily: "Georgia", fontWeight: "bold" }}>
               <ThumbUp style={{ color: "#39802D", marginRight: 12 }} />
            We are Social!</p>
           </Typography><br />
-          <br />
-          <GridContainer>
-            <GridItem xs={12} sm={12} md={6}>
-              <div style={{
-                minHeight: 360,
-                maxWidth: 700,
-                padding: 12,
-                margin: 24,
-                border: "10px solid #ffffff",
-                borderRadius: 12,
-                WebkitBoxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
-                boxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
-              }}>
-                {contact.map((field, index) => {
-                  return (
-                    <React.Fragment key={index}><TextField
-                      id="standard-name"
-                      name={field.Title}
-                      label={field.Title}
-                      fullWidth={field.MultiLine ? true : false}
-                      multiline={field.MultiLine ? true : false}
-                      rows={field.MultiLine ? 4 : 1}
-                      className={classes.textField}
-                      value={values[field.Title]}
-                      onChange={handleChange([field.Title])}
-                      margin="normal"
-                    />
-                      <br />
-                    </React.Fragment>
-                  )
-                })}<br />
-                <Button style={{ float: "right" }} color="success" type="submit" onClick={handleSnack}>
-                  Submit
-          </Button></div></GridItem>
-            <GridItem xs={12} sm={12} md={6}>
-              <div className={classes.container} style={{ textAlign: "center", marginTop: 52, maxWidth: 450 }}>
-                {media[0].Link ? <FontAwesomeIcon color="#6385A6" icon={faFacebookF} size="2x" onClick={() => { window.open(media[0].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
-                {media[1].Link ? <FontAwesomeIcon color="#AF3D83" icon={faInstagram} size="2x" onClick={() => { window.open(media[1].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
-                {media[2].Link ? <FontAwesomeIcon color="#31A940" icon={faWhatsapp} size="2x" onClick={() => { window.open(`https://wa.me/${media[2].Link}`, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
-                {media[3].Link ? <FontAwesomeIcon color="#E83F3A" icon={faYoutube} size="2x" onClick={() => { window.open(media[3].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
-                {media[4].Link ? <FontAwesomeIcon color="#0678B6" icon={faLinkedinIn} size="2x" onClick={() => { window.open(media[4].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
-                {media[5].Link ? <FontAwesomeIcon color="#37B1E2" icon={faTwitter} size="2x" onClick={() => { window.open(media[5].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
-                <br /><br /><Typography variant="subtitle1" style={{ fontWeight: "initial" }}>
-                  <GridContainer style={{ maxWidth: 500, margin: "0 auto" }}>
-                    {media[6].Link ? <GridItem xs={12} sm={12} md={12} style={{ cursor: "pointer", marginBottom: 24 }} onClick={() => { window.open(`mailto:${media[6].Link}`, '_blank'); }}>
-                      <FontAwesomeIcon color="#31A940" icon={faEnvelope} style={{ marginRight: 6 }}></FontAwesomeIcon>
+            <br />
+            <GridContainer>
+              {!feedBackConfig ? <GridItem xs={12} sm={12} md={6}>
+                <div style={{
+                  minHeight: 360,
+                  maxWidth: 700,
+                  padding: 12,
+                  margin: 24,
+                  border: "10px solid #ffffff",
+                  borderRadius: 12,
+                  WebkitBoxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
+                  boxShadow: "20px 20px 21px 20px rgba(136,136,136,0.24)",
+                }}>
+                  {contact.map((field, index) => {
+                    return (
+                      <React.Fragment key={index}><TextField
+                        id="standard-name"
+                        name={field.Title}
+                        label={field.Title}
+                        fullWidth={field.MultiLine ? true : false}
+                        multiline={field.MultiLine ? true : false}
+                        rows={field.MultiLine ? 4 : 1}
+                        className={classes.textField}
+                        value={values[field.Title]}
+                        onChange={handleChange([field.Title])}
+                        margin="normal"
+                      />
+                        <br />
+                      </React.Fragment>
+                    )
+                  })}<br />
+                  <Button style={{ float: "right" }} color="success" type="submit" onClick={handleSnack}>
+                    Submit
+          </Button></div></GridItem> : null}
+              {!mediaConfig ? <GridItem xs={12} sm={12} md={6}>
+                <div className={classes.container} style={{ textAlign: "center", marginTop: 52, maxWidth: 450 }}>
+                  {media[0].Link ? <FontAwesomeIcon color="#6385A6" icon={faFacebookF} size="2x" onClick={() => { window.open(media[0].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
+                  {media[1].Link ? <FontAwesomeIcon color="#AF3D83" icon={faInstagram} size="2x" onClick={() => { window.open(media[1].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
+                  {media[2].Link ? <FontAwesomeIcon color="#31A940" icon={faWhatsapp} size="2x" onClick={() => { window.open(`https://wa.me/${media[2].Link}`, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
+                  {media[3].Link ? <FontAwesomeIcon color="#E83F3A" icon={faYoutube} size="2x" onClick={() => { window.open(media[3].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
+                  {media[4].Link ? <FontAwesomeIcon color="#0678B6" icon={faLinkedinIn} size="2x" onClick={() => { window.open(media[4].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
+                  {media[5].Link ? <FontAwesomeIcon color="#37B1E2" icon={faTwitter} size="2x" onClick={() => { window.open(media[5].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
+                  <br /><br /><Typography variant="subtitle1" style={{ fontWeight: "initial" }}>
+                    <GridContainer style={{ maxWidth: 500, margin: "0 auto" }}>
+                      {media[6].Link ? <GridItem xs={12} sm={12} md={12} style={{ cursor: "pointer", marginBottom: 24 }} onClick={() => { window.open(`mailto:${media[6].Link}`, '_blank'); }}>
+                        <FontAwesomeIcon color="#31A940" icon={faEnvelope} style={{ marginRight: 6 }}></FontAwesomeIcon>
           support@larkcs.com </GridItem> : null}
-                    {media[7].Link ? <GridItem xs={12} sm={12} md={12} style={{ cursor: "pointer", marginBottom: 24 }} onClick={() => { window.open(`tel:${media[7].Link}`, '_blank'); }}>
-                      <FontAwesomeIcon color="#31A940" icon={faPhoneAlt} style={{ marginRight: 6 }}></FontAwesomeIcon>
+                      {media[7].Link ? <GridItem xs={12} sm={12} md={12} style={{ cursor: "pointer", marginBottom: 24 }} onClick={() => { window.open(`tel:${media[7].Link}`, '_blank'); }}>
+                        <FontAwesomeIcon color="#31A940" icon={faPhoneAlt} style={{ marginRight: 6 }}></FontAwesomeIcon>
           +918111888892 </GridItem> : null}</GridContainer></Typography><br />
-              </div>
+                </div>
 
-            </GridItem>
-          </GridContainer>
-          <br /><br />
-          <div style={{ backgroundColor: "#F3F3FE", padding: 32 }}>
+              </GridItem> : null}
+            </GridContainer>
+            <br /><br /></div> : <div ref={myRef3}></div>}
+          {!careerConfig ? <div style={{ backgroundColor: "#F3F3FE", padding: 32 }}>
             <Typography style={{ margin: "0 auto", textAlign: "center" }} ref={myRef4}>
               <span style={headerStyle}>We are Hiring!!</span><br />
               <Link to='/career' style={{ textDecoration: "none" }}>
                 <Button color="success">Go to Career Page</Button></Link>
-            </Typography></div>
+            </Typography></div> : null}
         </div> <Dialog open={modal} onClose={handleClose} aria-labelledby="form-dialog-title">
           <DialogTitle id="form-dialog-title">We are not live yet!!</DialogTitle>
           <DialogContent>
@@ -586,7 +614,7 @@ const Home = () => {
             <Button onClick={handleSubscription} color="success" type="submit">
               Subscribe
           </Button>
-          </DialogActions><DialogContent><div className={classes.follow}><DialogContentText>Follow our channels for more updates:</DialogContentText><div style={{ textAlign: "center" }}>
+          </DialogActions>{!mediaConfig ? <DialogContent><div className={classes.follow}><DialogContentText>Follow our channels for more updates:</DialogContentText><div style={{ textAlign: "center" }}>
             <FontAwesomeIcon color="#6385A6" icon={faFacebookF} size="2x" onClick={() => { window.open(media[0].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>
             <FontAwesomeIcon color="#AF3D83" icon={faInstagram} size="2x" onClick={() => { window.open(media[1].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>
             <FontAwesomeIcon color="#31A940" icon={faWhatsapp} size="2x" onClick={() => { window.open(`https://wa.me/${media[2].Link}`, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>
@@ -595,13 +623,13 @@ const Home = () => {
             <FontAwesomeIcon color="#37B1E2" icon={faTwitter} size="2x" onClick={() => { window.open(media[5].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>
             <Typography variant="subtitle1" style={{ fontWeight: "initial" }}>
             </Typography><br />
-          </div></div></DialogContent>
+          </div></div></DialogContent> : <div ref={myRef4}></div>}
         </Dialog>
         <Footer data={media} />
-        <Button className={classes.hide} style={{
+        {!bookingConfig ? <Button className={classes.hide} style={{
           width: "100%", margin: "0px", bottom: 0, position: "fixed", minHeight: 55, WebkitBoxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
           boxShadow: "20px 20px 31px 30px rgba(136,136,136,0.24)",
-        }} color="success" onClick={() => { window.open(`tel:${about[0].BookingNo}`); }}><Phone />Call us for booking</Button>
+        }} color="success" onClick={() => { window.open(`tel:${about[0].BookingNo}`); }}><Phone />Call us for booking</Button> : null}
       </React.Fragment>
     );
   }

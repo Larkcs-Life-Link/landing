@@ -47,10 +47,10 @@ function Header(props) {
         <GridItem xs={8} sm={10} md={10}>
           {props.menu ?
             <div className={classes.float}>
-              {!props.openPop ? <Link to="/download" style={{ textDecoration: "none", color: "#1C1C1C" }}><Button className={classes.display} color="success">Download App</Button></Link>
-                : <Button className={classes.display} color="success" onClick={props.handleClickOpen}>Download App</Button>
+              {!props.openPop ? !props.downloadConfig?<Link to="/download" style={{ textDecoration: "none", color: "#1C1C1C" }}><Button className={classes.display} color="success">Download App</Button></Link>:null
+                : !props.downloadConfig?<Button className={classes.display} color="success" onClick={props.handleClickOpen}>Download App</Button>:null
               }
-              <Button className={classes.display} color="info" onClick={() => { window.open(`tel:${props.phn}`); }} ><Phone style={{ marginRight: 6 }} />Call us for booking</Button>
+              {!props.bookingConfig?<Button className={classes.display} color="info" onClick={() => { window.open(`tel:${props.phn}`); }} ><Phone style={{ marginRight: 6 }} />Call us for booking</Button>:null}
 
               <IconButton aria-describedby={props.id} variant="contained" onMouseEnter={props.handleClick} onClick={props.handleClick}>
 

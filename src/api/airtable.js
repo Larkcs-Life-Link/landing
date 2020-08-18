@@ -16,6 +16,7 @@ const sgMail = require('@sendgrid/mail');
 
 const homeAPI = 'keyX8tJDj5uJ8jnE2';
 const careerAPI = 'keyCwv4IauNCHeKor';
+const configBase = 'app0feo8lyM5xAcMH';
 const homeBase = 'appSxnWsj5GUElptt';
 const aboutBase = 'appr90qZW6oMB3bm1';
 const teamBase = 'appSu2zFtt89LQ9G3';
@@ -28,6 +29,7 @@ const subscriptionBase = 'appR7l5019NaU8wRU';
 const termBase = 'appNY7VCbpn1STZlH';
 const sendGridApi = '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'
 sgMail.setApiKey(sendGridApi);
+var configList = new Airtable({ apiKey: homeAPI }).base(configBase)
 var homeList = new Airtable({ apiKey: homeAPI }).base(homeBase)
 var aboutList = new Airtable({ apiKey: homeAPI }).base(aboutBase)
 var teamList = new Airtable({ apiKey: homeAPI }).base(teamBase)
@@ -38,6 +40,20 @@ var careerList = new Airtable({ apiKey: homeAPI }).base(careerBase);
 var termsList = new Airtable({ apiKey: homeAPI }).base(termBase);
 var applications = new Airtable({ apiKey: careerAPI }).base(applicationBase);
 var Subscriptions = new Airtable({ apiKey: homeAPI }).base(subscriptionBase);
+
+router.get('/loadConfig', (req, res) => {
+  configList('Hide').select({
+    view: "Grid view"
+  }).eachPage(function page(records, fetchNextPage) {
+    records.forEach(function (record) {
+      ConfigData = ConfigData.concat(record.fields)
+    });
+    res.json(ConfigData)
+  }, function done(err) {
+    if (err) { console.error(err); return; }
+  });
+  ConfigData = [];
+})
 
 router.get('/loadHeaders', (req, res) => {
   homeList('Headers').select({
