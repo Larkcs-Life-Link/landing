@@ -59,7 +59,7 @@ const CareerHeader = (props) => {
           </div>
         </GridItem>
         <GridItem xs={12} sm={12} md={6}>
-          <Typography variant="subtitle1" style={{ maxWidth: 500, margin: 32, whiteSpace: "pre-wrap", }}>
+          <Typography variant="subtitle1" style={{ margin: 32, whiteSpace: "pre-wrap", }}>
             <p> {props.description[0].content}</p>
           </Typography><hr className={classes.hide} />
           <Typography variant="h6" style={{ padding: 12, marginLeft: 28 }}>
