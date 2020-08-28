@@ -127,13 +127,17 @@ const Gallery = () => {
   if (loading === true) {
     return (<React.Fragment><Helmet>
       <title>Gallery | Larkcs Life Link</title>
-      <meta name="description" content="Larkcs Life Link Gallery page" />
+      <meta name="description" content="ake a sneak peek into our gallery to find out more about the quality services we deliver and the various activities that go on in the background to provide you with the best healthcare." />
     </Helmet>
       <LinearProgress />
     </React.Fragment>)
   } else {
     return (
-      <div>
+      <React.Fragment>
+        <Helmet>
+      <title>Gallery | Larkcs Life Link</title>
+      <meta name="description" content="ake a sneak peek into our gallery to find out more about the quality services we deliver and the various activities that go on in the background to provide you with the best healthcare." />
+    </Helmet>
         <Header bookingConfig={bookingConfig} downloadConfig={downloadConfig} phn={phn[0].BookingNo} menu={true} handleClick={handleClick} />
         <br /><br /><br /><br /><br />
         {
@@ -249,7 +253,7 @@ const Gallery = () => {
               </List>
         </Popover>
         <Footer data={media} />
-      </div>
+      </React.Fragment>
     )
   }
 };

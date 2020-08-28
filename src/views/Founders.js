@@ -124,7 +124,7 @@ const Services = () => {
   if (loading === true) {
     return (<React.Fragment><Helmet>
       <title>Team | Larkcs Life Link</title>
-      <meta name="description" content="Larkcs Life Link Career page" />
+      <meta name="description" content="We are a dedicated team aimed at providing assisted living facilities to people in need of health assistance. Our service is tailored with compassion and integrity." />
     </Helmet>
       <LinearProgress />
     </React.Fragment>)
@@ -133,7 +133,7 @@ const Services = () => {
       <React.Fragment>
         <Helmet>
           <title>Team | Larkcs Life Link</title>
-          <meta name="description" content="Larkcs Life Link Career page" />
+          <meta name="description" content="We are a dedicated team aimed at providing assisted living facilities to people in need of health assistance. Our service is tailored with compassion and integrity." />
         </Helmet>
         <Header bookingConfig={bookingConfig} downloadConfig={downloadConfig} phn={phn[0].BookingNo} menu={true} handleClick={handleClick} /><br /><br /><br /><br /><br />
         <Typography style={{

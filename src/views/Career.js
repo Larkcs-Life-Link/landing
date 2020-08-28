@@ -142,7 +142,7 @@ const Career = () => {
   if (loading === true) {
     return (<React.Fragment><Helmet>
       <title>Career | Larkcs Life Link</title>
-      <meta name="description" content="Larkcs Life Link Career page" />
+      <meta name="description" content="With Larkcs, unleash your untapped potential by being part of a revolutionary health care platform. Discover the new you." />
     </Helmet>
       <LinearProgress />
     </React.Fragment>)
@@ -151,7 +151,7 @@ const Career = () => {
       <div>
         <Helmet>
           <title>Career | Larkcs Life Link</title>
-          <meta name="description" content="Larkcs Life Link Career page" />
+          <meta name="description" content="With Larkcs, unleash your untapped potential by being part of a revolutionary health care platform. Discover the new you." />
         </Helmet>
         <Header bookingConfig={bookingConfig} downloadConfig={downloadConfig} phn={phn[0].BookingNo} menu={true} handleClick={handleClick} /><br /><br /><br /><br /><br />
         <CareerHeader description={description} callback={executeScroll} />

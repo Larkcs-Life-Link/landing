@@ -365,7 +365,7 @@ const Home = () => {
       <React.Fragment>
         <Helmet>
           <title>Larkcs Life Link</title>
-          <meta name="description" content="Larkcs Life Link Home page" />
+          <meta name="description" content="We are a dedicated team aimed at providing assisted living facilities to people in need of health assistance. Our service is tailored with compassion and integrity." />
         </Helmet>
         <Snackbar
           style={{ maxWidth: 300, margin: "0 auto" }}

@@ -16,6 +16,7 @@ import PermMedia from '@material-ui/icons/PermMedia';
 import Home from '@material-ui/icons/Home';
 import Work from '@material-ui/icons/Work';
 import Footer from '../components/Footer';
+import {Helmet} from 'react-helmet';
 import ServiceComponent from '../components/serviceComponent';
 
 const useStyles = makeStyles(theme => ({
@@ -86,10 +87,22 @@ const Services = (props) => {
 
   const classes = useStyles();
   if (loading === true) {
-    return (<LinearProgress />)
+    return (
+    <React.Fragment>
+      <Helmet>
+          <title>Services | Larkcs Life Link</title>
+          <meta name="description" content="We are dedicated to bringing standard caregiving services, reliable health tips and a friend in need at your service around the clock." />
+        </Helmet>
+        <LinearProgress />
+    </React.Fragment>
+   )
   } else {
     return (
       <React.Fragment>
+        <Helmet>
+          <title>Services | Larkcs Life Link</title>
+          <meta name="description" content="We are dedicated to bringing standard caregiving services, reliable health tips and a friend in need at your service around the clock." />
+        </Helmet>
         <Header bookingConfig={bookingConfig} downloadConfig={downloadConfig} phn={phn[0].BookingNo} menu={true} handleClick={handleClick} /> <br /><br /><br /><br /><br />
         <ServiceComponent services={services} navigateTo={props.location.state?props.location.state.ref:null} />
         <Footer data={media} />
