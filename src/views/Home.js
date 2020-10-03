@@ -49,6 +49,7 @@ import Cards from '../components/Cards';
 import Header from '../components/Header';
 import Communities from '../components/Communities';
 import Footer from '../components/Footer';
+import LiveHelpIcon from '@material-ui/icons/LiveHelp';
 
 const scrollToRef = (ref) => window.scrollTo({
   top: ref.current.offsetTop,
@@ -355,6 +356,7 @@ const Home = () => {
   const feedBackConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Feedback") })[0].Hide ? true : false : false;
   const mediaConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Media") })[0].Hide ? true : false : false;
   const careerConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Career") })[0].Hide ? true : false : false;
+  const supportConfig = config.length > 0 ? config.filter((item) => { return (item.Name == "Support") })[0].Hide ? true : false : false;
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
@@ -474,6 +476,14 @@ const Home = () => {
                 <Work style={{ color: "#39802D" }} />
               </ListItemIcon>
               <ListItemText primary="Career" /></ListItem>:null}
+
+              {!supportConfig?<Link to="/support" style={{ textDecoration: "none", color: "#1C1C1C" }}>
+              <ListItem button>
+                <ListItemIcon>
+                  <LiveHelpIcon style={{ color: "#39802D" }} />
+                </ListItemIcon>
+                <ListItemText primary="Support" />
+              </ListItem></Link>:null}
 
             {!downloadConfig?<Button className={classes.hide} style={{ verticalAlign: "top", marginTop: "18px" }} color="success" onClick={handleClickOpen}>
               Download App</Button>:null}<br />
