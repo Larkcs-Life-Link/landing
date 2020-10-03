@@ -193,9 +193,9 @@ const Support = () => {
                     ]}
                 />
                 <Header bookingConfig={bookingConfig} downloadConfig={downloadConfig} phn={phn[0].BookingNo} menu={true} handleClick={handleClick} />
-                <br /><br /><br /><br /><br />
                 {!supportConfig ?
-                    <div style={{
+                <div style={{margin:"140px 15px"}}> 
+     <div style={{
                         minHeight: 430,
                         maxWidth: 700,
                         padding: 12,
@@ -229,7 +229,8 @@ const Support = () => {
                         })}<br />
                         <Button style={{ float: "right" }} color="success" type="submit" onClick={handleSnack}>
                             Submit
-          </Button></div> : null}
+          </Button></div> 
+                </div>: null}
                 <Popover
                     classes={{
                         paper: classes.paper,
