@@ -534,10 +534,10 @@ const Home = () => {
           {(!feedBackConfig || !mediaConfig) ? <div><Typography variant="h6" style={{ maxWidth: 500, margin: 32 }} ref={myRef3}>
             <p style={{ fontFamily: "Georgia", fontWeight: "bold" }}>
               <ThumbUp style={{ color: "#39802D", marginRight: 12 }} />
-           We are Social!</p>
+           Contact Us</p>
           </Typography><br />
             <br />
-            <GridContainer>
+            <GridContainer justify="space-around">
               {!feedBackConfig ? <GridItem xs={12} sm={12} md={6}>
                 <div style={{
                   minHeight: 360,
