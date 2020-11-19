@@ -406,6 +406,12 @@ const Home = () => {
             <span style={subtitleStyle}>Always with you</span><br /><br />
           </Typography>
         </GridContainer>
+        {!careerConfig ? <div style={{ backgroundColor: "#F3F3FE", padding: 32, marginTop:16 }}>
+            <Typography style={{ margin: "0 auto", textAlign: "center" }} ref={myRef4}>
+              <span style={headerStyle}>We are Hiring!!</span><br />
+              <Link to='/career' style={{ textDecoration: "none" }}>
+                <Button color="success">Go to Career Page</Button></Link>
+            </Typography></div> : null}
         <Slider headers={headers} />
         <Popover
           classes={{
@@ -492,7 +498,7 @@ const Home = () => {
                   <Button color="success" style={{ margin: 32, marginTop: -16 }}>Learn More</Button></Link>
                 {!bookingConfig ? <Button className={classes.hideScr} style={{ margin: 32, marginTop: -16 }} color="info" onClick={() => { window.open(`tel:${about[0].BookingNo}`); }}><Phone />Call us for booking</Button> : null}
                 <hr className={classes.hide} style={{ maxWidth: "80%" }} />
-                {!downloadConfig?<Typography variant="h6" style={{ padding: 12, marginLeft: 32 }}>
+                {/* {!downloadConfig?<Typography variant="h6" style={{ padding: 12, marginLeft: 32 }}>
 
                   <p>Download our app from your app store</p>
                   <img src={playstore} alt=" " style={{ height: 60, float: "left", marginRight: 12, marginBottom: 20, marginTop: 10 }} />
@@ -500,7 +506,7 @@ const Home = () => {
 
                   <Button style={{ verticalAlign: "top", marginTop: "18px" }} color="success" onClick={handleClickOpen}>
                     Download App</Button><br />
-                </Typography>:null}
+                </Typography>:null} */}
               </GridItem>
               <GridItem xs={12} sm={12} md={6}>
                 {about[0].VideoLink ? <div className={classes.box}>
@@ -572,12 +578,12 @@ const Home = () => {
           </Button></div></GridItem> : null}
               {!mediaConfig ? <GridItem xs={12} sm={12} md={6}>
                 <div className={classes.container} style={{ textAlign: "center", marginTop: 52, maxWidth: 450 }}>
-                  {media[0].Link ? <FontAwesomeIcon color="#6385A6" icon={faFacebookF} size="2x" onClick={() => { window.open(media[0].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
-                  {media[1].Link ? <FontAwesomeIcon color="#AF3D83" icon={faInstagram} size="2x" onClick={() => { window.open(media[1].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
-                  {media[2].Link ? <FontAwesomeIcon color="#31A940" icon={faWhatsapp} size="2x" onClick={() => { window.open(`https://wa.me/${media[2].Link}`, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
-                  {media[3].Link ? <FontAwesomeIcon color="#E83F3A" icon={faYoutube} size="2x" onClick={() => { window.open(media[3].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
-                  {media[4].Link ? <FontAwesomeIcon color="#0678B6" icon={faLinkedinIn} size="2x" onClick={() => { window.open(media[4].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
-                  {media[5].Link ? <FontAwesomeIcon color="#37B1E2" icon={faTwitter} size="2x" onClick={() => { window.open(media[5].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
+                  {media[0].Link && !media[0].Hide ? <FontAwesomeIcon color="#6385A6" icon={faFacebookF} size="2x" onClick={() => { window.open(media[0].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
+                  {media[1].Link && !media[1].Hide ? <FontAwesomeIcon color="#AF3D83" icon={faInstagram} size="2x" onClick={() => { window.open(media[1].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
+                  {media[2].Link && !media[2].Hide ? <FontAwesomeIcon color="#31A940" icon={faWhatsapp} size="2x" onClick={() => { window.open(`https://wa.me/${media[2].Link}`, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
+                  {media[3].Link && !media[3].Hide ? <FontAwesomeIcon color="#E83F3A" icon={faYoutube} size="2x" onClick={() => { window.open(media[3].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
+                  {media[4].Link && !media[4].Hide ? <FontAwesomeIcon color="#0678B6" icon={faLinkedinIn} size="2x" onClick={() => { window.open(media[4].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
+                  {media[5].Link && !media[5].Hide ? <FontAwesomeIcon color="#37B1E2" icon={faTwitter} size="2x" onClick={() => { window.open(media[5].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon> : null}
                   <br /><br /><Typography variant="subtitle1" style={{ fontWeight: "initial" }}>
                     <GridContainer style={{ maxWidth: 500, margin: "0 auto" }}>
                       {media[6].Link ? <GridItem xs={12} sm={12} md={12} style={{ cursor: "pointer", marginBottom: 24 }} onClick={() => { window.open(`mailto:${media[6].Link}`, '_blank'); }}>
@@ -620,12 +626,12 @@ const Home = () => {
               Subscribe
           </Button>
           </DialogActions>{!mediaConfig ? <DialogContent><div className={classes.follow}><DialogContentText>Follow our channels for more updates:</DialogContentText><div style={{ textAlign: "center" }}>
-            <FontAwesomeIcon color="#6385A6" icon={faFacebookF} size="2x" onClick={() => { window.open(media[0].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>
-            <FontAwesomeIcon color="#AF3D83" icon={faInstagram} size="2x" onClick={() => { window.open(media[1].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>
-            <FontAwesomeIcon color="#31A940" icon={faWhatsapp} size="2x" onClick={() => { window.open(`https://wa.me/${media[2].Link}`, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>
-            <FontAwesomeIcon color="#E83F3A" icon={faYoutube} size="2x" onClick={() => { window.open(media[3].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>
-            <FontAwesomeIcon color="#0678B6" icon={faLinkedinIn} size="2x" onClick={() => { window.open(media[4].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>
-            <FontAwesomeIcon color="#37B1E2" icon={faTwitter} size="2x" onClick={() => { window.open(media[5].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>
+            {!media[0].Hide && media[0].Link?<FontAwesomeIcon color="#6385A6" icon={faFacebookF} size="2x" onClick={() => { window.open(media[0].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>:null}
+            {!media[1].Hide && media[1].Link?<FontAwesomeIcon color="#AF3D83" icon={faInstagram} size="2x" onClick={() => { window.open(media[1].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>:null}
+            {!media[2].Hide && media[2].Link?<FontAwesomeIcon color="#31A940" icon={faWhatsapp} size="2x" onClick={() => { window.open(`https://wa.me/${media[2].Link}`, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>:null}
+            {!media[3].Hide && media[3].Link?<FontAwesomeIcon color="#E83F3A" icon={faYoutube} size="2x" onClick={() => { window.open(media[3].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>:null}
+            {!media[4].Hide && media[4].Link?<FontAwesomeIcon color="#0678B6" icon={faLinkedinIn} size="2x" onClick={() => { window.open(media[4].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>:null}
+            {!media[5].Hide && media[5].Link?<FontAwesomeIcon color="#37B1E2" icon={faTwitter} size="2x" onClick={() => { window.open(media[5].Link, '_blank'); }} style={{ margin: 28, marginBottom: 0, cursor: "pointer" }}></FontAwesomeIcon>:null}
             <Typography variant="subtitle1" style={{ fontWeight: "initial" }}>
             </Typography><br />
           </div></div></DialogContent> : <div ref={myRef4}></div>}
