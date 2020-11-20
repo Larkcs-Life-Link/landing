@@ -139,7 +139,7 @@ const Statistics = (props) => {
                                             icon={faPhoneAlt}
                                             style={{ marginRight: 6 }}
                                         ></FontAwesomeIcon>
-                                        +918111888892{" "}
+                                        +918111888859{" "}
                                     </GridItem>
                                 ) : null}
                             </GridContainer>
