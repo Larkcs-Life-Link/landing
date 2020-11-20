@@ -382,6 +382,7 @@ const Career = () => {
                                               {post.responsibilities ? (
                                                   <ul>
                                                       {post.responsibilities
+                                                          .trim()
                                                           .split("\n")
                                                           .map((points, index) => {
                                                               return <li key={index}>{points}</li>;
