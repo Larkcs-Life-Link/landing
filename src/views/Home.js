@@ -598,10 +598,10 @@ const Home = () => {
                     <GridContainer style={{ maxWidth: 500, margin: "0 auto" }}>
                       {media[6].Link ? <GridItem xs={12} sm={12} md={12} style={{ cursor: "pointer", marginBottom: 24 }} onClick={() => { window.open(`mailto:${media[6].Link}`, '_blank'); }}>
                         <FontAwesomeIcon color="#31A940" icon={faEnvelope} style={{ marginRight: 6 }}></FontAwesomeIcon>
-          support@larkcs.com </GridItem> : null}
+          {media[6].Link} </GridItem> : null}
                       {media[7].Link ? <GridItem xs={12} sm={12} md={12} style={{ cursor: "pointer", marginBottom: 24 }} onClick={() => { window.open(`tel:${media[7].Link}`, '_blank'); }}>
                         <FontAwesomeIcon color="#31A940" icon={faPhoneAlt} style={{ marginRight: 6 }}></FontAwesomeIcon>
-          +918111888892 </GridItem> : null}</GridContainer></Typography><br />
+          {media[7].Link} </GridItem> : null}</GridContainer></Typography><br />
                 </div>
 
               </GridItem> : null}
