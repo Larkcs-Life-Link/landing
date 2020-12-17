@@ -27,7 +27,6 @@ const applicationBase = 'appCAjLMcjxpSwPgu';
 const careerBase = 'app27ibjc251l39Tr';
 const subscriptionBase = 'appR7l5019NaU8wRU';
 const termBase = 'appNY7VCbpn1STZlH';
-const supportBase = 'app7rS7md1t16whb7';
 const sendGridApi = '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'
 sgMail.setApiKey(sendGridApi);
 var configList = new Airtable({ apiKey: homeAPI }).base(configBase)
@@ -35,13 +34,12 @@ var homeList = new Airtable({ apiKey: homeAPI }).base(homeBase)
 var aboutList = new Airtable({ apiKey: homeAPI }).base(aboutBase)
 var teamList = new Airtable({ apiKey: homeAPI }).base(teamBase)
 var servicesList = new Airtable({ apiKey: homeAPI }).base(servicesBase)
-var openingsList = new Airtable({ apiKey: careerAPI }).base(openingBase);
+var openingsList = new Airtable({ apiKey: homeAPI }).base(openingBase);
 var galleryList = new Airtable({ apiKey: homeAPI }).base(galleryBase);
 var careerList = new Airtable({ apiKey: homeAPI }).base(careerBase);
 var termsList = new Airtable({ apiKey: homeAPI }).base(termBase);
-var applications = new Airtable({ apiKey: careerAPI }).base(applicationBase);
+var applications = new Airtable({ apiKey: homeAPI }).base(applicationBase);
 var Subscriptions = new Airtable({ apiKey: homeAPI }).base(subscriptionBase);
-var supportList = new Airtable({ apiKey: homeAPI }).base(supportBase)
 
 router.get('/loadConfig', (req, res) => {
   configList('Hide').select({
@@ -225,19 +223,7 @@ router.get('/loadForm', (req, res) => {
   });
   ContactData = [];
 })
-router.get('/loadSupport', (req, res) => {
-  supportList('Support').select({
-    view: "Grid view"
-  }).eachPage(function page(records, fetchNextPage) {
-    records.forEach(function (record) {
-      SupportData = SupportData.concat(record.fields)
-    });
-    res.json(SupportData)
-  }, function done(err) {
-    if (err) { console.error(err); return; }
-  });
-  SupportData = [];
-})
+
 router.get('/loadGallery', (req, res) => {
   galleryList('Gallery').select({
     view: "Gallery"
@@ -440,25 +426,6 @@ router.post('/feedback', (req, res) => {
         "Email": data.Email,
         "Name": data.Name,
         "Feedback": data.Feedback,
-      }
-    }
-  ], function (err, records) {
-    if (err) {
-      res.error(err)
-      return;
-    }
-    res.send("success")
-  });
-})
-
-router.post('/supportTickets', (req, res) => {
-  const data = req.body;
-  supportList('Responses').create([
-    {
-      "fields": {
-        "Email": data.Email,
-        "Name": data.Name,
-        "Issue": data.Issue,
       }
     }
   ], function (err, records) {
