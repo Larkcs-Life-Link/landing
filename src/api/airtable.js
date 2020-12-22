@@ -387,7 +387,7 @@ router.post('/applyForJob', (req, res) => {
     }
     const msg = {
       to: `${data.Email}`,
-      from: 'hr@larkcs.com',
+      from: 'careers@larkcs.com',
       subject: `Job application for ${data.opening}`,
       text: `${data.mailContent}`,
       html: `<p>Hello ${data.Name},</p><p>Thank you for taking your time to apply for ${data.opening} at Larkcs Life Link</p>${data.mailContent}<p>Thanks &amp; Regards,<br/>
