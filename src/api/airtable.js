@@ -15,7 +15,7 @@ const sgMail = require('@sendgrid/mail');
 // const sendGridApi = process.env.sendGridApi;
 
 const homeAPI = 'keyX8tJDj5uJ8jnE2';
-const careerAPI = 'keyCwv4IauNCHeKor';
+const careerAPI = 'keyzqU1HQoV2mUbPl';
 const configBase = 'app0feo8lyM5xAcMH';
 const homeBase = 'appSxnWsj5GUElptt';
 const aboutBase = 'appr90qZW6oMB3bm1';
@@ -34,11 +34,11 @@ var homeList = new Airtable({ apiKey: homeAPI }).base(homeBase)
 var aboutList = new Airtable({ apiKey: homeAPI }).base(aboutBase)
 var teamList = new Airtable({ apiKey: homeAPI }).base(teamBase)
 var servicesList = new Airtable({ apiKey: homeAPI }).base(servicesBase)
-var openingsList = new Airtable({ apiKey: homeAPI }).base(openingBase);
+var openingsList = new Airtable({ apiKey: careerAPI }).base(openingBase);
 var galleryList = new Airtable({ apiKey: homeAPI }).base(galleryBase);
 var careerList = new Airtable({ apiKey: homeAPI }).base(careerBase);
 var termsList = new Airtable({ apiKey: homeAPI }).base(termBase);
-var applications = new Airtable({ apiKey: homeAPI }).base(applicationBase);
+var applications = new Airtable({ apiKey: careerAPI }).base(applicationBase);
 var Subscriptions = new Airtable({ apiKey: homeAPI }).base(subscriptionBase);
 
 router.get('/loadConfig', (req, res) => {
@@ -382,7 +382,7 @@ router.post('/applyForJob', (req, res) => {
     }
   ], function (err, records) {
     if (err) {
-      res.error(err)
+      console.log(err)
       return;
     }
     const msg = {
