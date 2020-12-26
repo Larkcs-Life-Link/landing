@@ -12,6 +12,8 @@ import About from './views/About';
 import Founders from './views/Founders';
 import Terms from './views/Terms';
 import Support from './views/Support';
+import Booking from './views/Booking/Booking';
+import BookingConfirm from './views/Booking/BookingConfirm';
 import './App.css';
 import Download from './components/Download';
 
@@ -36,6 +38,8 @@ const App = () => (
     <Route history={history} path="/download" component={Download} />
     <Route history={history} path="/terms" component={Terms} />
     <Route history={history} path="/support" component={Support} />
+    <Route history={history} path="/booking" component={Booking} />
+    <Route history={history} path="/booking-confirm" component={BookingConfirm} />
     <Route history={history} path='/blog' component={() => {
       window.location.href = 'https://blog.larkcs.com';
       return null;
