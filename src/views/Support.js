@@ -70,20 +70,26 @@ const Support = () => {
         axios.all([
             axios.get('/api/sync/loadConfig')
                 .then((response) => {
+					
+					console.log('Config : ',response.data);
                     setConfig(response.data);
                 }),
             axios.get('/api/sync/loadSupport')
                 .then((response) => {
-                    setSupport(response.data);
+					
+                    console.log('Support : ',response.data);
+					setSupport(response.data);
                 }),
             axios.get('/api/sync/loadMediaLinks')
                 .then((response) => {
-                    console.log(response.data)
+                    
+					console.log('Media Links : ',response.data);
                     setMedia(response.data);
                 }),
             axios.get('/api/sync/loadAbout')
                 .then((response) => {
-                    console.log(response.data)
+					
+                    console.log('About : ',response.data);
                     setPhn(response.data);
                 }),
         ])

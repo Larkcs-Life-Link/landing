@@ -143,6 +143,7 @@ export default function Booking(){
 	const [patientHospital, setPatientHospital] = React.useState('');
     const handlePatientHospitalChange = event => {
 		
+		console.log('Selected Hospital : ', event.target.value);
         setPatientHospital(event.target.value);
     }
 	
@@ -212,14 +213,17 @@ export default function Booking(){
 
     const handleNextStep = (event) => {
 		
-        if(event.currentTarget.id == "applicantinfo")
-        
+        if(event.currentTarget.id == "applicantinfo") {
+			
+			{/* TODO : Form validation */}
 			setSteps({'step1': false, 'step2': true, 'step3': false});
         
-		if(event.currentTarget.id == "patientinfo")
+		} else if(event.currentTarget.id == "patientinfo") {
 			
+			{/* TODO : Form validation */}
 			setSteps({'step1': false, 'step2': false, 'step3': true});
-        
+        }
+		
 		console.log('Previous Page : ',event.currentTarget.id)
     }
 

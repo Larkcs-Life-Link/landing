@@ -91,10 +91,10 @@ export default function PatientInfo(props){
 					
 						<Typography variant="body">Hospital: </Typography>
 					
-						<Select value={props.patientHospital} onChange={props.handlePatientHospitalChange}>
+						<Select value={props.patientHospital ? props.patientHospital : ""} onChange={props.handlePatientHospitalChange}>
 							
-							<MenuItem>Hospital1</MenuItem>
-							<MenuItem>Hospital2</MenuItem>
+							<MenuItem value="Hospital 1">Hospital 1</MenuItem>
+							<MenuItem value="Hospital 2">Hospital 2</MenuItem>
 					
 						</Select>
 				

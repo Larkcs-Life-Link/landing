@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import ToolBar from '@material-ui/core/ToolBar';
@@ -59,42 +61,29 @@ const useStyles = makeStyles({
 export default function ServiceInfo(props){
 	
 	console.log('Props : ',props);
-	
+			
 	const classes = useStyles();
 	
 	function handleConfirmBookingButton() {
 	
 		console.log('From handleConfirmBookingButton function : Props - ', props);
-		
-		{/*if (values.Name === "" || values.Email === "" || values.Feedback === "") {
-		
-			console.log(values)
-			setValues({ ...values, msg: "Please fill all fields" });
-			setSnack(true)
-		}
-		else {
+		{/* TODO : Form validation */}
 			
-			axios.post('/api/sync/supportTickets', { Email: values.Email, Name: values.Name, Issue: values.Issue }).then((response) => {
+		axios.post('/api/sync/createBooking', { applicantIsEmployee: props.applicantIsEmployee, applicantEmployeeId: props.applicantEmployeeId, applicantName: props.applicantName, applicantAddress: props.applicantAddress, applicantPhone: props.applicantPhone, applicantEmailId: props.applicantEmailId, patientEmployeeId: props.patientEmployeeId, patientName: props.patientName, patientHospital: props.patientHospital, patientAge: props.patientAge, patientGender: props.patientGender, patientEmailId: props.patientEmailId, service: props.service }).then((response) => {
+		
+			console.log('Response : ', response)
 			
-				if (response) {
-				
-					setValues({
-					
-						Name: '',
-						Email: "",
-						Issue: "",
-						msg: "Ticket Received. We will reach out!"
-					});
-					
-					setSnack(true);
-				
-				} else {
-				
-					setValues({ ...values, msg: "Failed to submit Feedback. Please feel free to contact us directly!" });
-					setSnack(true)
-				}
-			})
-		}*/}
+			if (response.data == 'success') {
+			
+				{/* TODO : Show Booking Success Page */}
+				console.log('Success');
+			
+			} else {
+			
+				{/* TODO : Show Error Message in Snackbar */}
+				console.log('Failed to register your booking...');
+			}
+		})
 	}
 
     return (
